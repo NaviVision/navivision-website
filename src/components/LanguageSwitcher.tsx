@@ -33,9 +33,11 @@ export function LanguageSwitcher() {
         type="button"
         onClick={() => setOpen((prev) => !prev)}
         onBlur={() => setOpen(false)}
-        className="inline-flex items-center gap-2 rounded-full border border-border/80 bg-background px-4 py-2 text-sm font-semibold text-foreground shadow-sm transition-colors hover:bg-surface focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
+        className="inline-flex items-center rounded-full border border-border/80 bg-background p-2 text-foreground shadow-sm transition-colors hover:bg-surface focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
         aria-haspopup="menu"
         aria-expanded={open}
+        aria-label={`Language: ${currentLabel}`}
+        title={`Language: ${currentLabel}`}
       >
         <svg
           aria-hidden="true"
@@ -45,11 +47,10 @@ export function LanguageSwitcher() {
           stroke="currentColor"
           strokeWidth="2"
         >
-          <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2Z" />
-          <path d="M2 12h20" />
-          <path d="M12 2c2.6 2.7 4 6 4 10s-1.4 7.3-4 10c-2.6-2.7-4-6-4-10s1.4-7.3 4-10Z" />
+          <path d="M3 6l7-3 7 3 4-2v14l-4 2-7-3-7 3-4-2V4l4 2Z" />
+          <path d="M10 3v16" />
+          <path d="M14 5v16" />
         </svg>
-        <span className="whitespace-nowrap">{currentLabel}</span>
       </button>
 
       {open ? (

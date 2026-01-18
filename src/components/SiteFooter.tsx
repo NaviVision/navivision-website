@@ -19,6 +19,8 @@ export function SiteFooter() {
                 key={item.href}
                 className="text-sm text-muted hover:text-foreground transition-colors"
                 href={item.href}
+                target={item.href.startsWith("http") ? "_blank" : undefined}
+                rel={item.href.startsWith("http") ? "noreferrer" : undefined}
               >
                 {item.label}
               </Link>

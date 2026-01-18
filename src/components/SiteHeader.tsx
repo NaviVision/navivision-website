@@ -68,9 +68,6 @@ export function SiteHeader() {
         <div className="flex items-center gap-3">
           <LanguageSwitcher />
           <ThemeToggle />
-          <Link className="btn btn-secondary hidden sm:inline-flex" href="/jobs">
-            {t(locale, "header.viewJobs")}
-          </Link>
           <Link className="btn btn-primary" href="/contact">
             {t(locale, "header.contact")}
           </Link>

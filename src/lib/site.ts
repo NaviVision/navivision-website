@@ -42,8 +42,10 @@ export const siteConfig = {
     },
   ],
   footerLinks: [
+    { href: "/jobs", label: "Jobs" },
     { href: "/privacy", label: "Privacy" },
     { href: "/terms", label: "Terms" },
+    { href: "https://www.linkedin.com/company/navivision/", label: "LinkedIn" },
   ],
 } as const;
 
