@@ -1,26 +1,31 @@
 import { Container } from "@/components/Container";
-import { getServerLocale } from "@/lib/locale";
 import { c, copy } from "@/content/copy";
 import Link from "next/link";
+import { normalizeLocale, type Locale } from "@/lib/i18n";
+import { alternatesFor } from "@/lib/seo";
+import { withLocale } from "@/lib/urls";
 
 export async function generateMetadata({
-  searchParams,
+  params,
 }: {
-  searchParams?: Record<string, string | string[] | undefined>;
+  params: Promise<{ locale: string }>;
 }) {
-  const locale = await getServerLocale(searchParams);
+  const { locale: localeParam } = await params;
+  const locale: Locale = normalizeLocale(localeParam);
   return {
     title: c(copy.terms.metaTitle, locale),
     description: c(copy.terms.metaDescription, locale),
+    alternates: alternatesFor(locale, "/terms"),
   };
 }
 
 export default async function TermsPage({
-  searchParams,
+  params,
 }: {
-  searchParams?: Record<string, string | string[] | undefined>;
+  params: Promise<{ locale: string }>;
 }) {
-  const locale = await getServerLocale(searchParams);
+  const { locale: localeParam } = await params;
+  const locale: Locale = normalizeLocale(localeParam);
   return (
     <div>
       <section className="bg-surface">
@@ -51,7 +56,7 @@ export default async function TermsPage({
             <h2 className="mt-8 text-lg font-semibold">{c(copy.terms.section3Title, locale)}</h2>
             <p className="mt-3 text-sm text-muted">
               {c(copy.terms.section3Body, locale)}{" "}
-              <Link className="font-semibold text-foreground hover:text-primary" href="/contact">
+              <Link className="font-semibold text-foreground hover:text-primary" href={withLocale(locale, "/contact")}>
                 {c(copy.terms.contactLink, locale)}
               </Link>
               .

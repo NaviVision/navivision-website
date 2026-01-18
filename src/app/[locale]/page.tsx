@@ -1,15 +1,33 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { Container } from "@/components/Container";
 import { SectionHeading } from "@/components/SectionHeading";
-import { getServerLocale } from "@/lib/locale";
 import { c, copy } from "@/content/copy";
+import { normalizeLocale, type Locale } from "@/lib/i18n";
+import { alternatesFor } from "@/lib/seo";
+import { withLocale } from "@/lib/urls";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale: localeParam } = await params;
+  const locale: Locale = normalizeLocale(localeParam);
+  return {
+    title: c(copy.meta.siteTitle, locale),
+    description: c(copy.meta.siteDescription, locale),
+    alternates: alternatesFor(locale, "/"),
+  };
+}
 
 export default async function Home({
-  searchParams,
+  params,
 }: {
-  searchParams?: Record<string, string | string[] | undefined>;
+  params: Promise<{ locale: string }>;
 }) {
-  const locale = await getServerLocale(searchParams);
+  const { locale: localeParam } = await params;
+  const locale: Locale = normalizeLocale(localeParam);
   return (
     <div>
       <section className="relative overflow-hidden bg-[radial-gradient(90rem_50rem_at_10%_-10%,rgba(32,160,224,0.26),transparent),radial-gradient(80rem_40rem_at_110%_10%,rgba(64,160,64,0.18),transparent)]">
@@ -25,10 +43,10 @@ export default async function Home({
               {c(copy.home.heroSubtitle, locale)}
             </p>
             <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">
-              <Link className="btn btn-primary" href="/contact">
+              <Link className="btn btn-primary" href={withLocale(locale, "/contact")}>
                 {c(copy.home.ctaPrimary, locale)}
               </Link>
-              <Link className="btn btn-secondary" href="/portfolio">
+              <Link className="btn btn-secondary" href={withLocale(locale, "/portfolio")}>
                 {c(copy.home.ctaSecondary, locale)}
               </Link>
             </div>
@@ -51,7 +69,7 @@ export default async function Home({
                 {c(copy.home.cardTalentBody, locale)}
               </p>
               <div className="mt-4">
-                <Link className="link" href="/talent-hiring">
+                <Link className="link" href={withLocale(locale, "/talent-hiring")}>
                   {c(copy.home.cardExplore, locale)}
                 </Link>
               </div>
@@ -64,7 +82,7 @@ export default async function Home({
                 {c(copy.home.cardSoftwareBody, locale)}
               </p>
               <div className="mt-4">
-                <Link className="link" href="/custom-saas">
+                <Link className="link" href={withLocale(locale, "/custom-saas")}>
                   {c(copy.home.cardExplore, locale)}
                 </Link>
               </div>
@@ -77,7 +95,7 @@ export default async function Home({
                 {c(copy.home.cardRealEstateBody, locale)}
               </p>
               <div className="mt-4">
-                <Link className="link" href="/real-estate">
+                <Link className="link" href={withLocale(locale, "/real-estate")}>
                   {c(copy.home.cardExplore, locale)}
                 </Link>
               </div>
@@ -90,7 +108,7 @@ export default async function Home({
                 {c(copy.home.cardInvestmentsBody, locale)}
               </p>
               <div className="mt-4">
-                <Link className="link" href="/investments">
+                <Link className="link" href={withLocale(locale, "/investments")}>
                   {c(copy.home.cardExplore, locale)}
                 </Link>
               </div>
@@ -137,10 +155,10 @@ export default async function Home({
                   {c(copy.home.workWithBody, locale)}
                 </p>
                 <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-                  <Link className="btn btn-primary" href="/jobs">
+                  <Link className="btn btn-primary" href={withLocale(locale, "/jobs")}>
                     {c(copy.home.workWithCtaJobs, locale)}
                   </Link>
-                  <Link className="btn btn-secondary" href="/contact">
+                  <Link className="btn btn-secondary" href={withLocale(locale, "/contact")}>
                     {c(copy.home.workWithCtaContact, locale)}
                   </Link>
                 </div>

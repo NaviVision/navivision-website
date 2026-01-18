@@ -1,27 +1,32 @@
 import Link from "next/link";
 import { Container } from "@/components/Container";
 import { SectionHeading } from "@/components/SectionHeading";
-import { getServerLocale } from "@/lib/locale";
 import { c, copy } from "@/content/copy";
+import { normalizeLocale, type Locale } from "@/lib/i18n";
+import { alternatesFor } from "@/lib/seo";
+import { withLocale } from "@/lib/urls";
 
 export async function generateMetadata({
-  searchParams,
+  params,
 }: {
-  searchParams?: Record<string, string | string[] | undefined>;
+  params: Promise<{ locale: string }>;
 }) {
-  const locale = await getServerLocale(searchParams);
+  const { locale: localeParam } = await params;
+  const locale: Locale = normalizeLocale(localeParam);
   return {
     title: c(copy.talentHiring.metaTitle, locale),
     description: c(copy.talentHiring.metaDescription, locale),
+    alternates: alternatesFor(locale, "/talent-hiring"),
   };
 }
 
 export default async function TalentHiringPage({
-  searchParams,
+  params,
 }: {
-  searchParams?: Record<string, string | string[] | undefined>;
+  params: Promise<{ locale: string }>;
 }) {
-  const locale = await getServerLocale(searchParams);
+  const { locale: localeParam } = await params;
+  const locale: Locale = normalizeLocale(localeParam);
   return (
     <div>
       <section className="bg-surface">
@@ -36,10 +41,10 @@ export default async function TalentHiringPage({
             {c(copy.talentHiring.intro, locale)}
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <Link className="btn btn-primary" href="/contact">
+            <Link className="btn btn-primary" href={withLocale(locale, "/contact")}>
               {c(copy.talentHiring.ctaPrimary, locale)}
             </Link>
-            <Link className="btn btn-secondary" href="/jobs">
+            <Link className="btn btn-secondary" href={withLocale(locale, "/jobs")}>
               {c(copy.talentHiring.ctaSecondary, locale)}
             </Link>
           </div>
@@ -96,7 +101,7 @@ export default async function TalentHiringPage({
                 {c(copy.talentHiring.cardCompaniesBody, locale)}
               </p>
               <div className="mt-4">
-                <Link className="link" href="/for-companies">
+                <Link className="link" href={withLocale(locale, "/for-companies")}>
                   {c(copy.talentHiring.cardCompaniesLink, locale)}
                 </Link>
               </div>
@@ -109,7 +114,7 @@ export default async function TalentHiringPage({
                 {c(copy.talentHiring.cardTalentBody, locale)}
               </p>
               <div className="mt-4">
-                <Link className="link" href="/for-talent">
+                <Link className="link" href={withLocale(locale, "/for-talent")}>
                   {c(copy.talentHiring.cardTalentLink, locale)}
                 </Link>
               </div>
@@ -122,7 +127,7 @@ export default async function TalentHiringPage({
                 {c(copy.talentHiring.cardJobsBody, locale)}
               </p>
               <div className="mt-4">
-                <Link className="link" href="/jobs">
+                <Link className="link" href={withLocale(locale, "/jobs")}>
                   {c(copy.talentHiring.cardJobsLink, locale)}
                 </Link>
               </div>

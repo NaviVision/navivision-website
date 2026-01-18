@@ -1,27 +1,32 @@
 import Link from "next/link";
 import { Container } from "@/components/Container";
 import { SectionHeading } from "@/components/SectionHeading";
-import { getServerLocale } from "@/lib/locale";
 import { c, copy } from "@/content/copy";
+import { normalizeLocale, type Locale } from "@/lib/i18n";
+import { alternatesFor } from "@/lib/seo";
+import { withLocale } from "@/lib/urls";
 
 export async function generateMetadata({
-  searchParams,
+  params,
 }: {
-  searchParams?: Record<string, string | string[] | undefined>;
+  params: Promise<{ locale: string }>;
 }) {
-  const locale = await getServerLocale(searchParams);
+  const { locale: localeParam } = await params;
+  const locale: Locale = normalizeLocale(localeParam);
   return {
     title: c(copy.customSaas.metaTitle, locale),
     description: c(copy.customSaas.metaDescription, locale),
+    alternates: alternatesFor(locale, "/custom-saas"),
   };
 }
 
 export default async function CustomSaasPage({
-  searchParams,
+  params,
 }: {
-  searchParams?: Record<string, string | string[] | undefined>;
+  params: Promise<{ locale: string }>;
 }) {
-  const locale = await getServerLocale(searchParams);
+  const { locale: localeParam } = await params;
+  const locale: Locale = normalizeLocale(localeParam);
   return (
     <div>
       <section className="bg-surface">
@@ -34,10 +39,10 @@ export default async function CustomSaasPage({
             {c(copy.customSaas.intro, locale)}
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <Link className="btn btn-primary" href="/contact">
+            <Link className="btn btn-primary" href={withLocale(locale, "/contact")}>
               {c(copy.customSaas.ctaPrimary, locale)}
             </Link>
-            <Link className="btn btn-secondary" href="/portfolio#software">
+            <Link className="btn btn-secondary" href={withLocale(locale, "/portfolio#software")}>
               {c(copy.customSaas.ctaSecondary, locale)}
             </Link>
           </div>

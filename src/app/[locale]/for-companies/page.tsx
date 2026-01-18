@@ -1,27 +1,32 @@
 import Link from "next/link";
 import { Container } from "@/components/Container";
 import { SectionHeading } from "@/components/SectionHeading";
-import { getServerLocale } from "@/lib/locale";
 import { c, copy } from "@/content/copy";
+import { normalizeLocale, type Locale } from "@/lib/i18n";
+import { alternatesFor } from "@/lib/seo";
+import { withLocale } from "@/lib/urls";
 
 export async function generateMetadata({
-  searchParams,
+  params,
 }: {
-  searchParams?: Record<string, string | string[] | undefined>;
+  params: Promise<{ locale: string }>;
 }) {
-  const locale = await getServerLocale(searchParams);
+  const { locale: localeParam } = await params;
+  const locale: Locale = normalizeLocale(localeParam);
   return {
     title: c(copy.forCompanies.metaTitle, locale),
     description: c(copy.forCompanies.metaDescription, locale),
+    alternates: alternatesFor(locale, "/for-companies"),
   };
 }
 
 export default async function ForCompaniesPage({
-  searchParams,
+  params,
 }: {
-  searchParams?: Record<string, string | string[] | undefined>;
+  params: Promise<{ locale: string }>;
 }) {
-  const locale = await getServerLocale(searchParams);
+  const { locale: localeParam } = await params;
+  const locale: Locale = normalizeLocale(localeParam);
   return (
     <div>
       <section className="bg-surface">
@@ -36,10 +41,10 @@ export default async function ForCompaniesPage({
             {c(copy.forCompanies.intro, locale)}
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <Link className="btn btn-primary" href="/contact">
+            <Link className="btn btn-primary" href={withLocale(locale, "/contact")}>
               {c(copy.forCompanies.ctaPrimary, locale)}
             </Link>
-            <Link className="btn btn-secondary" href="/portfolio">
+            <Link className="btn btn-secondary" href={withLocale(locale, "/portfolio")}>
               {c(copy.forCompanies.ctaSecondary, locale)}
             </Link>
           </div>
@@ -91,10 +96,10 @@ export default async function ForCompaniesPage({
               {c(copy.forCompanies.closingBody, locale)}
             </p>
             <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-              <Link className="btn btn-primary" href="/contact">
+              <Link className="btn btn-primary" href={withLocale(locale, "/contact")}>
                 {c(copy.forCompanies.closingCtaPrimary, locale)}
               </Link>
-              <Link className="btn btn-secondary" href="/jobs">
+              <Link className="btn btn-secondary" href={withLocale(locale, "/jobs")}>
                 {c(copy.forCompanies.closingCtaSecondary, locale)}
               </Link>
             </div>

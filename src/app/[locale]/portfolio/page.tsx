@@ -1,27 +1,32 @@
 import Link from "next/link";
 import { Container } from "@/components/Container";
 import { SectionHeading } from "@/components/SectionHeading";
-import { getServerLocale } from "@/lib/locale";
 import { c, copy } from "@/content/copy";
+import { normalizeLocale, type Locale } from "@/lib/i18n";
+import { alternatesFor } from "@/lib/seo";
+import { withLocale } from "@/lib/urls";
 
 export async function generateMetadata({
-  searchParams,
+  params,
 }: {
-  searchParams?: Record<string, string | string[] | undefined>;
+  params: Promise<{ locale: string }>;
 }) {
-  const locale = await getServerLocale(searchParams);
+  const { locale: localeParam } = await params;
+  const locale: Locale = normalizeLocale(localeParam);
   return {
     title: c(copy.portfolio.metaTitle, locale),
     description: c(copy.portfolio.metaDescription, locale),
+    alternates: alternatesFor(locale, "/portfolio"),
   };
 }
 
 export default async function PortfolioPage({
-  searchParams,
+  params,
 }: {
-  searchParams?: Record<string, string | string[] | undefined>;
+  params: Promise<{ locale: string }>;
 }) {
-  const locale = await getServerLocale(searchParams);
+  const { locale: localeParam } = await params;
+  const locale: Locale = normalizeLocale(localeParam);
   return (
     <div>
       <section className="bg-surface">
@@ -34,10 +39,10 @@ export default async function PortfolioPage({
             {c(copy.portfolio.intro, locale)}
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <Link className="btn btn-primary" href="/contact">
+            <Link className="btn btn-primary" href={withLocale(locale, "/contact")}>
               {c(copy.portfolio.ctaPrimary, locale)}
             </Link>
-            <Link className="btn btn-secondary" href="/about">
+            <Link className="btn btn-secondary" href={withLocale(locale, "/about")}>
               {c(copy.portfolio.ctaSecondary, locale)}
             </Link>
           </div>

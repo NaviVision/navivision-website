@@ -1,10 +1,16 @@
 import Link from "next/link";
 import { Container } from "@/components/Container";
-import { getServerLocale } from "@/lib/locale";
 import { c, copy } from "@/content/copy";
+import { normalizeLocale, type Locale } from "@/lib/i18n";
+import { withLocale } from "@/lib/urls";
 
-export default async function NotFound() {
-  const locale = await getServerLocale();
+export default async function NotFound({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale: localeParam } = await params;
+  const locale: Locale = normalizeLocale(localeParam);
   return (
     <Container className="py-20">
       <div className="card">
@@ -16,10 +22,10 @@ export default async function NotFound() {
           {c(copy.notFound.body, locale)}
         </p>
         <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-          <Link className="btn btn-primary" href="/">
+          <Link className="btn btn-primary" href={withLocale(locale, "/")}>
             {c(copy.notFound.ctaHome, locale)}
           </Link>
-          <Link className="btn btn-secondary" href="/contact">
+          <Link className="btn btn-secondary" href={withLocale(locale, "/contact")}>
             {c(copy.notFound.ctaContact, locale)}
           </Link>
         </div>

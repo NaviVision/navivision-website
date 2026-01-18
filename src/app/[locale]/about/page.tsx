@@ -1,27 +1,32 @@
 import Link from "next/link";
 import { Container } from "@/components/Container";
 import { SectionHeading } from "@/components/SectionHeading";
-import { getServerLocale } from "@/lib/locale";
 import { c, copy } from "@/content/copy";
+import { normalizeLocale, type Locale } from "@/lib/i18n";
+import { alternatesFor } from "@/lib/seo";
+import { withLocale } from "@/lib/urls";
 
 export async function generateMetadata({
-  searchParams,
+  params,
 }: {
-  searchParams?: Record<string, string | string[] | undefined>;
+  params: Promise<{ locale: string }>;
 }) {
-  const locale = await getServerLocale(searchParams);
+  const { locale: localeParam } = await params;
+  const locale: Locale = normalizeLocale(localeParam);
   return {
     title: c(copy.about.metaTitle, locale),
     description: c(copy.about.metaDescription, locale),
+    alternates: alternatesFor(locale, "/about"),
   };
 }
 
 export default async function AboutPage({
-  searchParams,
+  params,
 }: {
-  searchParams?: Record<string, string | string[] | undefined>;
+  params: Promise<{ locale: string }>;
 }) {
-  const locale = await getServerLocale(searchParams);
+  const { locale: localeParam } = await params;
+  const locale: Locale = normalizeLocale(localeParam);
   return (
     <div>
       <section className="bg-surface">
@@ -51,10 +56,10 @@ export default async function AboutPage({
                 {c(copy.about.verticalTalentBody, locale)}
               </p>
               <div className="mt-4 flex gap-4">
-                <Link className="link" href="/for-companies">
+                <Link className="link" href={withLocale(locale, "/for-companies")}>
                   {c(copy.about.linkForCompanies, locale)}
                 </Link>
-                <Link className="link" href="/for-talent">
+                <Link className="link" href={withLocale(locale, "/for-talent")}>
                   {c(copy.about.linkForTalent, locale)}
                 </Link>
               </div>
@@ -67,7 +72,7 @@ export default async function AboutPage({
                 {c(copy.about.verticalSoftwareBody, locale)}
               </p>
               <div className="mt-4">
-                <Link className="link" href="/custom-saas">
+                <Link className="link" href={withLocale(locale, "/custom-saas")}>
                   {c(copy.about.linkExplore, locale)}
                 </Link>
               </div>
@@ -80,7 +85,7 @@ export default async function AboutPage({
                 {c(copy.about.verticalRealEstateBody, locale)}
               </p>
               <div className="mt-4">
-                <Link className="link" href="/real-estate">
+                <Link className="link" href={withLocale(locale, "/real-estate")}>
                   {c(copy.about.linkExplore, locale)}
                 </Link>
               </div>
@@ -93,7 +98,7 @@ export default async function AboutPage({
                 {c(copy.about.verticalInvestBody, locale)}
               </p>
               <div className="mt-4">
-                <Link className="link" href="/investments">
+                <Link className="link" href={withLocale(locale, "/investments")}>
                   {c(copy.about.linkExplore, locale)}
                 </Link>
               </div>

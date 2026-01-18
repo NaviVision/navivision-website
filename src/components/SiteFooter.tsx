@@ -3,32 +3,15 @@
 import Link from "next/link";
 import { Container } from "@/components/Container";
 import { siteConfig } from "@/lib/site";
-import { LOCALE_COOKIE, defaultLocale, locales, normalizeLocale, type Locale } from "@/lib/i18n";
+import type { Locale } from "@/lib/i18n";
 import { c, copy } from "@/content/copy";
+import { withLocale } from "@/lib/urls";
 
-function getCookie(name: string): string | undefined {
-  const value = `; ${document.cookie}`;
-  const parts = value.split(`; ${name}=`);
-  if (parts.length !== 2) return undefined;
-  return parts.pop()?.split(";").shift();
-}
-
-export function SiteFooter() {
-  const locale: Locale =
-    typeof document === "undefined"
-      ? defaultLocale
-      : (() => {
-          const urlLocale = new URLSearchParams(window.location.search).get("lang");
-          if (urlLocale && (locales as readonly string[]).includes(urlLocale)) {
-            return normalizeLocale(urlLocale);
-          }
-          return normalizeLocale(getCookie(LOCALE_COOKIE));
-        })();
-
+export function SiteFooter({ locale }: { locale: Locale }) {
   const footerLinks = [
-    { href: "/jobs", label: c(copy.footer.jobs, locale) },
-    { href: "/privacy", label: c(copy.footer.privacy, locale) },
-    { href: "/terms", label: c(copy.footer.terms, locale) },
+    { href: withLocale(locale, "/jobs"), label: c(copy.footer.jobs, locale) },
+    { href: withLocale(locale, "/privacy"), label: c(copy.footer.privacy, locale) },
+    { href: withLocale(locale, "/terms"), label: c(copy.footer.terms, locale) },
     { href: "https://www.linkedin.com/company/navivision/", label: c(copy.footer.linkedIn, locale) },
   ] as const;
 

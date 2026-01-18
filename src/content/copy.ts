@@ -3,6 +3,24 @@ import type { Locale } from "@/lib/i18n";
 type CopyByLocale<T> = Record<Locale, T>;
 
 export const copy = {
+  meta: {
+    siteTitle: {
+      "en-US": "NaviVision",
+      "en-GB": "NaviVision",
+      es: "NaviVision",
+      fr: "NaviVision",
+      de: "NaviVision",
+    },
+    siteDescription: {
+      "en-US":
+        "NaviVision is a diversified operating and investment company spanning talent, software/SaaS, real estate, and startup investing.",
+      "en-GB":
+        "NaviVision is a diversified operating and investment company spanning talent, software/SaaS, real estate, and startup investing.",
+      es: "NaviVision es una compañía operadora e inversora diversificada que abarca talento, software/SaaS, bienes raíces e inversión en startups.",
+      fr: "NaviVision est une société d’exploitation et d’investissement diversifiée couvrant les talents, le logiciel/SaaS, l’immobilier et l’investissement dans les startups.",
+      de: "NaviVision ist eine diversifizierte Betriebs- und Investmentgesellschaft in den Bereichen Talent, Software/SaaS, Immobilien und Startup-Investing.",
+    },
+  },
   home: {
     heroKicker: {
       "en-US": "Diversified operating + investment company",
@@ -25,7 +43,7 @@ export const copy = {
         "We partner with teams to hire exceptional people, launch products, scale SaaS businesses, and operate a disciplined real estate portfolio, while investing in founders we believe in.",
       es: "Trabajamos con equipos para contratar talento excepcional, lanzar productos, escalar negocios SaaS y operar una cartera inmobiliaria disciplinada, mientras invertimos en fundadores en los que creemos.",
       fr: "Nous aidons les équipes à recruter des talents, lancer des produits, développer des activités SaaS et gérer un portefeuille immobilier avec discipline, tout en investissant dans des fondateurs en qui nous croyons.",
-      de: "Wir unterstützen Teams dabei, herausragende Talente einzustellen, Produkte zu launchen, SaaS-Unternehmen zu skalieren und ein diszipliniertes Immobilienportfolio zu betreiben – und investieren zugleich in Gründer, an die wir glauben.",
+      de: "Wir unterstützen Teams dabei, herausragende Talente einzustellen, Produkte zu launchen, SaaS-Unternehmen zu skalieren und ein diszipliniertes Immobilienportfolio zu betreiben - und investieren zugleich in Gründer, an die wir glauben.",
     },
     ctaPrimary: {
       "en-US": "Start a conversation",
@@ -114,7 +132,7 @@ export const copy = {
       "en-GB": "Targeted bets in early-stage teams, with a preference for founders who ship.",
       es: "Apuestas selectivas en equipos tempranos, con preferencia por fundadores que ejecutan.",
       fr: "Paris ciblés sur des équipes early stage, avec une préférence pour les fondateurs qui livrent.",
-      de: "Gezielte Investments in Early-Stage-Teams – bevorzugt Gründer, die liefern.",
+      de: "Gezielte Investments in Early-Stage-Teams - bevorzugt Gründer, die liefern.",
     },
     cardExplore: {
       "en-US": "Explore",
@@ -135,7 +153,7 @@ export const copy = {
       "en-GB": "We’re operators first, built for compounding.",
       es: "Somos operadores primero, diseñados para el crecimiento acumulativo.",
       fr: "Des opérateurs avant tout, conçus pour une croissance durable.",
-      de: "Operator-first – auf langfristiges Wachstum ausgelegt.",
+      de: "Operator-first - auf langfristiges Wachstum ausgelegt.",
     },
     buildTitle: {
       "en-US": "Build",
@@ -193,7 +211,7 @@ export const copy = {
         "Whether you’re hiring, looking for your next role, or exploring partnerships, start here.",
       es: "Ya sea que esté contratando, buscando su próximo rol o explorando alianzas, empiece aquí.",
       fr: "Que vous recrutiez, cherchiez un poste ou envisagiez un partenariat, commencez ici.",
-      de: "Ob Hiring, nächste Rolle oder Partnerschaft – starten Sie hier.",
+      de: "Ob Hiring, nächste Rolle oder Partnerschaft - starten Sie hier.",
     },
     workWithCtaJobs: {
       "en-US": "View open roles",
@@ -224,7 +242,7 @@ export const copy = {
       "en-GB": "We’re a hands-on operator with a long-term view.",
       es: "Somos operadores prácticos con una visión de largo plazo.",
       fr: "Nous sommes des opérateurs de terrain, avec une vision long terme.",
-      de: "Wir sind Betreiber aus der Praxis – mit langfristigem Blick.",
+      de: "Wir sind Betreiber aus der Praxis - mit langfristigem Blick.",
     },
     intro: {
       "en-US":
@@ -233,7 +251,7 @@ export const copy = {
         "NaviVision is a diversified operating and investment company. We build and support businesses that can compound over time through great teams, sound economics, and disciplined execution.",
       es: "NaviVision es una compañía operadora e inversora diversificada. Construimos y apoyamos negocios que pueden crecer con el tiempo a través de grandes equipos, una economía sólida y una ejecución disciplinada.",
       fr: "NaviVision est une société d’exploitation et d’investissement diversifiée. Nous construisons et accompagnons des entreprises capables de croître durablement grâce à de grandes équipes, une économie saine et une exécution disciplinée.",
-      de: "NaviVision ist eine diversifizierte Betriebs- und Investmentgesellschaft. Wir bauen Unternehmen auf und unterstützen sie dabei, langfristig zu wachsen – mit starken Teams, solider Wirtschaftlichkeit und disziplinierter Umsetzung.",
+      de: "NaviVision ist eine diversifizierte Betriebs- und Investmentgesellschaft. Wir bauen Unternehmen auf und unterstützen sie dabei, langfristig zu wachsen - mit starken Teams, solider Wirtschaftlichkeit und disziplinierter Umsetzung.",
     },
     focusTitle: {
       "en-US": "Our focus",
@@ -316,7 +334,7 @@ export const copy = {
         "We build products and operate software businesses, prioritising customer value, reliability, and steady improvements.",
       es: "Construimos productos y operamos negocios de software, priorizando valor al cliente, confiabilidad y mejoras constantes.",
       fr: "Nous construisons des produits et exploitons des activités logicielles, en privilégiant la valeur client, la fiabilité et l’amélioration continue.",
-      de: "Wir bauen Produkte und betreiben Software-Unternehmen – mit Fokus auf Kundennutzen, Zuverlässigkeit und kontinuierliche Verbesserung.",
+      de: "Wir bauen Produkte und betreiben Software-Unternehmen - mit Fokus auf Kundennutzen, Zuverlässigkeit und kontinuierliche Verbesserung.",
     },
     verticalRealEstateTitle: {
       "en-US": "Real Estate",
@@ -395,7 +413,7 @@ export const copy = {
         "Use the form below to reach our team. If you’re a company looking to hire, a candidate exploring roles, or a founder seeking partnership, include the basics and we’ll follow up.",
       es: "Use el formulario para contactar con nuestro equipo. Si es una empresa que busca contratar, una persona explorando oportunidades o un fundador buscando colaboración, comparta lo básico y le responderemos.",
       fr: "Utilisez le formulaire pour contacter notre équipe. Que vous recrutiez, que vous recherchiez un poste ou que vous souhaitiez un partenariat, partagez l’essentiel et nous reviendrons vers vous.",
-      de: "Nutzen Sie das Formular, um unser Team zu erreichen. Ob Sie einstellen möchten, eine Rolle suchen oder eine Partnerschaft anfragen – teilen Sie die wichtigsten Informationen, und wir melden uns.",
+      de: "Nutzen Sie das Formular, um unser Team zu erreichen. Ob Sie einstellen möchten, eine Rolle suchen oder eine Partnerschaft anfragen - teilen Sie die wichtigsten Informationen, und wir melden uns.",
     },
     includeTitle: {
       "en-US": "What should you include?",
@@ -628,7 +646,7 @@ export const copy = {
         "We run a high-signal process designed to move quickly without sacrificing quality. Whether you’re building a team or looking for your next role, we’ll meet you with clarity and follow-through.",
       es: "Operamos un proceso de alta señal pensado para avanzar rápido sin sacrificar calidad. Ya sea que esté formando un equipo o buscando su próximo rol, actuamos con claridad y seguimiento.",
       fr: "Nous proposons un processus à forte valeur de signal, conçu pour aller vite sans sacrifier la qualité. Que vous recrutiez ou cherchiez votre prochain poste, nous avançons avec clarté et suivi.",
-      de: "Wir nutzen einen High-Signal-Prozess, der Geschwindigkeit ermöglicht, ohne Qualität zu opfern. Ob Teamaufbau oder nächste Rolle – wir arbeiten klar und verbindlich.",
+      de: "Wir nutzen einen High-Signal-Prozess, der Geschwindigkeit ermöglicht, ohne Qualität zu opfern. Ob Teamaufbau oder nächste Rolle - wir arbeiten klar und verbindlich.",
     },
     ctaPrimary: {
       "en-US": "Talk to us",
@@ -796,7 +814,7 @@ export const copy = {
         "NaviVision builds and operates custom software and SaaS products with an operator’s focus on durability and outcomes.",
       es: "NaviVision construye y opera software a medida y productos SaaS con foco en durabilidad y resultados.",
       fr: "NaviVision conçoit et exploite des logiciels sur mesure et des produits SaaS, avec un focus sur la durabilité et les résultats.",
-      de: "NaviVision entwickelt und betreibt individuelle Software und SaaS-Produkte – mit Fokus auf Langlebigkeit und Ergebnisse.",
+      de: "NaviVision entwickelt und betreibt individuelle Software und SaaS-Produkte - mit Fokus auf Langlebigkeit und Ergebnisse.",
     },
     kicker: {
       "en-US": "Custom SaaS",
@@ -819,7 +837,7 @@ export const copy = {
         "We design and build custom software, often as a path from internal tools to product. Our approach is pragmatic: ship quickly, measure impact, and invest in reliability.",
       es: "Diseñamos y construimos software a medida, a menudo como un camino desde herramientas internas hacia producto. Nuestro enfoque es pragmático: entregar rápido, medir impacto e invertir en confiabilidad.",
       fr: "Nous concevons et développons des logiciels sur mesure, souvent comme un chemin des outils internes vers le produit. Notre approche est pragmatique : livrer vite, mesurer l’impact et investir dans la fiabilité.",
-      de: "Wir konzipieren und bauen individuelle Software – oft als Weg von internen Tools zum Produkt. Unser Ansatz ist pragmatisch: schnell liefern, Wirkung messen und in Zuverlässigkeit investieren.",
+      de: "Wir konzipieren und bauen individuelle Software - oft als Weg von internen Tools zum Produkt. Unser Ansatz ist pragmatisch: schnell liefern, Wirkung messen und in Zuverlässigkeit investieren.",
     },
     ctaPrimary: {
       "en-US": "Discuss a build",
@@ -1094,7 +1112,7 @@ export const copy = {
       "en-GB": "Targeted bets, backed by operators.",
       es: "Apuestas selectivas, respaldadas por operadores.",
       fr: "Des paris ciblés, portés par des opérateurs.",
-      de: "Gezielte Investments – von Operatoren begleitet.",
+      de: "Gezielte Investments - von Operatoren begleitet.",
     },
     intro: {
       "en-US":
@@ -1103,7 +1121,7 @@ export const copy = {
         "We invest with a long-term mindset and a preference for teams who ship. When it’s a fit, we contribute operational support, especially around product, hiring, and go-to-market clarity.",
       es: "Invertimos con mentalidad de largo plazo y preferencia por equipos que ejecutan. Cuando hay encaje, aportamos apoyo operativo, especialmente en producto, contratación y claridad de go-to-market.",
       fr: "Nous investissons avec une vision long terme et une préférence pour les équipes qui livrent. Lorsque c’est pertinent, nous apportons un soutien opérationnel, notamment sur le produit, le recrutement et la clarté go-to-market.",
-      de: "Wir investieren langfristig und bevorzugen Teams, die liefern. Wenn es passt, unterstützen wir operativ – insbesondere bei Produkt, Hiring und Go-to-Market-Klarheit.",
+      de: "Wir investieren langfristig und bevorzugen Teams, die liefern. Wenn es passt, unterstützen wir operativ - insbesondere bei Produkt, Hiring und Go-to-Market-Klarheit.",
     },
     ctaPrimary: {
       "en-US": "Share your deck",
@@ -1273,7 +1291,7 @@ export const copy = {
         "Targeted sourcing and screening for a specific role with clear scorecards and weekly updates.",
       es: "Sourcing y evaluación focalizados para un rol específico, con criterios claros y actualizaciones semanales.",
       fr: "Sourcing et screening ciblés pour un poste donné, avec scorecards claires et mises à jour hebdomadaires.",
-      de: "Gezieltes Sourcing und Screening für eine konkrete Rolle – mit klaren Scorecards und wöchentlichen Updates.",
+      de: "Gezieltes Sourcing und Screening für eine konkrete Rolle - mit klaren Scorecards und wöchentlichen Updates.",
     },
     option2Title: {
       "en-US": "Pipeline build",
@@ -1435,7 +1453,7 @@ export const copy = {
         "Structured screening that focuses on real work, not trivia or endless rounds.",
       es: "Evaluación estructurada enfocada en trabajo real, no en trivia ni rondas interminables.",
       fr: "Un screening structuré centré sur le travail réel, pas sur la trivia ou des tours sans fin.",
-      de: "Strukturiertes Screening mit Fokus auf echte Arbeit – nicht Trivia oder endlose Runden.",
+      de: "Strukturiertes Screening mit Fokus auf echte Arbeit - nicht Trivia oder endlose Runden.",
     },
     card3Title: {
       "en-US": "Respectful follow-through",

@@ -1,27 +1,32 @@
 import Link from "next/link";
 import { Container } from "@/components/Container";
 import { SectionHeading } from "@/components/SectionHeading";
-import { getServerLocale } from "@/lib/locale";
 import { c, copy } from "@/content/copy";
+import { normalizeLocale, type Locale } from "@/lib/i18n";
+import { alternatesFor } from "@/lib/seo";
+import { withLocale } from "@/lib/urls";
 
 export async function generateMetadata({
-  searchParams,
+  params,
 }: {
-  searchParams?: Record<string, string | string[] | undefined>;
+  params: Promise<{ locale: string }>;
 }) {
-  const locale = await getServerLocale(searchParams);
+  const { locale: localeParam } = await params;
+  const locale: Locale = normalizeLocale(localeParam);
   return {
     title: c(copy.realEstate.metaTitle, locale),
     description: c(copy.realEstate.metaDescription, locale),
+    alternates: alternatesFor(locale, "/real-estate"),
   };
 }
 
 export default async function RealEstatePage({
-  searchParams,
+  params,
 }: {
-  searchParams?: Record<string, string | string[] | undefined>;
+  params: Promise<{ locale: string }>;
 }) {
-  const locale = await getServerLocale(searchParams);
+  const { locale: localeParam } = await params;
+  const locale: Locale = normalizeLocale(localeParam);
   return (
     <div>
       <section className="bg-surface">
@@ -34,10 +39,10 @@ export default async function RealEstatePage({
             {c(copy.realEstate.intro, locale)}
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <Link className="btn btn-primary" href="/contact">
+            <Link className="btn btn-primary" href={withLocale(locale, "/contact")}>
               {c(copy.realEstate.ctaPrimary, locale)}
             </Link>
-            <Link className="btn btn-secondary" href="/portfolio#real-estate">
+            <Link className="btn btn-secondary" href={withLocale(locale, "/portfolio#real-estate")}>
               {c(copy.realEstate.ctaSecondary, locale)}
             </Link>
           </div>

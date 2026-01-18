@@ -1,15 +1,9 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState, useTransition } from "react";
-import { useRouter } from "next/navigation";
-import { LOCALE_COOKIE, defaultLocale, localeLabels, locales, normalizeLocale } from "@/lib/i18n";
-
-function getCookie(name: string): string | undefined {
-  const value = `; ${document.cookie}`;
-  const parts = value.split(`; ${name}=`);
-  if (parts.length !== 2) return undefined;
-  return parts.pop()?.split(";").shift();
-}
+import { usePathname, useRouter } from "next/navigation";
+import { LOCALE_COOKIE, localeLabels, locales, type Locale } from "@/lib/i18n";
+import { swapLocaleInPathname } from "@/lib/urls";
 
 function setCookie(name: string, value: string) {
   document.cookie = `${name}=${encodeURIComponent(value)}; Path=/; Max-Age=31536000; SameSite=Lax`;
@@ -40,14 +34,18 @@ function CountryMapIcon({ locale }: { locale: string }) {
     "aria-hidden": true,
     viewBox: "0 0 24 24",
     className: "h-4 w-4",
-    fill: "currentColor",
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: "1.8",
+    strokeLinejoin: "round",
+    strokeLinecap: "round",
   } as const;
 
-  // Minimal, stylized silhouettes to avoid heavy assets.
+  // Minimal, stylized silhouettes (outlined) to read better at small sizes.
   if (locale === "en-US") {
     return (
       <svg {...common} style={{ color }}>
-        <path d="M3.5 9.5l2-2 3 .5 2-1 2 1.2 2.5-.2 2 1.5 2-.5 1.5 2-1 2 1 2-1.8 1.2-1.2 2.3-2.5.3-2.2-1.1-2.1.6-2-1.5-2.2.2-2-1.8.5-2.2-1.5-1.8 1.5-1.2Z" />
+        <path d="M4 10.5l2-2 3 .5 2-1 2 1.2 2.5-.2 2 1.5 2-.5 1.5 2-1 2 1 2-2 1.3-1.1 2.2-2.6.3-2.2-1.1-2.1.6-2-1.5-2.2.2-2-1.8.5-2.2-1.5-1.8 1.3-1.1Z" />
       </svg>
     );
   }
@@ -63,7 +61,7 @@ function CountryMapIcon({ locale }: { locale: string }) {
   if (locale === "fr") {
     return (
       <svg {...common} style={{ color }}>
-        <path d="M12 2.8 19 7v10l-7 4.2L5 17V7l7-4.2Z" />
+        <path d="M12 3 18.7 7v10L12 21l-6.7-4V7L12 3Z" />
       </svg>
     );
   }
@@ -71,7 +69,7 @@ function CountryMapIcon({ locale }: { locale: string }) {
   if (locale === "de") {
     return (
       <svg {...common} style={{ color }}>
-        <path d="M7 4h10l1 3-1 3 1 3-1 3 1 3H7l-1-3 1-3-1-3 1-3-1-3 1-3Z" />
+        <path d="M7.5 4h9l1 3-1 3 1 3-1 3 1 3h-9l-1-3 1-3-1-3 1-3-1-3 1-3Z" />
       </svg>
     );
   }
@@ -79,26 +77,24 @@ function CountryMapIcon({ locale }: { locale: string }) {
   // Spain (es)
   return (
     <svg {...common} style={{ color }}>
-      <path d="M6 9l2-2 3 .7 2-1 2 1 2.5-.3 1.5 2-1 2 1.2 1.8-1.7 1.2-.8 2-2.2.6-2-1-2 .7-2-1.7-2 .1.4-2.1-1.4-1.7 1.5-1.3Z" />
+      <path d="M6 10l2-2 3 .7 2-1 2 1 2.5-.3 1.5 2-1 2 1.2 1.8-1.7 1.2-.8 2-2.2.6-2-1-2 .7-2-1.7-2 .1.4-2.1-1.4-1.7 1.5-1.3Z" />
     </svg>
   );
 }
 
-export function LanguageSwitcher() {
+export function LanguageSwitcher({ locale: initialLocale }: { locale: Locale }) {
   const router = useRouter();
+  const pathname = usePathname();
   const [isPending, startTransition] = useTransition();
 
   const [open, setOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement | null>(null);
   const firstItemRef = useRef<HTMLButtonElement | null>(null);
-  const [locale, setLocale] = useState(() => {
-    if (typeof document === "undefined") return defaultLocale;
-    const urlLocale = new URLSearchParams(window.location.search).get("lang");
-    if (urlLocale && (locales as readonly string[]).includes(urlLocale)) {
-      return normalizeLocale(urlLocale);
-    }
-    return normalizeLocale(getCookie(LOCALE_COOKIE));
-  });
+  const [locale, setLocale] = useState<Locale>(() => initialLocale);
+
+  useEffect(() => {
+    setLocale(initialLocale);
+  }, [initialLocale]);
 
   const currentLabel = useMemo(() => localeLabels[locale], [locale]);
 
@@ -145,53 +141,59 @@ export function LanguageSwitcher() {
         title={`Language: ${currentLabel}`}
         disabled={isPending}
       >
-        <span className="text-muted">
+        <span
+          className="flex h-7 w-7 items-center justify-center rounded-full bg-surface"
+          aria-hidden="true"
+        >
           <CountryMapIcon locale={locale} />
         </span>
       </button>
 
       {open ? (
-        <div className="absolute right-0 top-full z-50 w-44 pt-2" role="menu" aria-label="Language">
+        <div className="absolute right-0 top-full z-50 w-20 pt-2" role="menu" aria-label="Language">
           <div className="rounded-2xl border border-border/70 bg-background shadow-lg">
             <div className="p-2">
-              {locales.map((value) => (
-                <button
-                  key={value}
-                  type="button"
-                  ref={value === locales[0] ? firstItemRef : undefined}
-                  onMouseDown={(event) => event.preventDefault()}
-                  onClick={() => {
-                    setCookie(LOCALE_COOKIE, value);
-                    setLocale(value);
-                    document.documentElement.lang = value;
-                    setOpen(false);
-                    startTransition(() => {
-                      const params = new URLSearchParams(window.location.search);
-                      params.set("lang", value);
-                      const nextUrl = `${window.location.pathname}?${params.toString()}`;
-                      router.replace(nextUrl, { scroll: false });
-                      router.refresh();
-                    });
-                  }}
-                  className="flex w-full items-center justify-between rounded-xl px-3 py-2 text-left text-sm text-muted hover:bg-surface hover:text-foreground transition-colors"
-                  role="menuitemradio"
-                  aria-checked={locale === value}
-                >
-                  <span className="flex items-center gap-2">
-                    <span className="text-muted">
+              <div className="grid grid-cols-1 gap-1">
+                {locales.map((value) => (
+                  <button
+                    key={value}
+                    type="button"
+                    ref={value === locales[0] ? firstItemRef : undefined}
+                    onMouseDown={(event) => event.preventDefault()}
+                    onClick={() => {
+                      setCookie(LOCALE_COOKIE, value);
+                      setLocale(value);
+                      setOpen(false);
+                      startTransition(() => {
+                        const nextPath = swapLocaleInPathname(pathname, value);
+                        const nextUrl = `${nextPath}${window.location.search}${window.location.hash}`;
+                        router.replace(nextUrl, { scroll: false });
+                      });
+                    }}
+                    className={[
+                      "flex w-full items-center justify-center rounded-xl p-2 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40",
+                      locale === value
+                        ? "bg-surface text-foreground"
+                        : "text-muted hover:bg-surface hover:text-foreground",
+                    ].join(" ")}
+                    role="menuitemradio"
+                    aria-checked={locale === value}
+                    aria-label={localeLabels[value]}
+                    title={localeLabels[value]}
+                  >
+                    <span className="relative flex h-8 w-8 items-center justify-center rounded-full bg-background">
                       <CountryMapIcon locale={value} />
+                      {locale === value ? (
+                        <span
+                          aria-hidden="true"
+                          className="absolute -right-1 -top-1 h-3 w-3 rounded-full border-2 border-background bg-primary"
+                        />
+                      ) : null}
+                      <span className="sr-only">{localeShort(value)}</span>
                     </span>
-                    <span className="font-semibold text-foreground">
-                      {localeShort(value)}
-                    </span>
-                  </span>
-                  {locale === value ? (
-                    <span className="text-primary">●</span>
-                  ) : (
-                    <span className="text-muted"> </span>
-                  )}
-                </button>
-              ))}
+                  </button>
+                ))}
+              </div>
             </div>
           </div>
         </div>

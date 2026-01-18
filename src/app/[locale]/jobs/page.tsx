@@ -1,27 +1,32 @@
 import Link from "next/link";
 import { Container } from "@/components/Container";
 import { SectionHeading } from "@/components/SectionHeading";
-import { getServerLocale } from "@/lib/locale";
 import { c, copy, jobRolesByLocale } from "@/content/copy";
+import { normalizeLocale, type Locale } from "@/lib/i18n";
+import { alternatesFor } from "@/lib/seo";
+import { withLocale } from "@/lib/urls";
 
 export async function generateMetadata({
-  searchParams,
+  params,
 }: {
-  searchParams?: Record<string, string | string[] | undefined>;
+  params: Promise<{ locale: string }>;
 }) {
-  const locale = await getServerLocale(searchParams);
+  const { locale: localeParam } = await params;
+  const locale: Locale = normalizeLocale(localeParam);
   return {
     title: c(copy.jobs.metaTitle, locale),
     description: c(copy.jobs.metaDescription, locale),
+    alternates: alternatesFor(locale, "/jobs"),
   };
 }
 
 export default async function JobsPage({
-  searchParams,
+  params,
 }: {
-  searchParams?: Record<string, string | string[] | undefined>;
+  params: Promise<{ locale: string }>;
 }) {
-  const locale = await getServerLocale(searchParams);
+  const { locale: localeParam } = await params;
+  const locale: Locale = normalizeLocale(localeParam);
   const roles = jobRolesByLocale[locale];
 
   return (
@@ -36,10 +41,10 @@ export default async function JobsPage({
             {c(copy.jobs.intro, locale)}
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <Link className="btn btn-primary" href="/contact">
+            <Link className="btn btn-primary" href={withLocale(locale, "/contact")}>
               {c(copy.jobs.ctaPrimary, locale)}
             </Link>
-            <Link className="btn btn-secondary" href="/for-talent">
+            <Link className="btn btn-secondary" href={withLocale(locale, "/for-talent")}>
               {c(copy.jobs.ctaSecondary, locale)}
             </Link>
           </div>
@@ -65,10 +70,10 @@ export default async function JobsPage({
                   <p className="text-sm text-muted">{role.location}</p>
                 </div>
                 <div className="mt-5 flex gap-4">
-                  <Link className="link" href="/contact">
+                  <Link className="link" href={withLocale(locale, "/contact")}>
                     {c(copy.jobs.applyLink, locale)}
                   </Link>
-                  <Link className="link" href="/for-companies">
+                  <Link className="link" href={withLocale(locale, "/for-companies")}>
                     {c(copy.jobs.hiringHelpLink, locale)}
                   </Link>
                 </div>
