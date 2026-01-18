@@ -197,7 +197,7 @@ export function LanguageSwitcher({ locale: initialLocale }: { locale: Locale }) 
       </button>
 
       {open ? (
-        <div className="absolute right-0 top-full z-50 w-28 pt-2" role="menu" aria-label="Language">
+        <div className="absolute right-0 top-full z-50 w-36 pt-2" role="menu" aria-label="Language">
           <div className="rounded-2xl border border-border/70 bg-background shadow-lg">
             <div className="p-2">
               <div className="grid grid-cols-1 gap-1">
@@ -230,7 +230,9 @@ export function LanguageSwitcher({ locale: initialLocale }: { locale: Locale }) 
                   >
                     <span className="flex items-center gap-2">
                       <FlagIcon locale={value} />
-                      <span className="text-xs font-semibold text-foreground">{localeCode(value)}</span>
+                      <span className="whitespace-nowrap text-[11px] font-semibold leading-none text-foreground">
+                        {localeCode(value)}
+                      </span>
                       {locale === value ? (
                         <span
                           aria-hidden="true"
