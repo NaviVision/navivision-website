@@ -84,6 +84,14 @@ export default async function RootLayout({
               url: "https://navivision.net",
               logo: "https://navivision.net/navivision-logo.png",
               sameAs: ["https://www.linkedin.com/company/navivision/"],
+              email: "hello@navivision.net",
+              contactPoint: [
+                {
+                  "@type": "ContactPoint",
+                  contactType: "customer support",
+                  email: "hello@navivision.net",
+                },
+              ],
             }),
           }}
         />

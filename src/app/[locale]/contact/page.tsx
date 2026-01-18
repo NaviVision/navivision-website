@@ -38,6 +38,16 @@ export default async function ContactPage({
           <p className="mt-5 max-w-3xl text-pretty text-base text-muted sm:text-lg">
             {c(copy.contact.intro, locale)}
           </p>
+          <div className="mt-8 inline-flex items-center gap-3 rounded-2xl border border-border/70 bg-background px-4 py-3 text-sm shadow-sm">
+            <p className="font-medium text-foreground">{c(copy.contact.directEmailTitle, locale)}</p>
+            <a
+              className="link"
+              href="mailto:hello@navivision.net"
+              aria-label={`${c(copy.contact.directEmailBody, locale)} Email hello@navivision.net`}
+            >
+              hello@navivision.net
+            </a>
+          </div>
         </Container>
       </section>
 

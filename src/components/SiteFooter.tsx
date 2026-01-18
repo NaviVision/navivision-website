@@ -12,6 +12,7 @@ export function SiteFooter({ locale }: { locale: Locale }) {
     { href: withLocale(locale, "/jobs"), label: c(copy.footer.jobs, locale) },
     { href: withLocale(locale, "/privacy"), label: c(copy.footer.privacy, locale) },
     { href: withLocale(locale, "/terms"), label: c(copy.footer.terms, locale) },
+    { href: "mailto:hello@navivision.net", label: c(copy.footer.email, locale) },
     { href: "https://www.linkedin.com/company/navivision/", label: c(copy.footer.linkedIn, locale) },
   ] as const;
 
