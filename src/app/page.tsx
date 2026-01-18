@@ -39,55 +39,59 @@ export default async function Home({
       <section className="border-t border-border/70 bg-surface">
         <Container className="py-14 sm:py-20">
           <SectionHeading
-            title="What we do"
-            subtitle="Four verticals, one operating mindset."
+            title={c(copy.home.whatWeDoTitle, locale)}
+            subtitle={c(copy.home.whatWeDoSubtitle, locale)}
           />
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             <div className="card">
-              <h3 className="text-base font-semibold">Talent &amp; Hiring</h3>
+              <h3 className="text-base font-semibold">
+                {c(copy.home.cardTalentTitle, locale)}
+              </h3>
               <p className="mt-2 text-sm text-muted">
-                Hiring support for companies and career opportunities for
-                technical and operational talent.
+                {c(copy.home.cardTalentBody, locale)}
               </p>
               <div className="mt-4">
                 <Link className="link" href="/talent-hiring">
-                  Explore
+                  {c(copy.home.cardExplore, locale)}
                 </Link>
               </div>
             </div>
             <div className="card">
-              <h3 className="text-base font-semibold">Custom SaaS</h3>
+              <h3 className="text-base font-semibold">
+                {c(copy.home.cardSoftwareTitle, locale)}
+              </h3>
               <p className="mt-2 text-sm text-muted">
-                We build and operate software with a focus on durability and
-                customer outcomes.
+                {c(copy.home.cardSoftwareBody, locale)}
               </p>
               <div className="mt-4">
                 <Link className="link" href="/custom-saas">
-                  Explore
+                  {c(copy.home.cardExplore, locale)}
                 </Link>
               </div>
             </div>
             <div className="card">
-              <h3 className="text-base font-semibold">Real Estate</h3>
+              <h3 className="text-base font-semibold">
+                {c(copy.home.cardRealEstateTitle, locale)}
+              </h3>
               <p className="mt-2 text-sm text-muted">
-                Long-term ownership with an operator’s attention to maintenance,
-                tenants, and neighborhoods.
+                {c(copy.home.cardRealEstateBody, locale)}
               </p>
               <div className="mt-4">
                 <Link className="link" href="/real-estate">
-                  Explore
+                  {c(copy.home.cardExplore, locale)}
                 </Link>
               </div>
             </div>
             <div className="card">
-              <h3 className="text-base font-semibold">Investments</h3>
+              <h3 className="text-base font-semibold">
+                {c(copy.home.cardInvestmentsTitle, locale)}
+              </h3>
               <p className="mt-2 text-sm text-muted">
-                Targeted bets in early-stage teams, with a preference for
-                founders who ship.
+                {c(copy.home.cardInvestmentsBody, locale)}
               </p>
               <div className="mt-4">
                 <Link className="link" href="/investments">
-                  Explore
+                  {c(copy.home.cardExplore, locale)}
                 </Link>
               </div>
             </div>
@@ -100,46 +104,44 @@ export default async function Home({
           <div className="grid gap-10 lg:grid-cols-12 lg:items-center">
             <div className="lg:col-span-7">
               <SectionHeading
-                title="A modern holding company"
-                subtitle="We’re operators first, built for compounding."
+                title={c(copy.home.holdingTitle, locale)}
+                subtitle={c(copy.home.holdingSubtitle, locale)}
               />
               <ul className="mt-8 grid gap-4">
                 <li className="card">
-                  <p className="text-sm font-semibold">Build</p>
+                  <p className="text-sm font-semibold">{c(copy.home.buildTitle, locale)}</p>
                   <p className="mt-2 text-sm text-muted">
-                    Launch products and internal tools, then iterate with
-                    measurable feedback loops.
+                    {c(copy.home.buildBody, locale)}
                   </p>
                 </li>
                 <li className="card">
-                  <p className="text-sm font-semibold">Operate</p>
+                  <p className="text-sm font-semibold">{c(copy.home.operateTitle, locale)}</p>
                   <p className="mt-2 text-sm text-muted">
-                    Stable processes, reliable systems, and attention to unit
-                    economics across businesses.
+                    {c(copy.home.operateBody, locale)}
                   </p>
                 </li>
                 <li className="card">
-                  <p className="text-sm font-semibold">Invest</p>
+                  <p className="text-sm font-semibold">{c(copy.home.investTitle, locale)}</p>
                   <p className="mt-2 text-sm text-muted">
-                    Capital and support for businesses with durable advantages
-                    and high-integrity teams.
+                    {c(copy.home.investBody, locale)}
                   </p>
                 </li>
               </ul>
             </div>
             <div className="lg:col-span-5">
               <div className="card bg-[linear-gradient(135deg,rgba(99,102,241,0.10),rgba(16,185,129,0.10))]">
-                <h3 className="text-base font-semibold">Work with NaviVision</h3>
+                <h3 className="text-base font-semibold">
+                  {c(copy.home.workWithTitle, locale)}
+                </h3>
                 <p className="mt-2 text-sm text-muted">
-                  Whether you’re hiring, looking for your next role, or exploring
-                  partnerships, start here.
+                  {c(copy.home.workWithBody, locale)}
                 </p>
                 <div className="mt-6 flex flex-col gap-3 sm:flex-row">
                   <Link className="btn btn-primary" href="/jobs">
-                    View open roles
+                    {c(copy.home.workWithCtaJobs, locale)}
                   </Link>
                   <Link className="btn btn-secondary" href="/contact">
-                    Contact us
+                    {c(copy.home.workWithCtaContact, locale)}
                   </Link>
                 </div>
               </div>

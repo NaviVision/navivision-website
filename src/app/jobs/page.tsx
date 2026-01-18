@@ -1,61 +1,46 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { Container } from "@/components/Container";
 import { SectionHeading } from "@/components/SectionHeading";
+import { getServerLocale } from "@/lib/locale";
+import { c, copy, jobRolesByLocale } from "@/content/copy";
 
-export const metadata: Metadata = {
-  title: "Jobs",
-  description:
-    "Browse open roles across NaviVision’s portfolio and hiring partners.",
-};
+export async function generateMetadata({
+  searchParams,
+}: {
+  searchParams?: Record<string, string | string[] | undefined>;
+}) {
+  const locale = await getServerLocale(searchParams);
+  return {
+    title: c(copy.jobs.metaTitle, locale),
+    description: c(copy.jobs.metaDescription, locale),
+  };
+}
 
-const roles = [
-  {
-    title: "Software Engineer (Full-Stack)",
-    location: "Remote / Hybrid",
-    type: "Full-time",
-    focus: "SaaS",
-  },
-  {
-    title: "Operations Manager",
-    location: "On-site / Hybrid",
-    type: "Full-time",
-    focus: "Portfolio Ops",
-  },
-  {
-    title: "Real Estate Analyst",
-    location: "Hybrid",
-    type: "Full-time",
-    focus: "Real Estate",
-  },
-  {
-    title: "Recruiter / Talent Partner",
-    location: "Remote",
-    type: "Contract",
-    focus: "Talent",
-  },
-] as const;
+export default async function JobsPage({
+  searchParams,
+}: {
+  searchParams?: Record<string, string | string[] | undefined>;
+}) {
+  const locale = await getServerLocale(searchParams);
+  const roles = jobRolesByLocale[locale];
 
-export default function JobsPage() {
   return (
     <div>
       <section className="bg-surface">
         <Container className="py-14 sm:py-20">
-          <p className="text-sm font-medium text-muted">Jobs</p>
+          <p className="text-sm font-medium text-muted">{c(copy.jobs.kicker, locale)}</p>
           <h1 className="mt-3 text-balance text-4xl font-semibold tracking-tight sm:text-5xl">
-            Open roles across our portfolio.
+            {c(copy.jobs.title, locale)}
           </h1>
           <p className="mt-5 max-w-3xl text-pretty text-base text-muted sm:text-lg">
-            This page is a lightweight starting point. If you don’t see a perfect
-            match, reach out. Strong candidates are often considered for upcoming
-            roles.
+            {c(copy.jobs.intro, locale)}
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <Link className="btn btn-primary" href="/contact">
-              Submit interest
+              {c(copy.jobs.ctaPrimary, locale)}
             </Link>
             <Link className="btn btn-secondary" href="/for-talent">
-              Candidate process
+              {c(copy.jobs.ctaSecondary, locale)}
             </Link>
           </div>
         </Container>
@@ -64,8 +49,8 @@ export default function JobsPage() {
       <section className="border-t border-border/70">
         <Container className="py-14 sm:py-20">
           <SectionHeading
-            title="Current openings"
-            subtitle="Example roles to illustrate the kinds of teams we support."
+            title={c(copy.jobs.sectionTitle, locale)}
+            subtitle={c(copy.jobs.sectionSubtitle, locale)}
           />
           <div className="mt-10 grid gap-4 lg:grid-cols-2">
             {roles.map((role) => (
@@ -81,10 +66,10 @@ export default function JobsPage() {
                 </div>
                 <div className="mt-5 flex gap-4">
                   <Link className="link" href="/contact">
-                    Apply / inquire
+                    {c(copy.jobs.applyLink, locale)}
                   </Link>
                   <Link className="link" href="/for-companies">
-                    Hiring help
+                    {c(copy.jobs.hiringHelpLink, locale)}
                   </Link>
                 </div>
               </div>

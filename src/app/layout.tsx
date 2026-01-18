@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
-import { ClientLocale } from "@/components/ClientLocale";
 
 export const metadata: Metadata = {
   title: {
@@ -70,7 +69,28 @@ export default function RootLayout({
       <head>
         <script
           dangerouslySetInnerHTML={{
-            __html: `(function(){try{var k="nv_theme";var m=localStorage.getItem(k);var r=document.documentElement;var d=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(m==="light"||m==="dark"){r.setAttribute("data-theme",m);r.style.colorScheme=m;}else{r.removeAttribute("data-theme");r.style.colorScheme=d?"dark":"light";}}catch(e){}})();`,
+            __html: `(function(){try{
+              var root=document.documentElement;
+              var themeKey="nv_theme";
+              var theme=localStorage.getItem(themeKey);
+              var prefersDark=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;
+              var resolvedTheme=(theme==="light"||theme==="dark")?theme:(prefersDark?"dark":"light");
+              root.setAttribute("data-theme",resolvedTheme);
+              root.style.colorScheme=resolvedTheme;
+
+              var localeKey="nv_locale";
+              var allowed={"en-US":1,"en-GB":1,"es":1,"fr":1,"de":1};
+              var params=new URLSearchParams(window.location.search);
+              var lang=params.get("lang");
+              if(lang && allowed[lang]){
+                document.cookie=localeKey+"="+encodeURIComponent(lang)+"; Path=/; Max-Age=31536000; SameSite=Lax";
+                root.lang=lang;
+              } else {
+                var match=document.cookie.match(new RegExp("(?:^|; )"+localeKey.replace(/[-.$?*|{}()\\[\\]\\\\\\/\\+^]/g,"\\\\$&")+"=([^;]*)"));
+                var cookieLang=match?decodeURIComponent(match[1]):"";
+                if(cookieLang && allowed[cookieLang]) root.lang=cookieLang;
+              }
+            }catch(e){}})();`,
           }}
         />
         <script
@@ -87,10 +107,17 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-full antialiased">
-        <ClientLocale />
         <div className="flex min-h-dvh flex-col">
+          <a
+            href="#main"
+            className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-full focus:bg-background focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-foreground focus:shadow-lg"
+          >
+            Skip to content
+          </a>
           <SiteHeader />
-          <main className="flex-1">{children}</main>
+          <main id="main" className="flex-1">
+            {children}
+          </main>
           <SiteFooter />
         </div>
       </body>

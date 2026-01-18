@@ -1,34 +1,46 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { Container } from "@/components/Container";
 import { SectionHeading } from "@/components/SectionHeading";
+import { getServerLocale } from "@/lib/locale";
+import { c, copy } from "@/content/copy";
 
-export const metadata: Metadata = {
-  title: "Talent & Hiring",
-  description:
-    "NaviVision supports hiring for companies and helps talent find roles across our portfolio and partners.",
-};
+export async function generateMetadata({
+  searchParams,
+}: {
+  searchParams?: Record<string, string | string[] | undefined>;
+}) {
+  const locale = await getServerLocale(searchParams);
+  return {
+    title: c(copy.talentHiring.metaTitle, locale),
+    description: c(copy.talentHiring.metaDescription, locale),
+  };
+}
 
-export default function TalentHiringPage() {
+export default async function TalentHiringPage({
+  searchParams,
+}: {
+  searchParams?: Record<string, string | string[] | undefined>;
+}) {
+  const locale = await getServerLocale(searchParams);
   return (
     <div>
       <section className="bg-surface">
         <Container className="py-14 sm:py-20">
-          <p className="text-sm font-medium text-muted">Talent &amp; Hiring</p>
+          <p className="text-sm font-medium text-muted">
+            {c(copy.talentHiring.kicker, locale)}
+          </p>
           <h1 className="mt-3 text-balance text-4xl font-semibold tracking-tight sm:text-5xl">
-            Hiring support for teams, and opportunities for talent.
+            {c(copy.talentHiring.title, locale)}
           </h1>
           <p className="mt-5 max-w-3xl text-pretty text-base text-muted sm:text-lg">
-            We run a high-signal process designed to move quickly without
-            sacrificing quality. Whether you’re building a team or looking for
-            your next role, we’ll meet you with clarity and follow-through.
+            {c(copy.talentHiring.intro, locale)}
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <Link className="btn btn-primary" href="/contact">
-              Talk to us
+              {c(copy.talentHiring.ctaPrimary, locale)}
             </Link>
             <Link className="btn btn-secondary" href="/jobs">
-              View open roles
+              {c(copy.talentHiring.ctaSecondary, locale)}
             </Link>
           </div>
         </Container>
@@ -37,27 +49,32 @@ export default function TalentHiringPage() {
       <section className="border-t border-border/70">
         <Container className="py-14 sm:py-20">
           <SectionHeading
-            title="Built for speed and signal"
-            subtitle="Structured screening and a human candidate experience."
+            title={c(copy.talentHiring.sectionTitle, locale)}
+            subtitle={c(copy.talentHiring.sectionSubtitle, locale)}
           />
           <div className="mt-10 grid gap-4 lg:grid-cols-3">
             <div className="card">
-              <h3 className="text-base font-semibold">Clear scorecards</h3>
+              <h3 className="text-base font-semibold">
+                {c(copy.talentHiring.pillar1Title, locale)}
+              </h3>
               <p className="mt-2 text-sm text-muted">
-                We align on what “great” looks like and evaluate consistently.
+                {c(copy.talentHiring.pillar1Body, locale)}
               </p>
             </div>
             <div className="card">
-              <h3 className="text-base font-semibold">Fast iteration</h3>
+              <h3 className="text-base font-semibold">
+                {c(copy.talentHiring.pillar2Title, locale)}
+              </h3>
               <p className="mt-2 text-sm text-muted">
-                Weekly reporting, calibration, and message testing to improve
-                response rates.
+                {c(copy.talentHiring.pillar2Body, locale)}
               </p>
             </div>
             <div className="card">
-              <h3 className="text-base font-semibold">Respect for time</h3>
+              <h3 className="text-base font-semibold">
+                {c(copy.talentHiring.pillar3Title, locale)}
+              </h3>
               <p className="mt-2 text-sm text-muted">
-                Fewer steps, better context, and timely communication.
+                {c(copy.talentHiring.pillar3Body, locale)}
               </p>
             </div>
           </div>
@@ -66,38 +83,47 @@ export default function TalentHiringPage() {
 
       <section className="border-t border-border/70 bg-surface">
         <Container className="py-14 sm:py-20">
-          <SectionHeading title="Explore" subtitle="Choose your path." />
+          <SectionHeading
+            title={c(copy.talentHiring.exploreTitle, locale)}
+            subtitle={c(copy.talentHiring.exploreSubtitle, locale)}
+          />
           <div className="mt-10 grid gap-4 lg:grid-cols-3">
             <div className="card">
-              <h3 className="text-base font-semibold">For Companies</h3>
+              <h3 className="text-base font-semibold">
+                {c(copy.talentHiring.cardCompaniesTitle, locale)}
+              </h3>
               <p className="mt-2 text-sm text-muted">
-                Role-based search, pipeline building, and hiring support.
+                {c(copy.talentHiring.cardCompaniesBody, locale)}
               </p>
               <div className="mt-4">
                 <Link className="link" href="/for-companies">
-                  Hiring support
+                  {c(copy.talentHiring.cardCompaniesLink, locale)}
                 </Link>
               </div>
             </div>
             <div className="card">
-              <h3 className="text-base font-semibold">For Talent</h3>
+              <h3 className="text-base font-semibold">
+                {c(copy.talentHiring.cardTalentTitle, locale)}
+              </h3>
               <p className="mt-2 text-sm text-muted">
-                Browse roles and connect with teams we support.
+                {c(copy.talentHiring.cardTalentBody, locale)}
               </p>
               <div className="mt-4">
                 <Link className="link" href="/for-talent">
-                  Candidate process
+                  {c(copy.talentHiring.cardTalentLink, locale)}
                 </Link>
               </div>
             </div>
             <div className="card">
-              <h3 className="text-base font-semibold">Jobs</h3>
+              <h3 className="text-base font-semibold">
+                {c(copy.talentHiring.cardJobsTitle, locale)}
+              </h3>
               <p className="mt-2 text-sm text-muted">
-                Open roles across our portfolio and partners.
+                {c(copy.talentHiring.cardJobsBody, locale)}
               </p>
               <div className="mt-4">
                 <Link className="link" href="/jobs">
-                  View open roles
+                  {c(copy.talentHiring.cardJobsLink, locale)}
                 </Link>
               </div>
             </div>

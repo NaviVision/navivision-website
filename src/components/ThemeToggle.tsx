@@ -41,6 +41,7 @@ export function ThemeToggle() {
       className="hidden sm:inline-flex items-center rounded-full border border-border/80 bg-background p-2 text-foreground shadow-sm transition-colors hover:bg-surface focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
       aria-label={`Theme: ${label}. Toggle`}
       title={`Theme: ${label}`}
+      aria-pressed={mode === "dark"}
     >
       {mode === "dark" ? (
         <svg

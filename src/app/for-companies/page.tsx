@@ -1,34 +1,46 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { Container } from "@/components/Container";
 import { SectionHeading } from "@/components/SectionHeading";
+import { getServerLocale } from "@/lib/locale";
+import { c, copy } from "@/content/copy";
 
-export const metadata: Metadata = {
-  title: "For Companies",
-  description:
-    "Hire with confidence. NaviVision supports sourcing, screening, and hiring for teams that need execution-ready talent.",
-};
+export async function generateMetadata({
+  searchParams,
+}: {
+  searchParams?: Record<string, string | string[] | undefined>;
+}) {
+  const locale = await getServerLocale(searchParams);
+  return {
+    title: c(copy.forCompanies.metaTitle, locale),
+    description: c(copy.forCompanies.metaDescription, locale),
+  };
+}
 
-export default function ForCompaniesPage() {
+export default async function ForCompaniesPage({
+  searchParams,
+}: {
+  searchParams?: Record<string, string | string[] | undefined>;
+}) {
+  const locale = await getServerLocale(searchParams);
   return (
     <div>
       <section className="bg-surface">
         <Container className="py-14 sm:py-20">
-          <p className="text-sm font-medium text-muted">For Companies</p>
+          <p className="text-sm font-medium text-muted">
+            {c(copy.forCompanies.kicker, locale)}
+          </p>
           <h1 className="mt-3 text-balance text-4xl font-semibold tracking-tight sm:text-5xl">
-            Hiring support that’s built for speed and signal.
+            {c(copy.forCompanies.title, locale)}
           </h1>
           <p className="mt-5 max-w-3xl text-pretty text-base text-muted sm:text-lg">
-            NaviVision helps organizations find and hire people who can execute.
-            We focus on clarity, structured screening, and a high-touch process
-            that respects both your time and the candidate experience.
+            {c(copy.forCompanies.intro, locale)}
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <Link className="btn btn-primary" href="/contact">
-              Request hiring support
+              {c(copy.forCompanies.ctaPrimary, locale)}
             </Link>
             <Link className="btn btn-secondary" href="/portfolio">
-              Learn about our operators
+              {c(copy.forCompanies.ctaSecondary, locale)}
             </Link>
           </div>
         </Container>
@@ -37,29 +49,32 @@ export default function ForCompaniesPage() {
       <section className="border-t border-border/70">
         <Container className="py-14 sm:py-20">
           <SectionHeading
-            title="Engagement options"
-            subtitle="Flexible models: from urgent searches to ongoing pipelines."
+            title={c(copy.forCompanies.sectionTitle, locale)}
+            subtitle={c(copy.forCompanies.sectionSubtitle, locale)}
           />
           <div className="mt-10 grid gap-4 lg:grid-cols-3">
             <div className="card">
-              <h3 className="text-base font-semibold">Role-based search</h3>
+              <h3 className="text-base font-semibold">
+                {c(copy.forCompanies.option1Title, locale)}
+              </h3>
               <p className="mt-2 text-sm text-muted">
-                Targeted sourcing and screening for a specific role with clear
-                scorecards and weekly updates.
+                {c(copy.forCompanies.option1Body, locale)}
               </p>
             </div>
             <div className="card">
-              <h3 className="text-base font-semibold">Pipeline build</h3>
+              <h3 className="text-base font-semibold">
+                {c(copy.forCompanies.option2Title, locale)}
+              </h3>
               <p className="mt-2 text-sm text-muted">
-                Build a bench of pre-vetted candidates for recurring roles and
-                forecasted hiring plans.
+                {c(copy.forCompanies.option2Body, locale)}
               </p>
             </div>
             <div className="card">
-              <h3 className="text-base font-semibold">Team augmentation</h3>
+              <h3 className="text-base font-semibold">
+                {c(copy.forCompanies.option3Title, locale)}
+              </h3>
               <p className="mt-2 text-sm text-muted">
-                Support short-term capacity needs with candidates who can start
-                quickly and ramp fast.
+                {c(copy.forCompanies.option3Body, locale)}
               </p>
             </div>
           </div>
@@ -70,18 +85,17 @@ export default function ForCompaniesPage() {
         <Container className="py-14 sm:py-20">
           <div className="card">
             <h2 className="text-balance text-2xl font-semibold tracking-tight sm:text-3xl">
-              Ready to hire?
+              {c(copy.forCompanies.closingTitle, locale)}
             </h2>
             <p className="mt-3 max-w-2xl text-pretty text-sm text-muted sm:text-base">
-              Tell us what you’re building, what “great” looks like for the role,
-              and your timeline. We’ll respond with the next best step.
+              {c(copy.forCompanies.closingBody, locale)}
             </p>
             <div className="mt-6 flex flex-col gap-3 sm:flex-row">
               <Link className="btn btn-primary" href="/contact">
-                Contact us
+                {c(copy.forCompanies.closingCtaPrimary, locale)}
               </Link>
               <Link className="btn btn-secondary" href="/jobs">
-                View roles we’re hiring for
+                {c(copy.forCompanies.closingCtaSecondary, locale)}
               </Link>
             </div>
           </div>

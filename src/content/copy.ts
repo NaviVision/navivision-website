@@ -286,9 +286,101 @@ export const copy = {
       fr: "Découvrez NaviVision et notre approche opérationnelle autour des talents, des logiciels, de l’immobilier et des investissements.",
       de: "Erfahren Sie mehr über NaviVision und unseren operativen Fokus auf Talent, Software, Immobilien und Investments.",
     },
+    verticalTalentTitle: {
+      "en-US": "Talent & Hiring",
+      "en-GB": "Talent & Hiring",
+      es: "Talento y contratación",
+      fr: "Talent et recrutement",
+      de: "Talent & Recruiting",
+    },
+    verticalTalentBody: {
+      "en-US":
+        "We help companies build capable teams and connect candidates with roles where they can do their best work.",
+      "en-GB":
+        "We help companies build capable teams and connect candidates with roles where they can do their best work.",
+      es: "Ayudamos a las empresas a formar equipos capaces y conectamos candidatos con roles donde pueden dar lo mejor.",
+      fr: "Nous aidons les entreprises à constituer des équipes solides et mettons en relation des candidats avec des postes où ils peuvent exceller.",
+      de: "Wir helfen Unternehmen beim Teamaufbau und verbinden Kandidaten mit Rollen, in denen sie ihr Bestes leisten können.",
+    },
+    verticalSoftwareTitle: {
+      "en-US": "Custom SaaS",
+      "en-GB": "Custom SaaS",
+      es: "SaaS a medida",
+      fr: "SaaS sur mesure",
+      de: "Individuelles SaaS",
+    },
+    verticalSoftwareBody: {
+      "en-US":
+        "We build products and operate software businesses, prioritizing customer value, reliability, and steady improvements.",
+      "en-GB":
+        "We build products and operate software businesses, prioritising customer value, reliability, and steady improvements.",
+      es: "Construimos productos y operamos negocios de software, priorizando valor al cliente, confiabilidad y mejoras constantes.",
+      fr: "Nous construisons des produits et exploitons des activités logicielles, en privilégiant la valeur client, la fiabilité et l’amélioration continue.",
+      de: "Wir bauen Produkte und betreiben Software-Unternehmen – mit Fokus auf Kundennutzen, Zuverlässigkeit und kontinuierliche Verbesserung.",
+    },
+    verticalRealEstateTitle: {
+      "en-US": "Real Estate",
+      "en-GB": "Real Estate",
+      es: "Bienes raíces",
+      fr: "Immobilier",
+      de: "Immobilien",
+    },
+    verticalRealEstateBody: {
+      "en-US":
+        "We own and operate real estate with a focus on healthy tenant relationships and well-maintained assets.",
+      "en-GB":
+        "We own and operate real estate with a focus on healthy tenant relationships and well-maintained assets.",
+      es: "Poseemos y operamos bienes raíces con foco en relaciones sanas con inquilinos y activos bien mantenidos.",
+      fr: "Nous détenons et exploitons des actifs immobiliers en privilégiant des relations locataires saines et des biens bien entretenus.",
+      de: "Wir besitzen und betreiben Immobilien mit Fokus auf gute Mieterbeziehungen und gepflegte Objekte.",
+    },
+    verticalInvestTitle: {
+      "en-US": "Investments",
+      "en-GB": "Investments",
+      es: "Inversiones",
+      fr: "Investissements",
+      de: "Investments",
+    },
+    verticalInvestBody: {
+      "en-US":
+        "We invest selectively in founders building durable businesses and provide support where we have earned experience.",
+      "en-GB":
+        "We invest selectively in founders building durable businesses and provide support where we have earned experience.",
+      es: "Invertimos de forma selectiva en fundadores que construyen negocios duraderos y aportamos apoyo donde tenemos experiencia.",
+      fr: "Nous investissons de manière sélective dans des fondateurs qui construisent des entreprises durables et apportons notre soutien là où nous avons de l’expérience.",
+      de: "Wir investieren selektiv in Gründer, die nachhaltige Unternehmen aufbauen, und unterstützen dort, wo wir Erfahrung haben.",
+    },
+    linkForCompanies: {
+      "en-US": "For companies",
+      "en-GB": "For companies",
+      es: "Para empresas",
+      fr: "Pour les entreprises",
+      de: "Für Unternehmen",
+    },
+    linkForTalent: {
+      "en-US": "For talent",
+      "en-GB": "For talent",
+      es: "Para talento",
+      fr: "Pour les talents",
+      de: "Für Talente",
+    },
+    linkExplore: {
+      "en-US": "Explore",
+      "en-GB": "Explore",
+      es: "Explorar",
+      fr: "Découvrir",
+      de: "Entdecken",
+    },
   } satisfies Record<string, CopyByLocale<string>>,
 
   contact: {
+    kicker: {
+      "en-US": "Contact",
+      "en-GB": "Contact",
+      es: "Contacto",
+      fr: "Contact",
+      de: "Kontakt",
+    },
     title: {
       "en-US": "Let’s talk.",
       "en-GB": "Let’s talk.",
@@ -319,6 +411,48 @@ export const copy = {
       fr: "Quelques détails nous aident à orienter votre message rapidement.",
       de: "Ein paar Details helfen uns, Ihre Nachricht schnell einzuordnen.",
     },
+    bulletTopicLabel: {
+      "en-US": "Topic:",
+      "en-GB": "Topic:",
+      es: "Tema:",
+      fr: "Sujet :",
+      de: "Thema:",
+    },
+    bulletTopicValue: {
+      "en-US": "hiring, talent, software, real estate, or investing",
+      "en-GB": "hiring, talent, software, real estate, or investing",
+      es: "contratación, talento, software, bienes raíces o inversión",
+      fr: "recrutement, talents, logiciel, immobilier ou investissement",
+      de: "Hiring, Talent, Software, Immobilien oder Investments",
+    },
+    bulletTimelineLabel: {
+      "en-US": "Timeline:",
+      "en-GB": "Timeline:",
+      es: "Plazo:",
+      fr: "Calendrier :",
+      de: "Zeitrahmen:",
+    },
+    bulletTimelineValue: {
+      "en-US": "when you need help or want to connect",
+      "en-GB": "when you need help or want to connect",
+      es: "cuándo necesita ayuda o quiere conectar",
+      fr: "quand vous avez besoin d’aide ou souhaitez échanger",
+      de: "wann Sie Unterstützung brauchen oder sprechen möchten",
+    },
+    bulletContextLabel: {
+      "en-US": "Context:",
+      "en-GB": "Context:",
+      es: "Contexto:",
+      fr: "Contexte :",
+      de: "Kontext:",
+    },
+    bulletContextValue: {
+      "en-US": "links, role descriptions, or a short overview",
+      "en-GB": "links, role descriptions, or a short overview",
+      es: "enlaces, descripciones de rol o un resumen breve",
+      fr: "liens, descriptifs de poste ou bref aperçu",
+      de: "Links, Rollenbeschreibung oder ein kurzer Überblick",
+    },
     hintTitle: {
       "en-US": "Prefer a quick start?",
       "en-GB": "Prefer a quick start?",
@@ -342,12 +476,26 @@ export const copy = {
       fr: "Nom",
       de: "Name",
     },
+    placeholderName: {
+      "en-US": "Your name",
+      "en-GB": "Your name",
+      es: "Su nombre",
+      fr: "Votre nom",
+      de: "Ihr Name",
+    },
     formEmail: {
       "en-US": "Email",
       "en-GB": "Email",
       es: "Correo electrónico",
       fr: "E-mail",
       de: "E-Mail",
+    },
+    placeholderEmail: {
+      "en-US": "you@company.com",
+      "en-GB": "you@company.com",
+      es: "usted@empresa.com",
+      fr: "vous@entreprise.com",
+      de: "sie@firma.com",
     },
     formTopic: {
       "en-US": "Topic",
@@ -356,12 +504,61 @@ export const copy = {
       fr: "Sujet",
       de: "Thema",
     },
+    topicHiring: {
+      "en-US": "Hiring / Companies",
+      "en-GB": "Hiring / Companies",
+      es: "Contratación / Empresas",
+      fr: "Recrutement / Entreprises",
+      de: "Hiring / Unternehmen",
+    },
+    topicTalent: {
+      "en-US": "Talent / Candidates",
+      "en-GB": "Talent / Candidates",
+      es: "Talento / Candidatos",
+      fr: "Talent / Candidats",
+      de: "Talent / Kandidaten",
+    },
+    topicSoftware: {
+      "en-US": "Software / SaaS",
+      "en-GB": "Software / SaaS",
+      es: "Software / SaaS",
+      fr: "Logiciel / SaaS",
+      de: "Software / SaaS",
+    },
+    topicRealEstate: {
+      "en-US": "Real Estate",
+      "en-GB": "Real Estate",
+      es: "Bienes raíces",
+      fr: "Immobilier",
+      de: "Immobilien",
+    },
+    topicInvesting: {
+      "en-US": "Investing",
+      "en-GB": "Investing",
+      es: "Inversión",
+      fr: "Investissement",
+      de: "Investments",
+    },
+    topicOther: {
+      "en-US": "Other",
+      "en-GB": "Other",
+      es: "Otro",
+      fr: "Autre",
+      de: "Sonstiges",
+    },
     formMessage: {
       "en-US": "Message",
       "en-GB": "Message",
       es: "Mensaje",
       fr: "Message",
       de: "Nachricht",
+    },
+    placeholderMessage: {
+      "en-US": "Tell us what you're working on and how we can help.",
+      "en-GB": "Tell us what you're working on and how we can help.",
+      es: "Cuéntenos en qué está trabajando y cómo podemos ayudar.",
+      fr: "Dites-nous sur quoi vous travaillez et comment nous pouvons aider.",
+      de: "Beschreiben Sie, woran Sie arbeiten und wie wir helfen können.",
     },
     formSend: {
       "en-US": "Send message",
@@ -950,6 +1147,48 @@ export const copy = {
       fr: "Entreprise",
       de: "Business",
     },
+    teamLi1: {
+      "en-US": "Founder-market fit and high ownership",
+      "en-GB": "Founder-market fit and high ownership",
+      es: "Encaje fundador-mercado y alta responsabilidad",
+      fr: "Founder-market fit et forte ownership",
+      de: "Founder-Market-Fit und hohe Ownership",
+    },
+    teamLi2: {
+      "en-US": "Speed of iteration and learning loops",
+      "en-GB": "Speed of iteration and learning loops",
+      es: "Velocidad de iteración y ciclos de aprendizaje",
+      fr: "Vitesse d’itération et boucles d’apprentissage",
+      de: "Iterationsgeschwindigkeit und Lernschleifen",
+    },
+    teamLi3: {
+      "en-US": "Clear communication and integrity",
+      "en-GB": "Clear communication and integrity",
+      es: "Comunicación clara e integridad",
+      fr: "Communication claire et intégrité",
+      de: "Klare Kommunikation und Integrität",
+    },
+    bizLi1: {
+      "en-US": "Strong customer pain and willingness to pay",
+      "en-GB": "Strong customer pain and willingness to pay",
+      es: "Dolor fuerte del cliente y disposición a pagar",
+      fr: "Douleur client forte et volonté de payer",
+      de: "Starker Kundenschmerz und Zahlungsbereitschaft",
+    },
+    bizLi2: {
+      "en-US": "Durable unit economics and thoughtful growth",
+      "en-GB": "Durable unit economics and thoughtful growth",
+      es: "Economía unitaria sostenible y crecimiento responsable",
+      fr: "Unit economics solides et croissance réfléchie",
+      de: "Robuste Unit Economics und durchdachtes Wachstum",
+    },
+    bizLi3: {
+      "en-US": "Room to build defensibility over time",
+      "en-GB": "Room to build defensibility over time",
+      es: "Espacio para construir defensibilidad con el tiempo",
+      fr: "Possibilité de construire une défendabilité dans le temps",
+      de: "Spielraum, um über Zeit Verteidigbarkeit aufzubauen",
+    },
   } satisfies Record<string, CopyByLocale<string>>,
 
   forCompanies: {
@@ -1500,6 +1739,48 @@ export const copy = {
       fr: "Comment nous aidons",
       de: "Wie wir helfen",
     },
+    investLookLi1: {
+      "en-US": "Clear customer pain and strong founder-market fit",
+      "en-GB": "Clear customer pain and strong founder-market fit",
+      es: "Dolor claro del cliente y fuerte encaje fundador-mercado",
+      fr: "Douleur client claire et fort founder-market fit",
+      de: "Klarer Kundenschmerz und starker Founder-Market-Fit",
+    },
+    investLookLi2: {
+      "en-US": "Ability to iterate quickly and learn from the market",
+      "en-GB": "Ability to iterate quickly and learn from the market",
+      es: "Capacidad de iterar rápido y aprender del mercado",
+      fr: "Capacité à itérer vite et apprendre du marché",
+      de: "Fähigkeit, schnell zu iterieren und vom Markt zu lernen",
+    },
+    investLookLi3: {
+      "en-US": "Durable unit economics and responsible growth",
+      "en-GB": "Durable unit economics and responsible growth",
+      es: "Economía unitaria sostenible y crecimiento responsable",
+      fr: "Unit economics solides et croissance responsable",
+      de: "Robuste Unit Economics und verantwortungsvolles Wachstum",
+    },
+    investHelpLi1: {
+      "en-US": "Go-to-market feedback loops and positioning",
+      "en-GB": "Go-to-market feedback loops and positioning",
+      es: "Ciclos de feedback de go-to-market y posicionamiento",
+      fr: "Boucles de feedback go-to-market et positionnement",
+      de: "Go-to-Market-Feedback-Loops und Positionierung",
+    },
+    investHelpLi2: {
+      "en-US": "Hiring support for early key roles",
+      "en-GB": "Hiring support for early key roles",
+      es: "Apoyo de contratación para roles clave iniciales",
+      fr: "Soutien au recrutement pour les rôles clés early",
+      de: "Hiring-Support für frühe Schlüsselrollen",
+    },
+    investHelpLi3: {
+      "en-US": "Operator perspective on execution and systems",
+      "en-GB": "Operator perspective on execution and systems",
+      es: "Perspectiva operativa sobre ejecución y sistemas",
+      fr: "Point de vue d’opérateur sur l’exécution et les systèmes",
+      de: "Operator-Perspektive auf Execution und Systeme",
+    },
   } satisfies Record<string, CopyByLocale<string>>,
 
   privacy: {
@@ -1596,6 +1877,13 @@ export const copy = {
       fr: "Les questions concernant cette politique peuvent être envoyées via la page de contact.",
       de: "Fragen zu dieser Richtlinie können über die Kontaktseite gestellt werden.",
     },
+    contactLink: {
+      "en-US": "contact page",
+      "en-GB": "contact page",
+      es: "página de contacto",
+      fr: "page de contact",
+      de: "Kontaktseite",
+    },
     disclaimer: {
       "en-US": "This policy is a starting template and should be reviewed by counsel before production use.",
       "en-GB": "This policy is a starting template and should be reviewed by counsel before production use.",
@@ -1687,6 +1975,13 @@ export const copy = {
       fr: "Pour toute question, utilisez la page de contact.",
       de: "Bei Fragen nutzen Sie bitte die Kontaktseite.",
     },
+    contactLink: {
+      "en-US": "contact page",
+      "en-GB": "contact page",
+      es: "página de contacto",
+      fr: "page de contact",
+      de: "Kontaktseite",
+    },
   } satisfies Record<string, CopyByLocale<string>>,
 
   notFound: {
@@ -1719,6 +2014,184 @@ export const copy = {
       de: "Kontakt",
     },
   } satisfies Record<string, CopyByLocale<string>>,
+
+  footer: {
+    tagline: {
+      "en-US": "Talent & Hiring • Custom SaaS • Real Estate • Investments",
+      "en-GB": "Talent & Hiring • Custom SaaS • Real Estate • Investments",
+      es: "Talento y contratación • SaaS a medida • Bienes raíces • Inversiones",
+      fr: "Talent et recrutement • SaaS sur mesure • Immobilier • Investissements",
+      de: "Talent & Recruiting • Individuelles SaaS • Immobilien • Investments",
+    },
+    jobs: {
+      "en-US": "Jobs",
+      "en-GB": "Jobs",
+      es: "Empleos",
+      fr: "Offres",
+      de: "Jobs",
+    },
+    privacy: {
+      "en-US": "Privacy",
+      "en-GB": "Privacy",
+      es: "Privacidad",
+      fr: "Confidentialité",
+      de: "Datenschutz",
+    },
+    terms: {
+      "en-US": "Terms",
+      "en-GB": "Terms",
+      es: "Términos",
+      fr: "Conditions",
+      de: "AGB",
+    },
+    linkedIn: {
+      "en-US": "LinkedIn",
+      "en-GB": "LinkedIn",
+      es: "LinkedIn",
+      fr: "LinkedIn",
+      de: "LinkedIn",
+    },
+    rights: {
+      "en-US": "All rights reserved.",
+      "en-GB": "All rights reserved.",
+      es: "Todos los derechos reservados.",
+      fr: "Tous droits réservés.",
+      de: "Alle Rechte vorbehalten.",
+    },
+  } satisfies Record<string, CopyByLocale<string>>,
+} as const;
+
+export const jobRolesByLocale = {
+  "en-US": [
+    {
+      title: "Software Engineer (Full-Stack)",
+      location: "Remote / Hybrid",
+      type: "Full-time",
+      focus: "SaaS",
+    },
+    {
+      title: "Operations Manager",
+      location: "On-site / Hybrid",
+      type: "Full-time",
+      focus: "Portfolio Ops",
+    },
+    {
+      title: "Real Estate Analyst",
+      location: "Hybrid",
+      type: "Full-time",
+      focus: "Real Estate",
+    },
+    {
+      title: "Recruiter / Talent Partner",
+      location: "Remote",
+      type: "Contract",
+      focus: "Talent",
+    },
+  ],
+  "en-GB": [
+    {
+      title: "Software Engineer (Full-Stack)",
+      location: "Remote / Hybrid",
+      type: "Full-time",
+      focus: "SaaS",
+    },
+    {
+      title: "Operations Manager",
+      location: "On-site / Hybrid",
+      type: "Full-time",
+      focus: "Portfolio Ops",
+    },
+    {
+      title: "Real Estate Analyst",
+      location: "Hybrid",
+      type: "Full-time",
+      focus: "Real Estate",
+    },
+    {
+      title: "Recruiter / Talent Partner",
+      location: "Remote",
+      type: "Contract",
+      focus: "Talent",
+    },
+  ],
+  es: [
+    {
+      title: "Ingeniero/a de Software (Full-Stack)",
+      location: "Remoto / Híbrido",
+      type: "Tiempo completo",
+      focus: "SaaS",
+    },
+    {
+      title: "Gerente de Operaciones",
+      location: "Presencial / Híbrido",
+      type: "Tiempo completo",
+      focus: "Operaciones de portafolio",
+    },
+    {
+      title: "Analista de Bienes Raíces",
+      location: "Híbrido",
+      type: "Tiempo completo",
+      focus: "Bienes raíces",
+    },
+    {
+      title: "Reclutador/a / Socio/a de Talento",
+      location: "Remoto",
+      type: "Contrato",
+      focus: "Talento",
+    },
+  ],
+  fr: [
+    {
+      title: "Ingénieur logiciel (Full-Stack)",
+      location: "Télétravail / Hybride",
+      type: "Temps plein",
+      focus: "SaaS",
+    },
+    {
+      title: "Responsable des opérations",
+      location: "Sur site / Hybride",
+      type: "Temps plein",
+      focus: "Ops portefeuille",
+    },
+    {
+      title: "Analyste immobilier",
+      location: "Hybride",
+      type: "Temps plein",
+      focus: "Immobilier",
+    },
+    {
+      title: "Recruteur·euse / Talent Partner",
+      location: "Télétravail",
+      type: "Contrat",
+      focus: "Talent",
+    },
+  ],
+  de: [
+    {
+      title: "Software Engineer (Full-Stack)",
+      location: "Remote / Hybrid",
+      type: "Vollzeit",
+      focus: "SaaS",
+    },
+    {
+      title: "Operations Manager",
+      location: "Vor Ort / Hybrid",
+      type: "Vollzeit",
+      focus: "Portfolio Ops",
+    },
+    {
+      title: "Real Estate Analyst",
+      location: "Hybrid",
+      type: "Vollzeit",
+      focus: "Immobilien",
+    },
+    {
+      title: "Recruiter / Talent Partner",
+      location: "Remote",
+      type: "Freie Mitarbeit",
+      focus: "Talent",
+    },
+  ],
 } as const;
 
 export function c<T extends Record<Locale, string>>(value: T, locale: Locale): string {

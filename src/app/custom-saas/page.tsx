@@ -1,34 +1,44 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { Container } from "@/components/Container";
 import { SectionHeading } from "@/components/SectionHeading";
+import { getServerLocale } from "@/lib/locale";
+import { c, copy } from "@/content/copy";
 
-export const metadata: Metadata = {
-  title: "Custom SaaS",
-  description:
-    "NaviVision builds and operates custom software and SaaS products with an operator’s focus on durability and outcomes.",
-};
+export async function generateMetadata({
+  searchParams,
+}: {
+  searchParams?: Record<string, string | string[] | undefined>;
+}) {
+  const locale = await getServerLocale(searchParams);
+  return {
+    title: c(copy.customSaas.metaTitle, locale),
+    description: c(copy.customSaas.metaDescription, locale),
+  };
+}
 
-export default function CustomSaasPage() {
+export default async function CustomSaasPage({
+  searchParams,
+}: {
+  searchParams?: Record<string, string | string[] | undefined>;
+}) {
+  const locale = await getServerLocale(searchParams);
   return (
     <div>
       <section className="bg-surface">
         <Container className="py-14 sm:py-20">
-          <p className="text-sm font-medium text-muted">Custom SaaS</p>
+          <p className="text-sm font-medium text-muted">{c(copy.customSaas.kicker, locale)}</p>
           <h1 className="mt-3 text-balance text-4xl font-semibold tracking-tight sm:text-5xl">
-            Build software that compounds.
+            {c(copy.customSaas.title, locale)}
           </h1>
           <p className="mt-5 max-w-3xl text-pretty text-base text-muted sm:text-lg">
-            We design and build custom software, often as a path from internal
-            tools to product. Our approach is pragmatic: ship quickly, measure
-            impact, and invest in reliability.
+            {c(copy.customSaas.intro, locale)}
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <Link className="btn btn-primary" href="/contact">
-              Discuss a build
+              {c(copy.customSaas.ctaPrimary, locale)}
             </Link>
             <Link className="btn btn-secondary" href="/portfolio#software">
-              Software portfolio
+              {c(copy.customSaas.ctaSecondary, locale)}
             </Link>
           </div>
         </Container>
@@ -37,29 +47,32 @@ export default function CustomSaasPage() {
       <section className="border-t border-border/70">
         <Container className="py-14 sm:py-20">
           <SectionHeading
-            title="What we build"
-            subtitle="From internal tooling to customer-facing products."
+            title={c(copy.customSaas.section1Title, locale)}
+            subtitle={c(copy.customSaas.section1Subtitle, locale)}
           />
           <div className="mt-10 grid gap-4 lg:grid-cols-3">
             <div className="card">
-              <h3 className="text-base font-semibold">Internal operating tools</h3>
+              <h3 className="text-base font-semibold">
+                {c(copy.customSaas.card1Title, locale)}
+              </h3>
               <p className="mt-2 text-sm text-muted">
-                Dashboards, automations, and systems that remove manual work and
-                improve visibility.
+                {c(copy.customSaas.card1Body, locale)}
               </p>
             </div>
             <div className="card">
-              <h3 className="text-base font-semibold">Customer portals</h3>
+              <h3 className="text-base font-semibold">
+                {c(copy.customSaas.card2Title, locale)}
+              </h3>
               <p className="mt-2 text-sm text-muted">
-                Secure, modern experiences that make your service feel like
-                product.
+                {c(copy.customSaas.card2Body, locale)}
               </p>
             </div>
             <div className="card">
-              <h3 className="text-base font-semibold">SaaS products</h3>
+              <h3 className="text-base font-semibold">
+                {c(copy.customSaas.card3Title, locale)}
+              </h3>
               <p className="mt-2 text-sm text-muted">
-                Subscription software designed for retention, reliability, and
-                measurable outcomes.
+                {c(copy.customSaas.card3Body, locale)}
               </p>
             </div>
           </div>
@@ -69,28 +82,32 @@ export default function CustomSaasPage() {
       <section className="border-t border-border/70 bg-surface">
         <Container className="py-14 sm:py-20">
           <SectionHeading
-            title="How we engage"
-            subtitle="A focused, operator-led process."
+            title={c(copy.customSaas.section2Title, locale)}
+            subtitle={c(copy.customSaas.section2Subtitle, locale)}
           />
           <div className="mt-10 grid gap-4 lg:grid-cols-3">
             <div className="card">
-              <h3 className="text-base font-semibold">Discovery sprint</h3>
+              <h3 className="text-base font-semibold">
+                {c(copy.customSaas.step1Title, locale)}
+              </h3>
               <p className="mt-2 text-sm text-muted">
-                Align on users, workflows, constraints, and success metrics.
+                {c(copy.customSaas.step1Body, locale)}
               </p>
             </div>
             <div className="card">
-              <h3 className="text-base font-semibold">Build + ship</h3>
+              <h3 className="text-base font-semibold">
+                {c(copy.customSaas.step2Title, locale)}
+              </h3>
               <p className="mt-2 text-sm text-muted">
-                Deliver in small increments, validate quickly, and keep scope
-                honest.
+                {c(copy.customSaas.step2Body, locale)}
               </p>
             </div>
             <div className="card">
-              <h3 className="text-base font-semibold">Operate</h3>
+              <h3 className="text-base font-semibold">
+                {c(copy.customSaas.step3Title, locale)}
+              </h3>
               <p className="mt-2 text-sm text-muted">
-                Reliability, monitoring, security basics, and a plan to reduce
-                support load.
+                {c(copy.customSaas.step3Body, locale)}
               </p>
             </div>
           </div>

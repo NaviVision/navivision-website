@@ -25,7 +25,9 @@ export default async function ContactPage({
     <div>
       <section className="bg-surface">
         <Container className="py-14 sm:py-20">
-          <p className="text-sm font-medium text-muted">Contact</p>
+          <p className="text-sm font-medium text-muted">
+            {c(copy.contact.kicker, locale)}
+          </p>
           <h1 className="mt-3 text-balance text-4xl font-semibold tracking-tight sm:text-5xl">
             {c(copy.contact.title, locale)}
           </h1>
@@ -45,16 +47,22 @@ export default async function ContactPage({
               />
               <ul className="mt-8 grid gap-3 text-sm text-muted">
                 <li>
-                  <span className="font-semibold text-foreground">Topic:</span>{" "}
-                  hiring, talent, software, real estate, or investing
+                  <span className="font-semibold text-foreground">
+                    {c(copy.contact.bulletTopicLabel, locale)}
+                  </span>{" "}
+                  {c(copy.contact.bulletTopicValue, locale)}
                 </li>
                 <li>
-                  <span className="font-semibold text-foreground">Timeline:</span>{" "}
-                  when you need help or want to connect
+                  <span className="font-semibold text-foreground">
+                    {c(copy.contact.bulletTimelineLabel, locale)}
+                  </span>{" "}
+                  {c(copy.contact.bulletTimelineValue, locale)}
                 </li>
                 <li>
-                  <span className="font-semibold text-foreground">Context:</span>{" "}
-                  links, role descriptions, or a short overview
+                  <span className="font-semibold text-foreground">
+                    {c(copy.contact.bulletContextLabel, locale)}
+                  </span>{" "}
+                  {c(copy.contact.bulletContextValue, locale)}
                 </li>
               </ul>
               <div className="mt-8 card">
@@ -74,7 +82,7 @@ export default async function ContactPage({
                       className="h-11 rounded-xl border border-border/80 bg-background px-3 outline-none focus:ring-2 focus:ring-primary/40"
                       name="name"
                       autoComplete="name"
-                      placeholder="Your name"
+                      placeholder={c(copy.contact.placeholderName, locale)}
                     />
                   </label>
                   <label className="grid gap-2 text-sm">
@@ -84,7 +92,7 @@ export default async function ContactPage({
                       name="email"
                       type="email"
                       autoComplete="email"
-                      placeholder="you@company.com"
+                      placeholder={c(copy.contact.placeholderEmail, locale)}
                     />
                   </label>
                 </div>
@@ -95,12 +103,12 @@ export default async function ContactPage({
                     name="topic"
                     defaultValue="hiring"
                   >
-                    <option value="hiring">Hiring / Companies</option>
-                    <option value="talent">Talent / Candidates</option>
-                    <option value="software">Software / SaaS</option>
-                    <option value="real-estate">Real Estate</option>
-                    <option value="investing">Investing</option>
-                    <option value="other">Other</option>
+                    <option value="hiring">{c(copy.contact.topicHiring, locale)}</option>
+                    <option value="talent">{c(copy.contact.topicTalent, locale)}</option>
+                    <option value="software">{c(copy.contact.topicSoftware, locale)}</option>
+                    <option value="real-estate">{c(copy.contact.topicRealEstate, locale)}</option>
+                    <option value="investing">{c(copy.contact.topicInvesting, locale)}</option>
+                    <option value="other">{c(copy.contact.topicOther, locale)}</option>
                   </select>
                 </label>
                 <label className="grid gap-2 text-sm">
@@ -108,7 +116,7 @@ export default async function ContactPage({
                   <textarea
                     className="min-h-32 rounded-xl border border-border/80 bg-background px-3 py-2 outline-none focus:ring-2 focus:ring-primary/40"
                     name="message"
-                    placeholder="Tell us what you're working on and how we can help."
+                    placeholder={c(copy.contact.placeholderMessage, locale)}
                   />
                 </label>
                 <button className="btn btn-primary justify-center" type="submit">

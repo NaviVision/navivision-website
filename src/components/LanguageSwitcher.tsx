@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState, useTransition } from "react";
+import { useEffect, useMemo, useRef, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { LOCALE_COOKIE, defaultLocale, localeLabels, locales, normalizeLocale } from "@/lib/i18n";
 
@@ -25,6 +25,17 @@ function localeShort(value: string) {
 }
 
 function CountryMapIcon({ locale }: { locale: string }) {
+  const color =
+    locale === "en-US"
+      ? "rgb(var(--map-us))"
+      : locale === "en-GB"
+        ? "rgb(var(--map-uk))"
+        : locale === "fr"
+          ? "rgb(var(--map-fr))"
+          : locale === "de"
+            ? "rgb(var(--map-de))"
+            : "rgb(var(--map-es))";
+
   const common = {
     "aria-hidden": true,
     viewBox: "0 0 24 24",
@@ -35,7 +46,7 @@ function CountryMapIcon({ locale }: { locale: string }) {
   // Minimal, stylized silhouettes to avoid heavy assets.
   if (locale === "en-US") {
     return (
-      <svg {...common}>
+      <svg {...common} style={{ color }}>
         <path d="M3.5 9.5l2-2 3 .5 2-1 2 1.2 2.5-.2 2 1.5 2-.5 1.5 2-1 2 1 2-1.8 1.2-1.2 2.3-2.5.3-2.2-1.1-2.1.6-2-1.5-2.2.2-2-1.8.5-2.2-1.5-1.8 1.5-1.2Z" />
       </svg>
     );
@@ -43,7 +54,7 @@ function CountryMapIcon({ locale }: { locale: string }) {
 
   if (locale === "en-GB") {
     return (
-      <svg {...common}>
+      <svg {...common} style={{ color }}>
         <path d="M14.5 3.5l2 1-1 2 1.2 1.7-1.2 1.3.6 1.5-1.1 1.1.7 1.8-1.4 1.3.6 1.5-1.7 1.2-1.4-1-1.1-2-1.5-1.2.8-1.6-1.1-1.4 1.4-1.4-.5-2 1.2-1.5-.6-1.9 1.5-1Z" />
       </svg>
     );
@@ -51,7 +62,7 @@ function CountryMapIcon({ locale }: { locale: string }) {
 
   if (locale === "fr") {
     return (
-      <svg {...common}>
+      <svg {...common} style={{ color }}>
         <path d="M12 2.8 19 7v10l-7 4.2L5 17V7l7-4.2Z" />
       </svg>
     );
@@ -59,7 +70,7 @@ function CountryMapIcon({ locale }: { locale: string }) {
 
   if (locale === "de") {
     return (
-      <svg {...common}>
+      <svg {...common} style={{ color }}>
         <path d="M7 4h10l1 3-1 3 1 3-1 3 1 3H7l-1-3 1-3-1-3 1-3-1-3 1-3Z" />
       </svg>
     );
@@ -67,7 +78,7 @@ function CountryMapIcon({ locale }: { locale: string }) {
 
   // Spain (es)
   return (
-    <svg {...common}>
+    <svg {...common} style={{ color }}>
       <path d="M6 9l2-2 3 .7 2-1 2 1 2.5-.3 1.5 2-1 2 1.2 1.8-1.7 1.2-.8 2-2.2.6-2-1-2 .7-2-1.7-2 .1.4-2.1-1.4-1.7 1.5-1.3Z" />
     </svg>
   );
@@ -78,6 +89,8 @@ export function LanguageSwitcher() {
   const [isPending, startTransition] = useTransition();
 
   const [open, setOpen] = useState(false);
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const firstItemRef = useRef<HTMLButtonElement | null>(null);
   const [locale, setLocale] = useState(() => {
     if (typeof document === "undefined") return defaultLocale;
     const urlLocale = new URLSearchParams(window.location.search).get("lang");
@@ -89,12 +102,42 @@ export function LanguageSwitcher() {
 
   const currentLabel = useMemo(() => localeLabels[locale], [locale]);
 
+  useEffect(() => {
+    if (!open) return;
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setOpen(false);
+    };
+
+    const onPointerDown = (event: MouseEvent | TouchEvent) => {
+      const target = event.target as Node | null;
+      if (target && containerRef.current && !containerRef.current.contains(target)) {
+        setOpen(false);
+      }
+    };
+
+    document.addEventListener("keydown", onKeyDown);
+    document.addEventListener("mousedown", onPointerDown);
+    document.addEventListener("touchstart", onPointerDown);
+    return () => {
+      document.removeEventListener("keydown", onKeyDown);
+      document.removeEventListener("mousedown", onPointerDown);
+      document.removeEventListener("touchstart", onPointerDown);
+    };
+  }, [open]);
+
   return (
-    <div className="relative hidden sm:block">
+    <div ref={containerRef} className="relative hidden sm:block">
       <button
         type="button"
         onClick={() => setOpen((prev) => !prev)}
-        onBlur={() => setOpen(false)}
+        onKeyDown={(event) => {
+          if (event.key === "ArrowDown") {
+            event.preventDefault();
+            setOpen(true);
+            queueMicrotask(() => firstItemRef.current?.focus());
+          }
+        }}
         className="inline-flex items-center rounded-full border border-border/80 bg-background p-2 text-foreground shadow-sm transition-colors hover:bg-surface focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
         aria-haspopup="menu"
         aria-expanded={open}
@@ -108,13 +151,14 @@ export function LanguageSwitcher() {
       </button>
 
       {open ? (
-        <div className="absolute right-0 top-full z-50 w-44 pt-2" role="menu">
+        <div className="absolute right-0 top-full z-50 w-44 pt-2" role="menu" aria-label="Language">
           <div className="rounded-2xl border border-border/70 bg-background shadow-lg">
             <div className="p-2">
               {locales.map((value) => (
                 <button
                   key={value}
                   type="button"
+                  ref={value === locales[0] ? firstItemRef : undefined}
                   onMouseDown={(event) => event.preventDefault()}
                   onClick={() => {
                     setCookie(LOCALE_COOKIE, value);
@@ -130,7 +174,8 @@ export function LanguageSwitcher() {
                     });
                   }}
                   className="flex w-full items-center justify-between rounded-xl px-3 py-2 text-left text-sm text-muted hover:bg-surface hover:text-foreground transition-colors"
-                  role="menuitem"
+                  role="menuitemradio"
+                  aria-checked={locale === value}
                 >
                   <span className="flex items-center gap-2">
                     <span className="text-muted">

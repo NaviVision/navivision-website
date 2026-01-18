@@ -1,27 +1,29 @@
 import Link from "next/link";
 import { Container } from "@/components/Container";
+import { getServerLocale } from "@/lib/locale";
+import { c, copy } from "@/content/copy";
 
-export default function NotFound() {
+export default async function NotFound() {
+  const locale = await getServerLocale();
   return (
     <Container className="py-20">
       <div className="card">
         <p className="text-sm font-medium text-muted">404</p>
         <h1 className="mt-3 text-2xl font-semibold tracking-tight">
-          Page not found
+          {c(copy.notFound.title, locale)}
         </h1>
         <p className="mt-3 text-sm text-muted">
-          The page you’re looking for doesn’t exist or has moved.
+          {c(copy.notFound.body, locale)}
         </p>
         <div className="mt-6 flex flex-col gap-3 sm:flex-row">
           <Link className="btn btn-primary" href="/">
-            Back home
+            {c(copy.notFound.ctaHome, locale)}
           </Link>
           <Link className="btn btn-secondary" href="/contact">
-            Contact
+            {c(copy.notFound.ctaContact, locale)}
           </Link>
         </div>
       </div>
     </Container>
   );
 }
-

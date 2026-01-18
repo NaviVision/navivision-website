@@ -44,53 +44,57 @@ export default async function AboutPage({
           />
           <div className="mt-10 grid gap-4 lg:grid-cols-2">
             <div className="card">
-              <h3 className="text-base font-semibold">Talent &amp; Hiring</h3>
+              <h3 className="text-base font-semibold">
+                {c(copy.about.verticalTalentTitle, locale)}
+              </h3>
               <p className="mt-2 text-sm text-muted">
-                We help companies build capable teams and connect candidates with
-                roles where they can do their best work.
+                {c(copy.about.verticalTalentBody, locale)}
               </p>
               <div className="mt-4 flex gap-4">
                 <Link className="link" href="/for-companies">
-                  For companies
+                  {c(copy.about.linkForCompanies, locale)}
                 </Link>
                 <Link className="link" href="/for-talent">
-                  For talent
+                  {c(copy.about.linkForTalent, locale)}
                 </Link>
               </div>
             </div>
             <div className="card">
-              <h3 className="text-base font-semibold">Custom SaaS</h3>
+              <h3 className="text-base font-semibold">
+                {c(copy.about.verticalSoftwareTitle, locale)}
+              </h3>
               <p className="mt-2 text-sm text-muted">
-                We build products and operate software businesses, prioritizing
-                customer value, reliability, and steady improvements.
+                {c(copy.about.verticalSoftwareBody, locale)}
               </p>
               <div className="mt-4">
                 <Link className="link" href="/custom-saas">
-                  Explore
+                  {c(copy.about.linkExplore, locale)}
                 </Link>
               </div>
             </div>
             <div className="card">
-              <h3 className="text-base font-semibold">Real Estate</h3>
+              <h3 className="text-base font-semibold">
+                {c(copy.about.verticalRealEstateTitle, locale)}
+              </h3>
               <p className="mt-2 text-sm text-muted">
-                We own and operate real estate with a focus on healthy tenant
-                relationships and well-maintained assets.
+                {c(copy.about.verticalRealEstateBody, locale)}
               </p>
               <div className="mt-4">
                 <Link className="link" href="/real-estate">
-                  Explore
+                  {c(copy.about.linkExplore, locale)}
                 </Link>
               </div>
             </div>
             <div className="card">
-              <h3 className="text-base font-semibold">Investments</h3>
+              <h3 className="text-base font-semibold">
+                {c(copy.about.verticalInvestTitle, locale)}
+              </h3>
               <p className="mt-2 text-sm text-muted">
-                We invest selectively in founders building durable businesses
-                and provide support where we have earned experience.
+                {c(copy.about.verticalInvestBody, locale)}
               </p>
               <div className="mt-4">
                 <Link className="link" href="/investments">
-                  Explore
+                  {c(copy.about.linkExplore, locale)}
                 </Link>
               </div>
             </div>
