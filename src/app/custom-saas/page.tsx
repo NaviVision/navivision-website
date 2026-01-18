@@ -19,7 +19,7 @@ export default function CustomSaasPage() {
             Build software that compounds.
           </h1>
           <p className="mt-5 max-w-3xl text-pretty text-base text-muted sm:text-lg">
-            We design and build custom software—often as a path from internal
+            We design and build custom software, often as a path from internal
             tools to product. Our approach is pragmatic: ship quickly, measure
             impact, and invest in reliability.
           </p>
@@ -99,4 +99,3 @@ export default function CustomSaasPage() {
     </div>
   );
 }
-

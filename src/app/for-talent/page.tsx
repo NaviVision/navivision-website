@@ -6,7 +6,7 @@ import { SectionHeading } from "@/components/SectionHeading";
 export const metadata: Metadata = {
   title: "For Talent",
   description:
-    "Find your next role—NaviVision connects talented people with teams building meaningful products and operations.",
+    "Find your next role. NaviVision connects talented people with teams building meaningful products and operations.",
 };
 
 export default function ForTalentPage() {

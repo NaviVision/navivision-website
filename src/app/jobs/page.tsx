@@ -47,7 +47,7 @@ export default function JobsPage() {
           </h1>
           <p className="mt-5 max-w-3xl text-pretty text-base text-muted sm:text-lg">
             This page is a lightweight starting point. If you don’t see a perfect
-            match, reach out—strong candidates are often considered for upcoming
+            match, reach out. Strong candidates are often considered for upcoming
             roles.
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">

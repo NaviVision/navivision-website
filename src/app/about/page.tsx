@@ -6,7 +6,7 @@ import { SectionHeading } from "@/components/SectionHeading";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Learn about NaviVision—our operating focus across talent, software, real estate, and startup investing.",
+    "Learn about NaviVision, our operating focus across talent, software, real estate, and startup investing.",
 };
 
 export default function AboutPage() {
@@ -20,7 +20,7 @@ export default function AboutPage() {
           </h1>
           <p className="mt-5 max-w-3xl text-pretty text-base text-muted sm:text-lg">
             NaviVision is a diversified operating and investment company. We
-            build and support businesses that can compound over time—through
+            build and support businesses that can compound over time through
             great teams, sound economics, and disciplined execution.
           </p>
         </Container>

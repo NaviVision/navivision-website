@@ -6,7 +6,7 @@ import { SectionHeading } from "@/components/SectionHeading";
 export const metadata: Metadata = {
   title: "For Companies",
   description:
-    "Hire with confidence—NaviVision supports sourcing, screening, and hiring for teams that need execution-ready talent.",
+    "Hire with confidence. NaviVision supports sourcing, screening, and hiring for teams that need execution-ready talent.",
 };
 
 export default function ForCompaniesPage() {
@@ -38,7 +38,7 @@ export default function ForCompaniesPage() {
         <Container className="py-14 sm:py-20">
           <SectionHeading
             title="Engagement options"
-            subtitle="Flexible models—from urgent searches to ongoing pipelines."
+            subtitle="Flexible models: from urgent searches to ongoing pipelines."
           />
           <div className="mt-10 grid gap-4 lg:grid-cols-3">
             <div className="card">

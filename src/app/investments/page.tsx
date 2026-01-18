@@ -20,7 +20,7 @@ export default function InvestmentsPage() {
           </h1>
           <p className="mt-5 max-w-3xl text-pretty text-base text-muted sm:text-lg">
             We invest with a long-term mindset and a preference for teams who
-            ship. When it’s a fit, we contribute operational support—especially
+            ship. When it’s a fit, we contribute operational support, especially
             around product, hiring, and go-to-market clarity.
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
@@ -63,4 +63,3 @@ export default function InvestmentsPage() {
     </div>
   );
 }
-

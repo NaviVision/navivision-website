@@ -18,7 +18,7 @@ export default function Home() {
             <p className="mt-6 text-pretty text-lg text-muted">
               We partner with teams to hire exceptional people, launch products,
               scale SaaS businesses, and operate a disciplined real estate
-              portfolio—while investing in founders we believe in.
+              portfolio, while investing in founders we believe in.
             </p>
             <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">
               <Link className="btn btn-primary" href="/contact">
@@ -97,7 +97,7 @@ export default function Home() {
             <div className="lg:col-span-7">
               <SectionHeading
                 title="A modern holding company"
-                subtitle="We’re operators first—built for compounding."
+                subtitle="We’re operators first, built for compounding."
               />
               <ul className="mt-8 grid gap-4">
                 <li className="card">
@@ -128,7 +128,7 @@ export default function Home() {
                 <h3 className="text-base font-semibold">Work with NaviVision</h3>
                 <p className="mt-2 text-sm text-muted">
                   Whether you’re hiring, looking for your next role, or exploring
-                  partnerships—start here.
+                  partnerships, start here.
                 </p>
                 <div className="mt-6 flex flex-col gap-3 sm:flex-row">
                   <Link className="btn btn-primary" href="/jobs">

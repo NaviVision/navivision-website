@@ -16,7 +16,7 @@ export default function TalentHiringPage() {
         <Container className="py-14 sm:py-20">
           <p className="text-sm font-medium text-muted">Talent &amp; Hiring</p>
           <h1 className="mt-3 text-balance text-4xl font-semibold tracking-tight sm:text-5xl">
-            Hiring support for teams—and opportunities for talent.
+            Hiring support for teams, and opportunities for talent.
           </h1>
           <p className="mt-5 max-w-3xl text-pretty text-base text-muted sm:text-lg">
             We run a high-signal process designed to move quickly without
@@ -107,4 +107,3 @@ export default function TalentHiringPage() {
     </div>
   );
 }
-
