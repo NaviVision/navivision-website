@@ -41,10 +41,6 @@ body {
   color: rgb(var(--foreground));
 }
 
-summary::-webkit-details-marker {
-  display: none;
-}
-
 ::selection {
   background: rgba(79, 70, 229, 0.25);
 }

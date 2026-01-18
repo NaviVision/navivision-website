@@ -10,11 +10,14 @@ export function SiteHeader() {
         <Logo />
         <nav className="hidden items-center gap-2 md:flex" aria-label="Primary">
           {siteConfig.navBuckets.map((bucket) => (
-            <details key={bucket.href} className="group relative">
-              <summary className="list-none cursor-pointer rounded-full px-4 py-2 text-sm font-medium text-muted transition-colors hover:text-foreground focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40">
-                <span>{bucket.label}</span>
-              </summary>
-              <div className="absolute left-0 top-full z-50 hidden w-72 pt-2 group-open:block">
+            <div key={bucket.href} className="group relative">
+              <Link
+                href={bucket.href}
+                className="inline-flex rounded-full px-4 py-2 text-sm font-medium text-muted transition-colors hover:text-foreground focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
+              >
+                {bucket.label}
+              </Link>
+              <div className="absolute left-0 top-full z-50 hidden w-72 pt-2 group-hover:block group-focus-within:block">
                 <div className="rounded-2xl border border-border/70 bg-background shadow-lg">
                   <div className="p-2">
                     {bucket.items.map((item) => (
@@ -29,7 +32,7 @@ export function SiteHeader() {
                   </div>
                 </div>
               </div>
-            </details>
+            </div>
           ))}
         </nav>
         <div className="flex items-center gap-3">
