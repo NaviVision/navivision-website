@@ -9,75 +9,122 @@ function setCookie(name: string, value: string) {
   document.cookie = `${name}=${encodeURIComponent(value)}; Path=/; Max-Age=31536000; SameSite=Lax`;
 }
 
-function localeShort(value: string) {
-  if (value === "en-US") return "US";
-  if (value === "en-GB") return "UK";
+function localeCode(value: string) {
+  if (value === "en-US") return "EN-US";
+  if (value === "en-GB") return "EN-GB";
   if (value === "es") return "ES";
   if (value === "fr") return "FR";
   if (value === "de") return "DE";
   return value.toUpperCase();
 }
 
-function CountryMapIcon({ locale }: { locale: string }) {
-  const color =
-    locale === "en-US"
-      ? "rgb(var(--map-us))"
-      : locale === "en-GB"
-        ? "rgb(var(--map-uk))"
-        : locale === "fr"
-          ? "rgb(var(--map-fr))"
-          : locale === "de"
-            ? "rgb(var(--map-de))"
-            : "rgb(var(--map-es))";
-
+function FlagIcon({ locale }: { locale: Locale }) {
   const common = {
     "aria-hidden": true,
-    viewBox: "0 0 24 24",
-    className: "h-4 w-4",
-    fill: "none",
-    stroke: "currentColor",
-    strokeWidth: "1.8",
-    strokeLinejoin: "round",
-    strokeLinecap: "round",
+    viewBox: "0 0 24 16",
+    className: "h-4 w-6 shrink-0 rounded-[4px] border border-border/70",
   } as const;
 
-  // Minimal, stylized silhouettes (outlined) to read better at small sizes.
   if (locale === "en-US") {
     return (
-      <svg {...common} style={{ color }}>
-        <path d="M4 10.5l2-2 3 .5 2-1 2 1.2 2.5-.2 2 1.5 2-.5 1.5 2-1 2 1 2-2 1.3-1.1 2.2-2.6.3-2.2-1.1-2.1.6-2-1.5-2.2.2-2-1.8.5-2.2-1.5-1.8 1.3-1.1Z" />
+      <svg {...common}>
+        <defs>
+          <clipPath id="nv-us">
+            <rect x="0" y="0" width="24" height="16" rx="3" ry="3" />
+          </clipPath>
+        </defs>
+        <g clipPath="url(#nv-us)">
+          <rect width="24" height="16" fill="#fff" />
+          {Array.from({ length: 7 }).map((_, index) => (
+            <rect key={index} y={index * 2 + 1} width="24" height="1" fill="#B91C1C" />
+          ))}
+          <rect width="10.5" height="7.5" fill="#1E40AF" />
+          {Array.from({ length: 6 }).map((_, row) =>
+            Array.from({ length: 4 }).map((__, col) => (
+              <circle
+                key={`${row}-${col}`}
+                cx={1.3 + col * 2.4 + (row % 2) * 1.2}
+                cy={1.2 + row * 1.2}
+                r="0.25"
+                fill="#fff"
+              />
+            )),
+          )}
+        </g>
       </svg>
     );
   }
 
   if (locale === "en-GB") {
     return (
-      <svg {...common} style={{ color }}>
-        <path d="M14.5 3.5l2 1-1 2 1.2 1.7-1.2 1.3.6 1.5-1.1 1.1.7 1.8-1.4 1.3.6 1.5-1.7 1.2-1.4-1-1.1-2-1.5-1.2.8-1.6-1.1-1.4 1.4-1.4-.5-2 1.2-1.5-.6-1.9 1.5-1Z" />
+      <svg {...common}>
+        <defs>
+          <clipPath id="nv-uk">
+            <rect x="0" y="0" width="24" height="16" rx="3" ry="3" />
+          </clipPath>
+        </defs>
+        <g clipPath="url(#nv-uk)">
+          <rect width="24" height="16" fill="#1E3A8A" />
+          <path d="M0 0l9 0 15 10v6H15L0 6V0Z" fill="#fff" opacity="0.9" />
+          <path d="M24 0H15L0 10v6h9l15-10V0Z" fill="#fff" opacity="0.9" />
+          <path d="M0 0l24 16M24 0 0 16" stroke="#fff" strokeWidth="3.2" />
+          <path d="M0 0l24 16M24 0 0 16" stroke="#B91C1C" strokeWidth="1.6" />
+          <rect x="10" width="4" height="16" fill="#fff" />
+          <rect y="6" width="24" height="4" fill="#fff" />
+          <rect x="10.8" width="2.4" height="16" fill="#B91C1C" />
+          <rect y="6.8" width="24" height="2.4" fill="#B91C1C" />
+        </g>
       </svg>
     );
   }
 
   if (locale === "fr") {
     return (
-      <svg {...common} style={{ color }}>
-        <path d="M12 3 18.7 7v10L12 21l-6.7-4V7L12 3Z" />
+      <svg {...common}>
+        <defs>
+          <clipPath id="nv-fr">
+            <rect x="0" y="0" width="24" height="16" rx="3" ry="3" />
+          </clipPath>
+        </defs>
+        <g clipPath="url(#nv-fr)">
+          <rect width="8" height="16" fill="#1D4ED8" />
+          <rect x="8" width="8" height="16" fill="#fff" />
+          <rect x="16" width="8" height="16" fill="#B91C1C" />
+        </g>
       </svg>
     );
   }
 
   if (locale === "de") {
     return (
-      <svg {...common} style={{ color }}>
-        <path d="M7.5 4h9l1 3-1 3 1 3-1 3 1 3h-9l-1-3 1-3-1-3 1-3-1-3 1-3Z" />
+      <svg {...common}>
+        <defs>
+          <clipPath id="nv-de">
+            <rect x="0" y="0" width="24" height="16" rx="3" ry="3" />
+          </clipPath>
+        </defs>
+        <g clipPath="url(#nv-de)">
+          <rect width="24" height="5.34" fill="#111827" />
+          <rect y="5.33" width="24" height="5.34" fill="#B91C1C" />
+          <rect y="10.66" width="24" height="5.34" fill="#F59E0B" />
+        </g>
       </svg>
     );
   }
 
   // Spain (es)
   return (
-    <svg {...common} style={{ color }}>
-      <path d="M6 10l2-2 3 .7 2-1 2 1 2.5-.3 1.5 2-1 2 1.2 1.8-1.7 1.2-.8 2-2.2.6-2-1-2 .7-2-1.7-2 .1.4-2.1-1.4-1.7 1.5-1.3Z" />
+    <svg {...common}>
+      <defs>
+        <clipPath id="nv-es">
+          <rect x="0" y="0" width="24" height="16" rx="3" ry="3" />
+        </clipPath>
+      </defs>
+      <g clipPath="url(#nv-es)">
+        <rect width="24" height="16" fill="#B91C1C" />
+        <rect y="4" width="24" height="8" fill="#F59E0B" />
+        <circle cx="8.2" cy="8" r="1.1" fill="#1F2937" opacity="0.25" />
+      </g>
     </svg>
   );
 }
@@ -145,12 +192,12 @@ export function LanguageSwitcher({ locale: initialLocale }: { locale: Locale }) 
           className="flex h-7 w-7 items-center justify-center rounded-full bg-surface"
           aria-hidden="true"
         >
-          <CountryMapIcon locale={locale} />
+          <FlagIcon locale={locale} />
         </span>
       </button>
 
       {open ? (
-        <div className="absolute right-0 top-full z-50 w-20 pt-2" role="menu" aria-label="Language">
+        <div className="absolute right-0 top-full z-50 w-28 pt-2" role="menu" aria-label="Language">
           <div className="rounded-2xl border border-border/70 bg-background shadow-lg">
             <div className="p-2">
               <div className="grid grid-cols-1 gap-1">
@@ -171,7 +218,7 @@ export function LanguageSwitcher({ locale: initialLocale }: { locale: Locale }) 
                       });
                     }}
                     className={[
-                      "flex w-full items-center justify-center rounded-xl p-2 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40",
+                      "flex w-full items-center justify-between rounded-xl px-2 py-2 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40",
                       locale === value
                         ? "bg-surface text-foreground"
                         : "text-muted hover:bg-surface hover:text-foreground",
@@ -181,15 +228,15 @@ export function LanguageSwitcher({ locale: initialLocale }: { locale: Locale }) 
                     aria-label={localeLabels[value]}
                     title={localeLabels[value]}
                   >
-                    <span className="relative flex h-8 w-8 items-center justify-center rounded-full bg-background">
-                      <CountryMapIcon locale={value} />
+                    <span className="flex items-center gap-2">
+                      <FlagIcon locale={value} />
+                      <span className="text-xs font-semibold text-foreground">{localeCode(value)}</span>
                       {locale === value ? (
                         <span
                           aria-hidden="true"
-                          className="absolute -right-1 -top-1 h-3 w-3 rounded-full border-2 border-background bg-primary"
+                          className="ml-1 inline-flex h-2 w-2 rounded-full bg-primary"
                         />
                       ) : null}
-                      <span className="sr-only">{localeShort(value)}</span>
                     </span>
                   </button>
                 ))}
