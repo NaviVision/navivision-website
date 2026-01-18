@@ -1,9 +1,16 @@
+"use client";
+
 import Link from "next/link";
+import type { MouseEvent } from "react";
 import { Container } from "@/components/Container";
 import { Logo } from "@/components/Logo";
 import { siteConfig } from "@/lib/site";
 
 export function SiteHeader() {
+  const blurOnClick = (event: MouseEvent<HTMLElement>) => {
+    event.currentTarget.blur();
+  };
+
   return (
     <header className="sticky top-0 z-40 border-b border-border/70 bg-background/80 backdrop-blur">
       <Container className="flex h-16 items-center justify-between">
@@ -13,6 +20,7 @@ export function SiteHeader() {
             <div key={bucket.href} className="group relative">
               <Link
                 href={bucket.href}
+                onClick={blurOnClick}
                 className="inline-flex rounded-full px-4 py-2 text-sm font-medium text-muted transition-colors hover:text-foreground focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
               >
                 {bucket.label}
@@ -24,6 +32,7 @@ export function SiteHeader() {
                       <Link
                         key={item.href}
                         href={item.href}
+                        onClick={blurOnClick}
                         className="block rounded-xl px-3 py-2 text-sm text-muted hover:bg-surface hover:text-foreground transition-colors"
                       >
                         {item.label}
