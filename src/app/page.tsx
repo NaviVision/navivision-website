@@ -1,31 +1,35 @@
 import Link from "next/link";
 import { Container } from "@/components/Container";
 import { SectionHeading } from "@/components/SectionHeading";
+import { getServerLocale } from "@/lib/locale";
+import { c, copy } from "@/content/copy";
 
-export default function Home() {
+export default async function Home({
+  searchParams,
+}: {
+  searchParams?: Record<string, string | string[] | undefined>;
+}) {
+  const locale = await getServerLocale(searchParams);
   return (
     <div>
       <section className="relative overflow-hidden bg-[radial-gradient(90rem_50rem_at_10%_-10%,rgba(32,160,224,0.26),transparent),radial-gradient(80rem_40rem_at_110%_10%,rgba(64,160,64,0.18),transparent)]">
         <Container className="py-16 sm:py-24">
           <div className="max-w-3xl">
             <p className="text-sm font-medium tracking-wide text-muted">
-              Diversified operating + investment company
+              {c(copy.home.heroKicker, locale)}
             </p>
             <h1 className="mt-4 text-balance text-4xl font-semibold tracking-tight sm:text-6xl">
-              NaviVision builds, operates, and invests across talent, software,
-              real estate, and startups.
+              {c(copy.home.heroTitle, locale)}
             </h1>
             <p className="mt-6 text-pretty text-lg text-muted">
-              We partner with teams to hire exceptional people, launch products,
-              scale SaaS businesses, and operate a disciplined real estate
-              portfolio, while investing in founders we believe in.
+              {c(copy.home.heroSubtitle, locale)}
             </p>
             <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">
               <Link className="btn btn-primary" href="/contact">
-                Start a conversation
+                {c(copy.home.ctaPrimary, locale)}
               </Link>
               <Link className="btn btn-secondary" href="/portfolio">
-                Explore our portfolio
+                {c(copy.home.ctaSecondary, locale)}
               </Link>
             </div>
           </div>

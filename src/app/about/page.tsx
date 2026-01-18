@@ -1,27 +1,37 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { Container } from "@/components/Container";
 import { SectionHeading } from "@/components/SectionHeading";
+import { getServerLocale } from "@/lib/locale";
+import { c, copy } from "@/content/copy";
 
-export const metadata: Metadata = {
-  title: "About",
-  description:
-    "Learn about NaviVision, our operating focus across talent, software, real estate, and startup investing.",
-};
+export async function generateMetadata({
+  searchParams,
+}: {
+  searchParams?: Record<string, string | string[] | undefined>;
+}) {
+  const locale = await getServerLocale(searchParams);
+  return {
+    title: c(copy.about.metaTitle, locale),
+    description: c(copy.about.metaDescription, locale),
+  };
+}
 
-export default function AboutPage() {
+export default async function AboutPage({
+  searchParams,
+}: {
+  searchParams?: Record<string, string | string[] | undefined>;
+}) {
+  const locale = await getServerLocale(searchParams);
   return (
     <div>
       <section className="bg-surface">
         <Container className="py-14 sm:py-20">
-          <p className="text-sm font-medium text-muted">About</p>
+          <p className="text-sm font-medium text-muted">{c(copy.about.kicker, locale)}</p>
           <h1 className="mt-3 text-balance text-4xl font-semibold tracking-tight sm:text-5xl">
-            We’re a hands-on operator with a long-term view.
+            {c(copy.about.title, locale)}
           </h1>
           <p className="mt-5 max-w-3xl text-pretty text-base text-muted sm:text-lg">
-            NaviVision is a diversified operating and investment company. We
-            build and support businesses that can compound over time through
-            great teams, sound economics, and disciplined execution.
+            {c(copy.about.intro, locale)}
           </p>
         </Container>
       </section>
@@ -29,8 +39,8 @@ export default function AboutPage() {
       <section className="border-t border-border/70">
         <Container className="py-14 sm:py-20">
           <SectionHeading
-            title="Our focus"
-            subtitle="Each vertical stands on its own, but we share playbooks across all of them."
+            title={c(copy.about.focusTitle, locale)}
+            subtitle={c(copy.about.focusSubtitle, locale)}
           />
           <div className="mt-10 grid gap-4 lg:grid-cols-2">
             <div className="card">
@@ -91,8 +101,8 @@ export default function AboutPage() {
       <section className="border-t border-border/70 bg-surface">
         <Container className="py-14 sm:py-20">
           <SectionHeading
-            title="Team"
-            subtitle="Operator-led and built for long-term compounding."
+            title={c(copy.about.teamTitle, locale)}
+            subtitle={c(copy.about.teamSubtitle, locale)}
           />
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {[
@@ -112,7 +122,7 @@ export default function AboutPage() {
                   </div>
                 </div>
                 <p className="mt-4 text-sm text-muted">
-                  Profile coming soon.
+                  {c(copy.about.profileSoon, locale)}
                 </p>
               </div>
             ))}

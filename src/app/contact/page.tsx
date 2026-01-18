@@ -1,26 +1,36 @@
-import type { Metadata } from "next";
 import { Container } from "@/components/Container";
 import { SectionHeading } from "@/components/SectionHeading";
+import { getServerLocale } from "@/lib/locale";
+import { c, copy } from "@/content/copy";
 
-export const metadata: Metadata = {
-  title: "Contact",
-  description:
-    "Contact NaviVision for hiring support, partnerships, real estate, or investment inquiries.",
-};
+export async function generateMetadata({
+  searchParams,
+}: {
+  searchParams?: Record<string, string | string[] | undefined>;
+}) {
+  const locale = await getServerLocale(searchParams);
+  return {
+    title: c(copy.contact.metaTitle, locale),
+    description: c(copy.contact.metaDescription, locale),
+  };
+}
 
-export default function ContactPage() {
+export default async function ContactPage({
+  searchParams,
+}: {
+  searchParams?: Record<string, string | string[] | undefined>;
+}) {
+  const locale = await getServerLocale(searchParams);
   return (
     <div>
       <section className="bg-surface">
         <Container className="py-14 sm:py-20">
           <p className="text-sm font-medium text-muted">Contact</p>
           <h1 className="mt-3 text-balance text-4xl font-semibold tracking-tight sm:text-5xl">
-            Let’s talk.
+            {c(copy.contact.title, locale)}
           </h1>
           <p className="mt-5 max-w-3xl text-pretty text-base text-muted sm:text-lg">
-            Use the form below to reach our team. If you’re a company looking to
-            hire, a candidate exploring roles, or a founder seeking partnership,
-            include the basics and we’ll follow up.
+            {c(copy.contact.intro, locale)}
           </p>
         </Container>
       </section>
@@ -30,8 +40,8 @@ export default function ContactPage() {
           <div className="grid gap-10 lg:grid-cols-12">
             <div className="lg:col-span-5">
               <SectionHeading
-                title="What should you include?"
-                subtitle="A few details help us route your message quickly."
+                title={c(copy.contact.includeTitle, locale)}
+                subtitle={c(copy.contact.includeSubtitle, locale)}
               />
               <ul className="mt-8 grid gap-3 text-sm text-muted">
                 <li>
@@ -48,14 +58,9 @@ export default function ContactPage() {
                 </li>
               </ul>
               <div className="mt-8 card">
-                <p className="text-sm font-semibold">Prefer a quick start?</p>
+                <p className="text-sm font-semibold">{c(copy.contact.hintTitle, locale)}</p>
                 <p className="mt-2 text-sm text-muted">
-                  For hiring requests, share your role requirements on{" "}
-                  <span className="font-medium text-foreground">
-                    For Companies
-                  </span>
-                  . For candidates, browse{" "}
-                  <span className="font-medium text-foreground">Jobs</span>.
+                  {c(copy.contact.hintBody, locale)}
                 </p>
               </div>
             </div>
@@ -64,7 +69,7 @@ export default function ContactPage() {
               <form className="card grid gap-4" action="#" method="post">
                 <div className="grid gap-4 sm:grid-cols-2">
                   <label className="grid gap-2 text-sm">
-                    <span className="font-medium">Name</span>
+                    <span className="font-medium">{c(copy.contact.formName, locale)}</span>
                     <input
                       className="h-11 rounded-xl border border-border/80 bg-background px-3 outline-none focus:ring-2 focus:ring-primary/40"
                       name="name"
@@ -73,7 +78,7 @@ export default function ContactPage() {
                     />
                   </label>
                   <label className="grid gap-2 text-sm">
-                    <span className="font-medium">Email</span>
+                    <span className="font-medium">{c(copy.contact.formEmail, locale)}</span>
                     <input
                       className="h-11 rounded-xl border border-border/80 bg-background px-3 outline-none focus:ring-2 focus:ring-primary/40"
                       name="email"
@@ -84,7 +89,7 @@ export default function ContactPage() {
                   </label>
                 </div>
                 <label className="grid gap-2 text-sm">
-                  <span className="font-medium">Topic</span>
+                  <span className="font-medium">{c(copy.contact.formTopic, locale)}</span>
                   <select
                     className="h-11 rounded-xl border border-border/80 bg-background px-3 outline-none focus:ring-2 focus:ring-primary/40"
                     name="topic"
@@ -99,7 +104,7 @@ export default function ContactPage() {
                   </select>
                 </label>
                 <label className="grid gap-2 text-sm">
-                  <span className="font-medium">Message</span>
+                  <span className="font-medium">{c(copy.contact.formMessage, locale)}</span>
                   <textarea
                     className="min-h-32 rounded-xl border border-border/80 bg-background px-3 py-2 outline-none focus:ring-2 focus:ring-primary/40"
                     name="message"
@@ -107,11 +112,10 @@ export default function ContactPage() {
                   />
                 </label>
                 <button className="btn btn-primary justify-center" type="submit">
-                  Send message
+                  {c(copy.contact.formSend, locale)}
                 </button>
                 <p className="text-xs text-muted">
-                  This form is currently in preview mode and doesn’t submit
-                  anywhere yet.
+                  {c(copy.contact.formPreview, locale)}
                 </p>
               </form>
             </div>

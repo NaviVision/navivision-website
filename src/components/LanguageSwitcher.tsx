@@ -45,8 +45,9 @@ export function LanguageSwitcher() {
           stroke="currentColor"
           strokeWidth="2"
         >
-          <path d="M12 21s7-4.5 7-11a7 7 0 1 0-14 0c0 6.5 7 11 7 11Z" />
-          <path d="M12 10h.01" />
+          <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2Z" />
+          <path d="M2 12h20" />
+          <path d="M12 2c2.6 2.7 4 6 4 10s-1.4 7.3-4 10c-2.6-2.7-4-6-4-10s1.4-7.3 4-10Z" />
         </svg>
         <span className="whitespace-nowrap">{currentLabel}</span>
       </button>
