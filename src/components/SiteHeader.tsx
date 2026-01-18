@@ -5,8 +5,29 @@ import type { MouseEvent } from "react";
 import { Container } from "@/components/Container";
 import { Logo } from "@/components/Logo";
 import { siteConfig } from "@/lib/site";
+import { ThemeToggle } from "@/components/ThemeToggle";
+import { LanguageSwitcher } from "@/components/LanguageSwitcher";
+import { LOCALE_COOKIE, defaultLocale, locales, normalizeLocale, t, type Locale } from "@/lib/i18n";
+
+function getCookie(name: string): string | undefined {
+  const value = `; ${document.cookie}`;
+  const parts = value.split(`; ${name}=`);
+  if (parts.length !== 2) return undefined;
+  return parts.pop()?.split(";").shift();
+}
 
 export function SiteHeader() {
+  const locale: Locale =
+    typeof document === "undefined"
+      ? defaultLocale
+      : (() => {
+          const urlLocale = new URLSearchParams(window.location.search).get("lang");
+          if (urlLocale && (locales as readonly string[]).includes(urlLocale)) {
+            return normalizeLocale(urlLocale);
+          }
+          return normalizeLocale(getCookie(LOCALE_COOKIE));
+        })();
+
   const blurOnClick = (event: MouseEvent<HTMLElement>) => {
     event.currentTarget.blur();
   };
@@ -23,7 +44,7 @@ export function SiteHeader() {
                 onClick={blurOnClick}
                 className="inline-flex rounded-full px-4 py-2 text-sm font-medium text-muted transition-colors hover:text-foreground focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
               >
-                {bucket.label}
+                {t(locale, bucket.labelKey)}
               </Link>
               <div className="absolute left-0 top-full z-50 hidden w-72 pt-2 group-hover:block group-focus-within:block">
                 <div className="rounded-2xl border border-border/70 bg-background shadow-lg">
@@ -35,7 +56,7 @@ export function SiteHeader() {
                         onClick={blurOnClick}
                         className="block rounded-xl px-3 py-2 text-sm text-muted hover:bg-surface hover:text-foreground transition-colors"
                       >
-                        {item.label}
+                        {t(locale, item.labelKey)}
                       </Link>
                     ))}
                   </div>
@@ -45,11 +66,13 @@ export function SiteHeader() {
           ))}
         </nav>
         <div className="flex items-center gap-3">
+          <LanguageSwitcher />
+          <ThemeToggle />
           <Link className="btn btn-secondary hidden sm:inline-flex" href="/jobs">
-            View jobs
+            {t(locale, "header.viewJobs")}
           </Link>
           <Link className="btn btn-primary" href="/contact">
-            Contact
+            {t(locale, "header.contact")}
           </Link>
         </div>
       </Container>

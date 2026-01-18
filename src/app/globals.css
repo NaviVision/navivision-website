@@ -1,13 +1,18 @@
 @import "tailwindcss";
 
 :root {
+  --brand-blue: 32 160 224;
+  --brand-green: 64 160 64;
+
   --background: 255 255 255;
   --foreground: 17 24 39;
   --muted: 75 85 99;
   --border: 229 231 235;
   --surface: 250 250 250;
-  --primary: 79 70 229;
+  --primary: var(--brand-blue);
   --primary-foreground: 255 255 255;
+  --accent: var(--brand-green);
+  --accent-foreground: 255 255 255;
 }
 
 @theme inline {
@@ -18,6 +23,8 @@
   --color-surface: rgb(var(--surface));
   --color-primary: rgb(var(--primary));
   --color-primary-foreground: rgb(var(--primary-foreground));
+  --color-accent: rgb(var(--accent));
+  --color-accent-foreground: rgb(var(--accent-foreground));
   --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica,
     Arial, "Apple Color Emoji", "Segoe UI Emoji";
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
@@ -25,15 +32,29 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme]) {
     --background: 3 7 18;
     --foreground: 241 245 249;
     --muted: 148 163 184;
     --border: 30 41 59;
     --surface: 2 6 23;
-    --primary: 129 140 248;
+    --primary: var(--brand-blue);
     --primary-foreground: 3 7 18;
+    --accent: var(--brand-green);
+    --accent-foreground: 3 7 18;
   }
+}
+
+:root[data-theme="dark"] {
+  --background: 3 7 18;
+  --foreground: 241 245 249;
+  --muted: 148 163 184;
+  --border: 30 41 59;
+  --surface: 2 6 23;
+  --primary: var(--brand-blue);
+  --primary-foreground: 3 7 18;
+  --accent: var(--brand-green);
+  --accent-foreground: 3 7 18;
 }
 
 body {
@@ -42,7 +63,7 @@ body {
 }
 
 ::selection {
-  background: rgba(79, 70, 229, 0.25);
+  background: rgba(32, 160, 224, 0.25);
 }
 
 .btn {
@@ -50,7 +71,16 @@ body {
 }
 
 .btn-primary {
-  @apply bg-primary text-primary-foreground hover:bg-primary/90;
+  background-image: linear-gradient(
+    135deg,
+    rgb(var(--primary)),
+    rgb(var(--accent))
+  );
+  color: rgb(var(--primary-foreground));
+}
+
+.btn-primary:hover {
+  filter: brightness(0.95);
 }
 
 .btn-secondary {

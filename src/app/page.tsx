@@ -5,7 +5,7 @@ import { SectionHeading } from "@/components/SectionHeading";
 export default function Home() {
   return (
     <div>
-      <section className="relative overflow-hidden bg-[radial-gradient(90rem_50rem_at_10%_-10%,rgba(99,102,241,0.25),transparent),radial-gradient(80rem_40rem_at_110%_10%,rgba(16,185,129,0.20),transparent)]">
+      <section className="relative overflow-hidden bg-[radial-gradient(90rem_50rem_at_10%_-10%,rgba(32,160,224,0.26),transparent),radial-gradient(80rem_40rem_at_110%_10%,rgba(64,160,64,0.18),transparent)]">
         <Container className="py-16 sm:py-24">
           <div className="max-w-3xl">
             <p className="text-sm font-medium tracking-wide text-muted">

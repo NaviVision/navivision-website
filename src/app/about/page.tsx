@@ -87,6 +87,38 @@ export default function AboutPage() {
           </div>
         </Container>
       </section>
+
+      <section className="border-t border-border/70 bg-surface">
+        <Container className="py-14 sm:py-20">
+          <SectionHeading
+            title="Team"
+            subtitle="Operator-led and built for long-term compounding."
+          />
+          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {[
+              { name: "Annie Truong", initials: "AT" },
+              { name: "Greg William", initials: "GW" },
+              { name: "Corey Somers", initials: "CS" },
+              { name: "Sam Patel", initials: "SP" },
+            ].map((person) => (
+              <div key={person.name} className="card">
+                <div className="flex items-center gap-3">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/15 text-sm font-semibold text-foreground">
+                    {person.initials}
+                  </div>
+                  <div>
+                    <p className="text-sm font-semibold">{person.name}</p>
+                    <p className="text-xs text-muted">NaviVision</p>
+                  </div>
+                </div>
+                <p className="mt-4 text-sm text-muted">
+                  Profile coming soon.
+                </p>
+              </div>
+            ))}
+          </div>
+        </Container>
+      </section>
     </div>
   );
 }
