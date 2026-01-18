@@ -6,7 +6,7 @@ import { SectionHeading } from "@/components/SectionHeading";
 export const metadata: Metadata = {
   title: "Portfolio",
   description:
-    "An overview of NaviVision LLC’s operating focus across software, real estate, and investments.",
+    "An overview of NaviVision’s operating focus across software, real estate, and investments.",
 };
 
 export default function PortfolioPage() {
@@ -19,8 +19,8 @@ export default function PortfolioPage() {
             Businesses we build, operate, and support.
           </h1>
           <p className="mt-5 max-w-3xl text-pretty text-base text-muted sm:text-lg">
-            NaviVision LLC has expansive ownership across a range of companies.
-            We also operate a real estate portfolio and invest in early-stage
+            NaviVision has expansive ownership across a range of companies. We
+            also operate a real estate portfolio and invest in early-stage
             startups.
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">

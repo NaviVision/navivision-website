@@ -6,9 +6,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const routes = [
     "",
     "/about",
+    "/talent-hiring",
     "/for-companies",
     "/for-talent",
     "/jobs",
+    "/custom-saas",
+    "/real-estate",
+    "/investments",
     "/portfolio",
     "/contact",
     "/privacy",
@@ -22,4 +26,3 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: path === "" ? 1 : 0.7,
   }));
 }
-

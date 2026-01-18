@@ -3,7 +3,7 @@ import { Container } from "@/components/Container";
 
 export const metadata: Metadata = {
   title: "Privacy",
-  description: "Privacy policy for NaviVision LLC.",
+  description: "Privacy policy for NaviVision.",
 };
 
 export default function PrivacyPage() {
@@ -16,7 +16,7 @@ export default function PrivacyPage() {
             Privacy Policy
           </h1>
           <p className="mt-5 max-w-3xl text-pretty text-base text-muted sm:text-lg">
-            This site is a marketing experience for NaviVision LLC. We keep data
+            This site is a marketing experience for NaviVision. We keep data
             collection minimal and use it to operate and improve the site.
           </p>
         </Container>

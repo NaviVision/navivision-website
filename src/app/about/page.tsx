@@ -6,7 +6,7 @@ import { SectionHeading } from "@/components/SectionHeading";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Learn about NaviVision LLC—our operating focus across talent, software, real estate, and startup investing.",
+    "Learn about NaviVision—our operating focus across talent, software, real estate, and startup investing.",
 };
 
 export default function AboutPage() {
@@ -19,8 +19,8 @@ export default function AboutPage() {
             We’re a hands-on operator with a long-term view.
           </h1>
           <p className="mt-5 max-w-3xl text-pretty text-base text-muted sm:text-lg">
-            NaviVision LLC is a diversified operating and investment company.
-            We build and support businesses that can compound over time—through
+            NaviVision is a diversified operating and investment company. We
+            build and support businesses that can compound over time—through
             great teams, sound economics, and disciplined execution.
           </p>
         </Container>
@@ -49,14 +49,14 @@ export default function AboutPage() {
               </div>
             </div>
             <div className="card">
-              <h3 className="text-base font-semibold">Software &amp; SaaS</h3>
+              <h3 className="text-base font-semibold">Custom SaaS</h3>
               <p className="mt-2 text-sm text-muted">
                 We build products and operate software businesses, prioritizing
                 customer value, reliability, and steady improvements.
               </p>
               <div className="mt-4">
-                <Link className="link" href="/portfolio">
-                  Explore the portfolio
+                <Link className="link" href="/custom-saas">
+                  Explore
                 </Link>
               </div>
             </div>
@@ -67,20 +67,20 @@ export default function AboutPage() {
                 relationships and well-maintained assets.
               </p>
               <div className="mt-4">
-                <Link className="link" href="/portfolio#real-estate">
-                  Operating principles
+                <Link className="link" href="/real-estate">
+                  Explore
                 </Link>
               </div>
             </div>
             <div className="card">
-              <h3 className="text-base font-semibold">Startup Investing</h3>
+              <h3 className="text-base font-semibold">Investments</h3>
               <p className="mt-2 text-sm text-muted">
                 We invest selectively in founders building durable businesses
                 and provide support where we have earned experience.
               </p>
               <div className="mt-4">
-                <Link className="link" href="/portfolio#investing">
-                  Our thesis
+                <Link className="link" href="/investments">
+                  Explore
                 </Link>
               </div>
             </div>

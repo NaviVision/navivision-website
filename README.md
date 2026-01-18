@@ -1,4 +1,4 @@
-Marketing site for `NaviVision LLC` built with [Next.js](https://nextjs.org) (App Router) + Tailwind CSS.
+Marketing site for `NaviVision` built with [Next.js](https://nextjs.org) (App Router) + Tailwind CSS.
 
 ## Getting Started
 

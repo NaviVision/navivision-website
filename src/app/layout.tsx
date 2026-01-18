@@ -5,12 +5,12 @@ import { SiteHeader } from "@/components/SiteHeader";
 
 export const metadata: Metadata = {
   title: {
-    template: "%s | NaviVision LLC",
-    default: "NaviVision LLC",
+    template: "%s | NaviVision",
+    default: "NaviVision",
   },
   description:
-    "NaviVision LLC is a diversified operating and investment company spanning talent, software/SaaS, real estate, and startup investing.",
-  applicationName: "NaviVision LLC",
+    "NaviVision is a diversified operating and investment company spanning talent, software/SaaS, real estate, and startup investing.",
+  applicationName: "NaviVision",
   metadataBase: new URL("https://navivision.net"),
   robots: {
     index: true,

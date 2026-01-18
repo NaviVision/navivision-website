@@ -12,8 +12,8 @@ export default function Home() {
               Diversified operating + investment company
             </p>
             <h1 className="mt-4 text-balance text-4xl font-semibold tracking-tight sm:text-6xl">
-              NaviVision LLC builds, operates, and invests across talent,
-              software, real estate, and startups.
+              NaviVision builds, operates, and invests across talent, software,
+              real estate, and startups.
             </h1>
             <p className="mt-6 text-pretty text-lg text-muted">
               We partner with teams to hire exceptional people, launch products,
@@ -40,26 +40,26 @@ export default function Home() {
           />
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             <div className="card">
-              <h3 className="text-base font-semibold">Talent</h3>
+              <h3 className="text-base font-semibold">Talent &amp; Hiring</h3>
               <p className="mt-2 text-sm text-muted">
                 Hiring support for companies and career opportunities for
                 technical and operational talent.
               </p>
               <div className="mt-4">
-                <Link className="link" href="/for-companies">
-                  For companies
+                <Link className="link" href="/talent-hiring">
+                  Explore
                 </Link>
               </div>
             </div>
             <div className="card">
-              <h3 className="text-base font-semibold">Software &amp; SaaS</h3>
+              <h3 className="text-base font-semibold">Custom SaaS</h3>
               <p className="mt-2 text-sm text-muted">
-                We build and operate software products with a focus on durability
-                and customer outcomes.
+                We build and operate software with a focus on durability and
+                customer outcomes.
               </p>
               <div className="mt-4">
-                <Link className="link" href="/portfolio">
-                  Products &amp; companies
+                <Link className="link" href="/custom-saas">
+                  Explore
                 </Link>
               </div>
             </div>
@@ -70,20 +70,20 @@ export default function Home() {
                 tenants, and neighborhoods.
               </p>
               <div className="mt-4">
-                <Link className="link" href="/portfolio#real-estate">
-                  How we invest
+                <Link className="link" href="/real-estate">
+                  Explore
                 </Link>
               </div>
             </div>
             <div className="card">
-              <h3 className="text-base font-semibold">Startup Investing</h3>
+              <h3 className="text-base font-semibold">Investments</h3>
               <p className="mt-2 text-sm text-muted">
                 Targeted bets in early-stage teams, with a preference for
                 founders who ship.
               </p>
               <div className="mt-4">
-                <Link className="link" href="/portfolio#investing">
-                  Our thesis
+                <Link className="link" href="/investments">
+                  Explore
                 </Link>
               </div>
             </div>

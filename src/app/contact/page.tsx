@@ -5,7 +5,7 @@ import { SectionHeading } from "@/components/SectionHeading";
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Contact NaviVision LLC for hiring support, partnerships, real estate, or investment inquiries.",
+    "Contact NaviVision for hiring support, partnerships, real estate, or investment inquiries.",
 };
 
 export default function ContactPage() {

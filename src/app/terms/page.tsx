@@ -3,7 +3,7 @@ import { Container } from "@/components/Container";
 
 export const metadata: Metadata = {
   title: "Terms",
-  description: "Terms of service for NaviVision LLC.",
+  description: "Terms of service for NaviVision.",
 };
 
 export default function TermsPage() {

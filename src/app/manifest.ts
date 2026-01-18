@@ -2,10 +2,10 @@ import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "NaviVision LLC",
+    name: "NaviVision",
     short_name: "NaviVision",
     description:
-      "NaviVision LLC is a diversified operating and investment company spanning talent, software/SaaS, real estate, and startup investing.",
+      "NaviVision is a diversified operating and investment company spanning talent, software/SaaS, real estate, and startup investing.",
     start_url: "/",
     display: "standalone",
     background_color: "#030712",
@@ -16,4 +16,3 @@ export default function manifest(): MetadataRoute.Manifest {
     ],
   };
 }
-

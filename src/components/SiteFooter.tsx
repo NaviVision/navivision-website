@@ -10,7 +10,7 @@ export function SiteFooter() {
           <div>
             <p className="text-sm font-semibold">{siteConfig.name}</p>
             <p className="mt-1 text-sm text-muted">
-              Talent • Software • Real Estate • Investing
+              Talent &amp; Hiring • Custom SaaS • Real Estate • Investments
             </p>
           </div>
           <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
@@ -34,4 +34,3 @@ export function SiteFooter() {
     </footer>
   );
 }
-
