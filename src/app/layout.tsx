@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { headers } from "next/headers";
 import { defaultLocale, normalizeLocale, type Locale } from "@/lib/i18n";
+import { GoogleAnalytics } from "@/components/GoogleAnalytics";
 
 export const metadata: Metadata = {
   title: {
@@ -104,6 +105,7 @@ export default async function RootLayout({
           Skip to content
         </a>
         {children}
+        <GoogleAnalytics />
       </body>
     </html>
   );
