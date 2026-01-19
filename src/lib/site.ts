@@ -9,6 +9,7 @@ export const siteConfig = {
         { href: "/talent-hiring", labelKey: "nav.overview" },
         { href: "/for-companies", labelKey: "nav.forCompanies" },
         { href: "/for-talent", labelKey: "nav.forTalent" },
+        { href: "/talent-hiring/candidate-process", labelKey: "nav.candidateProcess" },
         { href: "/jobs", labelKey: "nav.jobs" },
       ],
     },
@@ -17,7 +18,8 @@ export const siteConfig = {
       labelKey: "nav.customSaas",
       items: [
         { href: "/custom-saas", labelKey: "nav.overview" },
-        { href: "/portfolio#software", labelKey: "nav.portfolioSoftware" },
+        { href: "/custom-saas#what-we-build", labelKey: "nav.whatWeBuild" },
+        { href: "/custom-saas#how-we-engage", labelKey: "nav.howWeEngage" },
         { href: "/contact", labelKey: "nav.talkToUs" },
       ],
     },
@@ -26,7 +28,8 @@ export const siteConfig = {
       labelKey: "nav.realEstate",
       items: [
         { href: "/real-estate", labelKey: "nav.overview" },
-        { href: "/portfolio#real-estate", labelKey: "nav.portfolioRealEstate" },
+        { href: "/real-estate#how-we-operate", labelKey: "nav.howWeOperate" },
+        { href: "/real-estate#locations", labelKey: "nav.locations" },
         { href: "/contact", labelKey: "nav.partnership" },
       ],
     },
@@ -35,8 +38,7 @@ export const siteConfig = {
       labelKey: "nav.investments",
       items: [
         { href: "/investments", labelKey: "nav.overview" },
-        { href: "/portfolio#investing", labelKey: "nav.startupInvesting" },
-        { href: "/portfolio", labelKey: "nav.portfolio" },
+        { href: "/investments#startup-investing", labelKey: "nav.startupInvesting" },
         { href: "/about", labelKey: "nav.about" },
       ],
     },

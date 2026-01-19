@@ -34,7 +34,11 @@ export function SiteFooter({ locale }: { locale: Locale }) {
                 href={item.href}
                 target={item.href.startsWith("http") ? "_blank" : undefined}
                 rel={item.href.startsWith("http") ? "noreferrer" : undefined}
-                aria-label={item.href.startsWith("http") ? `${item.label} (opens in a new tab)` : undefined}
+                aria-label={
+                  item.href.startsWith("http")
+                    ? `${item.label} (${c(copy.footer.opensNewTab, locale)})`
+                    : undefined
+                }
               >
                 {item.label}
               </Link>

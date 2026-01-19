@@ -44,7 +44,7 @@ export default async function ForCompaniesPage({
             <Link className="btn btn-primary" href={withLocale(locale, "/contact")}>
               {c(copy.forCompanies.ctaPrimary, locale)}
             </Link>
-            <Link className="btn btn-secondary" href={withLocale(locale, "/portfolio")}>
+            <Link className="btn btn-secondary" href={withLocale(locale, "/about")}>
               {c(copy.forCompanies.ctaSecondary, locale)}
             </Link>
           </div>

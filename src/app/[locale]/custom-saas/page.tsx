@@ -42,14 +42,14 @@ export default async function CustomSaasPage({
             <Link className="btn btn-primary" href={withLocale(locale, "/contact")}>
               {c(copy.customSaas.ctaPrimary, locale)}
             </Link>
-            <Link className="btn btn-secondary" href={withLocale(locale, "/portfolio#software")}>
+            <Link className="btn btn-secondary" href="#what-we-build">
               {c(copy.customSaas.ctaSecondary, locale)}
             </Link>
           </div>
         </Container>
       </section>
 
-      <section className="border-t border-border/70">
+      <section className="border-t border-border/70" id="what-we-build">
         <Container className="py-14 sm:py-20">
           <SectionHeading
             title={c(copy.customSaas.section1Title, locale)}
@@ -84,7 +84,7 @@ export default async function CustomSaasPage({
         </Container>
       </section>
 
-      <section className="border-t border-border/70 bg-surface">
+      <section className="border-t border-border/70 bg-surface" id="how-we-engage">
         <Container className="py-14 sm:py-20">
           <SectionHeading
             title={c(copy.customSaas.section2Title, locale)}

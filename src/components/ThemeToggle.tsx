@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import { t, type Locale } from "@/lib/i18n";
 
 type ThemeMode = "light" | "dark";
 
@@ -22,7 +23,7 @@ function getInitialTheme(): ThemeMode {
   return isDark ? "dark" : "light";
 }
 
-export function ThemeToggle() {
+export function ThemeToggle({ locale }: { locale: Locale }) {
   const [mode, setMode] = useState<ThemeMode>(() => getInitialTheme());
 
   useEffect(() => {
@@ -30,17 +31,17 @@ export function ThemeToggle() {
   }, [mode]);
 
   const label = useMemo(() => {
-    if (mode === "dark") return "Dark";
-    return "Light";
-  }, [mode]);
+    if (mode === "dark") return t(locale, "theme.dark");
+    return t(locale, "theme.light");
+  }, [mode, locale]);
 
   return (
     <button
       type="button"
       onClick={() => setMode((prev) => (prev === "dark" ? "light" : "dark"))}
       className="hidden sm:inline-flex items-center rounded-full border border-border/80 bg-background p-2 text-foreground shadow-sm transition-colors hover:bg-surface focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
-      aria-label={`Theme: ${label}. Toggle`}
-      title={`Theme: ${label}`}
+      aria-label={`${t(locale, "theme.toggle")}: ${label}`}
+      title={`${t(locale, "theme.toggle")}: ${label}`}
       aria-pressed={mode === "dark"}
     >
       {mode === "dark" ? (

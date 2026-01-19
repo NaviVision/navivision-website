@@ -46,7 +46,7 @@ export default async function Home({
               <Link className="btn btn-primary" href={withLocale(locale, "/contact")}>
                 {c(copy.home.ctaPrimary, locale)}
               </Link>
-              <Link className="btn btn-secondary" href={withLocale(locale, "/portfolio")}>
+              <Link className="btn btn-secondary" href={`${withLocale(locale, "/")}#what-we-do`}>
                 {c(copy.home.ctaSecondary, locale)}
               </Link>
             </div>
@@ -54,7 +54,7 @@ export default async function Home({
         </Container>
       </section>
 
-      <section className="border-t border-border/70 bg-surface">
+      <section className="border-t border-border/70 bg-surface" id="what-we-do">
         <Container className="py-14 sm:py-20">
           <SectionHeading
             title={c(copy.home.whatWeDoTitle, locale)}

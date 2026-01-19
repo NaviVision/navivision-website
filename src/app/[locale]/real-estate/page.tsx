@@ -6,12 +6,24 @@ import { normalizeLocale, type Locale } from "@/lib/i18n";
 import { alternatesFor } from "@/lib/seo";
 import { withLocale } from "@/lib/urls";
 
-function PropertiesMap({ title, description }: { title: string; description: string }) {
+function PropertiesMap({
+  title,
+  description,
+  californiaAriaLabel,
+  floridaAriaLabel,
+  seattleAriaLabel,
+}: {
+  title: string;
+  description: string;
+  californiaAriaLabel: string;
+  floridaAriaLabel: string;
+  seattleAriaLabel: string;
+}) {
   return (
     <figure className="card overflow-hidden">
       <svg
         role="img"
-        viewBox="0 0 560 340"
+        viewBox="0 0 640 360"
         className="h-auto w-full"
         aria-labelledby="nv-properties-map-title nv-properties-map-desc"
       >
@@ -32,42 +44,60 @@ function PropertiesMap({ title, description }: { title: string; description: str
           </filter>
         </defs>
 
-        <rect x="0" y="0" width="560" height="340" rx="20" fill="url(#nv-map-bg)" />
+        <rect x="0" y="0" width="640" height="360" rx="20" fill="url(#nv-map-bg)" />
 
         <path
-          d="M66 130l26-34 44-18 42 10 36 8 40-14 62 18 36-4 38 16 22 34-10 32 18 24-18 30-44 16-30 34-70 10-70-18-44 8-38-18-34 8-42-28 8-40-28-30 18-34Z"
-          fill="rgba(255,255,255,0.65)"
-          stroke="rgba(17,24,39,0.10)"
+          d="M118 92C104 108 98 128 108 148c10 22 18 44 26 70 8 26 18 50 28 72 36 10 82 14 126 14 64 0 128 6 190 22 16-10 24-22 18-36-6-14-18-20-36-26-14-6-18-18-10-32 8-14 24-18 44-14 18 4 32 14 46 20 18-6 30-18 34-42 6-28-2-56-18-72-18-18-46-30-78-36-44-8-94-4-138 4-36 6-64 0-98-6-34-6-66-8-98-6-34 2-60 2-78-6Z"
+          fill="rgba(255,255,255,0.62)"
+          stroke="rgb(var(--border))"
           strokeWidth="2"
         />
 
         <g filter="url(#nv-shadow)">
-          <g transform="translate(150 175)">
-            <circle cx="0" cy="0" r="16" fill="rgb(var(--brand-blue))" />
-            <circle cx="0" cy="0" r="10" fill="url(#nv-pin)" />
-            <path d="M0 18c8 0 13 6 13 12 0 10-13 24-13 24S-13 40-13 30c0-6 5-12 13-12Z" fill="rgb(var(--brand-blue))" opacity="0.95" />
-            <text x="22" y="6" fontSize="14" fill="rgb(var(--foreground))" fontWeight="600">
-              CA
-            </text>
-          </g>
+          <a href="#seattle" aria-label={seattleAriaLabel}>
+            <g transform="translate(162 126)">
+              <circle cx="0" cy="0" r="16" fill="rgb(var(--brand-blue))" />
+              <circle cx="0" cy="0" r="10" fill="url(#nv-pin)" />
+              <path
+                d="M0 18c8 0 13 6 13 12 0 10-13 24-13 24S-13 40-13 30c0-6 5-12 13-12Z"
+                fill="rgb(var(--brand-blue))"
+                opacity="0.95"
+              />
+              <text x="22" y="6" fontSize="14" fill="rgb(var(--foreground))" fontWeight="600">
+                SEA
+              </text>
+            </g>
+          </a>
 
-          <g transform="translate(410 230)">
-            <circle cx="0" cy="0" r="16" fill="rgb(var(--brand-green))" />
-            <circle cx="0" cy="0" r="10" fill="url(#nv-pin)" />
-            <path d="M0 18c8 0 13 6 13 12 0 10-13 24-13 24S-13 40-13 30c0-6 5-12 13-12Z" fill="rgb(var(--brand-green))" opacity="0.95" />
-            <text x="22" y="6" fontSize="14" fill="rgb(var(--foreground))" fontWeight="600">
-              FL
-            </text>
-          </g>
+          <a href="#california" aria-label={californiaAriaLabel}>
+            <g transform="translate(168 230)">
+              <circle cx="0" cy="0" r="16" fill="rgb(var(--brand-green))" />
+              <circle cx="0" cy="0" r="10" fill="url(#nv-pin)" />
+              <path
+                d="M0 18c8 0 13 6 13 12 0 10-13 24-13 24S-13 40-13 30c0-6 5-12 13-12Z"
+                fill="rgb(var(--brand-green))"
+                opacity="0.95"
+              />
+              <text x="22" y="6" fontSize="14" fill="rgb(var(--foreground))" fontWeight="600">
+                CA
+              </text>
+            </g>
+          </a>
 
-          <g transform="translate(250 118)">
-            <circle cx="0" cy="0" r="16" fill="rgb(var(--brand-blue))" opacity="0.85" />
-            <circle cx="0" cy="0" r="10" fill="url(#nv-pin)" />
-            <path d="M0 18c8 0 13 6 13 12 0 10-13 24-13 24S-13 40-13 30c0-6 5-12 13-12Z" fill="rgb(var(--brand-blue))" opacity="0.9" />
-            <text x="22" y="6" fontSize="14" fill="rgb(var(--foreground))" fontWeight="600">
-              SEA
-            </text>
-          </g>
+          <a href="#florida" aria-label={floridaAriaLabel}>
+            <g transform="translate(496 292)">
+              <circle cx="0" cy="0" r="16" fill="rgb(var(--brand-blue))" />
+              <circle cx="0" cy="0" r="10" fill="url(#nv-pin)" />
+              <path
+                d="M0 18c8 0 13 6 13 12 0 10-13 24-13 24S-13 40-13 30c0-6 5-12 13-12Z"
+                fill="rgb(var(--brand-blue))"
+                opacity="0.95"
+              />
+              <text x="22" y="6" fontSize="14" fill="rgb(var(--foreground))" fontWeight="600">
+                FL
+              </text>
+            </g>
+          </a>
         </g>
       </svg>
     </figure>
@@ -110,14 +140,14 @@ export default async function RealEstatePage({
             <Link className="btn btn-primary" href={withLocale(locale, "/contact")}>
               {c(copy.realEstate.ctaPrimary, locale)}
             </Link>
-            <Link className="btn btn-secondary" href={withLocale(locale, "/portfolio#real-estate")}>
+            <Link className="btn btn-secondary" href="#locations">
               {c(copy.realEstate.ctaSecondary, locale)}
             </Link>
           </div>
         </Container>
       </section>
 
-      <section className="border-t border-border/70">
+      <section className="border-t border-border/70" id="how-we-operate">
         <Container className="py-14 sm:py-20">
           <SectionHeading
             title={c(copy.realEstate.sectionTitle, locale)}
@@ -146,7 +176,7 @@ export default async function RealEstatePage({
         </Container>
       </section>
 
-      <section className="border-t border-border/70 bg-surface">
+      <section className="border-t border-border/70 bg-surface" id="locations">
         <Container className="py-14 sm:py-20">
           <SectionHeading
             title={c(copy.realEstate.locationsTitle, locale)}
@@ -157,19 +187,22 @@ export default async function RealEstatePage({
               <PropertiesMap
                 title={c(copy.realEstate.locationsTitle, locale)}
                 description={`${c(copy.realEstate.locationCaliforniaTitle, locale)}, ${c(copy.realEstate.locationFloridaTitle, locale)}, ${c(copy.realEstate.locationSeattleTitle, locale)}`}
+                californiaAriaLabel={c(copy.realEstate.mapMarkerCaliforniaAria, locale)}
+                floridaAriaLabel={c(copy.realEstate.mapMarkerFloridaAria, locale)}
+                seattleAriaLabel={c(copy.realEstate.mapMarkerSeattleAria, locale)}
               />
             </div>
             <div className="lg:col-span-5">
-              <div className="grid gap-4">
-                <div className="card">
+                <div className="grid gap-4">
+                <div className="card" id="california">
                   <h3 className="text-base font-semibold">{c(copy.realEstate.locationCaliforniaTitle, locale)}</h3>
                   <p className="mt-2 text-sm text-muted">{c(copy.realEstate.locationCaliforniaBody, locale)}</p>
                 </div>
-                <div className="card">
+                <div className="card" id="florida">
                   <h3 className="text-base font-semibold">{c(copy.realEstate.locationFloridaTitle, locale)}</h3>
                   <p className="mt-2 text-sm text-muted">{c(copy.realEstate.locationFloridaBody, locale)}</p>
                 </div>
-                <div className="card">
+                <div className="card" id="seattle">
                   <h3 className="text-base font-semibold">{c(copy.realEstate.locationSeattleTitle, locale)}</h3>
                   <p className="mt-2 text-sm text-muted">{c(copy.realEstate.locationSeattleBody, locale)}</p>
                 </div>

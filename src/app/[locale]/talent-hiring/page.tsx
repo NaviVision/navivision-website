@@ -114,7 +114,7 @@ export default async function TalentHiringPage({
                 {c(copy.talentHiring.cardTalentBody, locale)}
               </p>
               <div className="mt-4">
-                <Link className="link" href={withLocale(locale, "/for-talent")}>
+                <Link className="link" href={withLocale(locale, "/talent-hiring/candidate-process")}>
                   {c(copy.talentHiring.cardTalentLink, locale)}
                 </Link>
               </div>

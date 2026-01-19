@@ -43,7 +43,7 @@ export default async function ContactPage({
             <a
               className="link"
               href="mailto:hello@navivision.net"
-              aria-label={`${c(copy.contact.directEmailBody, locale)} Email hello@navivision.net`}
+              aria-label={c(copy.contact.directEmailBody, locale)}
             >
               hello@navivision.net
             </a>

@@ -94,7 +94,7 @@ body {
 }
 
 .link {
-  @apply text-sm font-semibold text-foreground hover:text-primary transition-[color,text-decoration-thickness] duration-200 underline-offset-4 hover:underline;
+  @apply text-sm font-semibold text-foreground transition-[color,text-decoration-thickness] duration-200 underline-offset-4 hover:text-primary hover:underline decoration-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background;
 }
 
 .card {

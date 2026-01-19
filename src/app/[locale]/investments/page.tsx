@@ -44,14 +44,14 @@ export default async function InvestmentsPage({
             <Link className="btn btn-primary" href={withLocale(locale, "/contact")}>
               {c(copy.investments.ctaPrimary, locale)}
             </Link>
-            <Link className="btn btn-secondary" href={withLocale(locale, "/portfolio#investing")}>
+            <Link className="btn btn-secondary" href="#startup-investing">
               {c(copy.investments.ctaSecondary, locale)}
             </Link>
           </div>
         </Container>
       </section>
 
-      <section className="border-t border-border/70">
+      <section className="border-t border-border/70" id="startup-investing">
         <Container className="py-14 sm:py-20">
           <SectionHeading
             title={c(copy.investments.sectionTitle, locale)}

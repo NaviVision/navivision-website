@@ -83,6 +83,11 @@ export default async function ForTalentPage({
               </p>
             </div>
           </div>
+          <div className="mt-8">
+            <Link className="link" href={withLocale(locale, "/talent-hiring/candidate-process")}>
+              {c(copy.forTalent.processLink, locale)}
+            </Link>
+          </div>
         </Container>
       </section>
     </div>

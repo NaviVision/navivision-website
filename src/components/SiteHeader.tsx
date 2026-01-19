@@ -53,7 +53,7 @@ export function SiteHeader({ locale }: { locale: Locale }) {
     <header className="sticky top-0 z-40 border-b border-border/70 bg-background/80 backdrop-blur">
       <Container className="flex h-16 items-center justify-between">
         <Logo href={withLocale(locale, "/")} />
-        <nav ref={navRef} className="hidden items-center gap-2 md:flex" aria-label="Primary">
+        <nav ref={navRef} className="hidden items-center gap-2 md:flex" aria-label={t(locale, "a11y.primaryNav")}>
           {navBuckets.map((bucket) => (
             <div
               key={bucket.href}
@@ -107,7 +107,7 @@ export function SiteHeader({ locale }: { locale: Locale }) {
         </nav>
         <div className="flex items-center gap-2">
           <LanguageSwitcher locale={locale} />
-          <ThemeToggle />
+          <ThemeToggle locale={locale} />
           <Link className="btn btn-primary" href={withLocale(locale, "/contact")} onClick={blurOnClick}>
             {t(locale, "header.contact")}
           </Link>

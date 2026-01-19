@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState, useTransition } from "react";
 import { usePathname, useRouter } from "next/navigation";
-import { LOCALE_COOKIE, localeLabels, locales, type Locale } from "@/lib/i18n";
+import { LOCALE_COOKIE, localeLabels, locales, t, type Locale } from "@/lib/i18n";
 import { swapLocaleInPathname } from "@/lib/urls";
 
 function setCookie(name: string, value: string) {
@@ -144,6 +144,7 @@ export function LanguageSwitcher({ locale: initialLocale }: { locale: Locale }) 
   }, [initialLocale]);
 
   const currentLabel = useMemo(() => localeLabels[locale], [locale]);
+  const buttonLabel = `${t(locale, "header.language")}: ${currentLabel}`;
 
   useEffect(() => {
     if (!open) return;
@@ -184,8 +185,8 @@ export function LanguageSwitcher({ locale: initialLocale }: { locale: Locale }) 
         className="inline-flex items-center rounded-full border border-border/80 bg-background p-2 text-foreground shadow-sm transition-colors hover:bg-surface focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
         aria-haspopup="menu"
         aria-expanded={open}
-        aria-label={`Language: ${currentLabel}`}
-        title={`Language: ${currentLabel}`}
+        aria-label={buttonLabel}
+        title={buttonLabel}
         disabled={isPending}
       >
         <span
@@ -197,7 +198,11 @@ export function LanguageSwitcher({ locale: initialLocale }: { locale: Locale }) 
       </button>
 
       {open ? (
-        <div className="absolute right-0 top-full z-50 w-36 pt-2" role="menu" aria-label="Language">
+        <div
+          className="absolute right-0 top-full z-50 w-36 pt-2"
+          role="menu"
+          aria-label={t(locale, "header.language")}
+        >
           <div className="rounded-2xl border border-border/70 bg-background shadow-lg">
             <div className="p-2">
               <div className="grid grid-cols-1 gap-1">
