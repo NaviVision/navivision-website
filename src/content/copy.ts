@@ -3706,6 +3706,13 @@ export const copy = {
   } satisfies Record<string, CopyByLocale<string>>,
 
   notFound: {
+    kicker: {
+      "en-US": "404",
+      "en-GB": "404",
+      es: "404",
+      fr: "404",
+      de: "404",
+    },
     title: {
       "en-US": "Page not found",
       "en-GB": "Page not found",
@@ -3714,15 +3721,17 @@ export const copy = {
       de: "Seite nicht gefunden",
     },
     body: {
-      "en-US": "The page you’re looking for doesn’t exist or has moved.",
-      "en-GB": "The page you’re looking for doesn’t exist or has moved.",
-      es: "La página que busca no existe o se ha movido.",
-      fr: "La page que vous cherchez n’existe pas ou a été déplacée.",
-      de: "Die gesuchte Seite existiert nicht oder wurde verschoben.",
+      "en-US":
+        "The page you’re looking for doesn’t exist or may have moved. Use the links below to get back on track.",
+      "en-GB":
+        "The page you’re looking for doesn’t exist or may have moved. Use the links below to get back on track.",
+      es: "La página que busca no existe o pudo haber cambiado. Use los enlaces para volver a la navegación.",
+      fr: "La page que vous cherchez n’existe pas ou a peut-être changé. Utilisez les liens ci-dessous pour reprendre.",
+      de: "Die Seite existiert nicht oder wurde möglicherweise verschoben. Nutzen Sie die Links unten, um weiterzumachen.",
     },
     ctaHome: {
-      "en-US": "Back home",
-      "en-GB": "Back home",
+      "en-US": "Go to home",
+      "en-GB": "Go to home",
       es: "Volver al inicio",
       fr: "Retour à l’accueil",
       de: "Zur Startseite",
@@ -3733,6 +3742,41 @@ export const copy = {
       es: "Contacto",
       fr: "Contact",
       de: "Kontakt",
+    },
+    linksTitle: {
+      "en-US": "Explore NaviVision",
+      "en-GB": "Explore NaviVision",
+      es: "Explorar NaviVision",
+      fr: "Découvrir NaviVision",
+      de: "NaviVision entdecken",
+    },
+    linksSubtitle: {
+      "en-US": "Start with a vertical, or reach out for help.",
+      "en-GB": "Start with a vertical, or reach out for help.",
+      es: "Empiece por un vertical o contáctenos para ayuda.",
+      fr: "Commencez par une verticale ou contactez-nous.",
+      de: "Starten Sie mit einem Bereich oder kontaktieren Sie uns.",
+    },
+    jobsTitle: {
+      "en-US": "Looking for roles?",
+      "en-GB": "Looking for roles?",
+      es: "¿Busca roles?",
+      fr: "Vous cherchez un poste ?",
+      de: "Sie suchen eine Rolle?",
+    },
+    jobsBody: {
+      "en-US": "Browse open positions or email us and we’ll route you to the right place.",
+      "en-GB": "Browse open positions or email us and we’ll route you to the right place.",
+      es: "Explore posiciones abiertas o escríbanos y lo dirigiremos al lugar correcto.",
+      fr: "Consultez les postes ouverts ou écrivez-nous et nous vous orienterons.",
+      de: "Sehen Sie offene Positionen an oder schreiben Sie uns und wir leiten Sie weiter.",
+    },
+    jobsLink: {
+      "en-US": "View jobs",
+      "en-GB": "View jobs",
+      es: "Ver empleos",
+      fr: "Voir les offres",
+      de: "Jobs ansehen",
     },
   } satisfies Record<string, CopyByLocale<string>>,
 
