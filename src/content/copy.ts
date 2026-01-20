@@ -2749,6 +2749,13 @@ export const copy = {
       fr: "Talent et recrutement • SaaS sur mesure • Immobilier • Investissements",
       de: "Talent & Recruiting • Individuelles SaaS • Immobilien • Investments",
     },
+    about: {
+      "en-US": "About",
+      "en-GB": "About",
+      es: "Acerca de",
+      fr: "À propos",
+      de: "Über uns",
+    },
     jobs: {
       "en-US": "Jobs",
       "en-GB": "Jobs",

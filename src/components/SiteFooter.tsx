@@ -9,6 +9,7 @@ import { withLocale } from "@/lib/urls";
 
 export function SiteFooter({ locale }: { locale: Locale }) {
   const footerLinks = [
+    { href: withLocale(locale, "/about"), label: c(copy.footer.about, locale) },
     { href: withLocale(locale, "/jobs"), label: c(copy.footer.jobs, locale) },
     { href: withLocale(locale, "/privacy"), label: c(copy.footer.privacy, locale) },
     { href: withLocale(locale, "/terms"), label: c(copy.footer.terms, locale) },
