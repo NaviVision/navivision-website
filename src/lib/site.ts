@@ -39,7 +39,6 @@ export const siteConfig = {
       items: [
         { href: "/investments", labelKey: "nav.overview" },
         { href: "/investments#startup-investing", labelKey: "nav.startupInvesting" },
-        { href: "/about", labelKey: "nav.about" },
       ],
     },
   ],

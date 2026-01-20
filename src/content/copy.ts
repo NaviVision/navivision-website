@@ -283,6 +283,42 @@ export const copy = {
       fr: "Portée par des opérateurs, conçue pour une croissance durable.",
       de: "Operator-led und auf langfristiges Wachstum ausgelegt.",
     },
+    memberAnnieBody: {
+      "en-US":
+        "Focuses on hiring signal: role clarity, structured screening, and a candidate experience that keeps communication crisp and respectful.",
+      "en-GB":
+        "Focuses on hiring signal: role clarity, structured screening, and a candidate experience that keeps communication crisp and respectful.",
+      es: "Se enfoca en señal de contratación: claridad del rol, evaluación estructurada y una experiencia de candidato con comunicación clara y respetuosa.",
+      fr: "Se concentre sur le signal en recrutement : clarté du rôle, screening structuré et une expérience candidat avec une communication nette et respectueuse.",
+      de: "Fokussiert auf Hiring-Signal: Rollenklarheit, strukturiertes Screening und eine Candidate Experience mit klarer, respektvoller Kommunikation.",
+    },
+    memberGregBody: {
+      "en-US":
+        "Builds durable software: shipping quickly, tightening feedback loops, and improving performance, reliability, and UX over time.",
+      "en-GB":
+        "Builds durable software: shipping quickly, tightening feedback loops, and improving performance, reliability, and UX over time.",
+      es: "Construye software duradero: entrega rápido, acelera ciclos de feedback y mejora rendimiento, confiabilidad y UX con el tiempo.",
+      fr: "Construit des logiciels durables : livrer vite, accélérer les boucles de feedback et améliorer performance, fiabilité et UX dans le temps.",
+      de: "Baut langlebige Software: schnell shippen, Feedback-Loops verkürzen und Performance, Zuverlässigkeit und UX kontinuierlich verbessern.",
+    },
+    memberCoreyBody: {
+      "en-US":
+        "Operates real estate with discipline: underwriting fundamentals, steady improvements, and responsive communication with owners and partners.",
+      "en-GB":
+        "Operates real estate with discipline: underwriting fundamentals, steady improvements, and responsive communication with owners and partners.",
+      es: "Opera bienes raíces con disciplina: fundamentos de análisis, mejoras constantes y comunicación ágil con propietarios y socios.",
+      fr: "Gère l’immobilier avec discipline : fondamentaux d’underwriting, améliorations régulières et communication réactive avec propriétaires et partenaires.",
+      de: "Betreibt Immobilien diszipliniert: solide Underwriting-Grundlagen, kontinuierliche Verbesserungen und schnelle Kommunikation mit Eigentümern und Partnern.",
+    },
+    memberSamBody: {
+      "en-US":
+        "Supports founders with operator leverage: sharp positioning, go-to-market feedback, and practical help on hiring and execution.",
+      "en-GB":
+        "Supports founders with operator leverage: sharp positioning, go-to-market feedback, and practical help on hiring and execution.",
+      es: "Apoya a fundadores con enfoque operativo: posicionamiento claro, feedback de go-to-market y ayuda práctica en contratación y ejecución.",
+      fr: "Accompagne les fondateurs avec un regard d’opérateur : positionnement précis, feedback go-to-market et aide concrète sur le recrutement et l’exécution.",
+      de: "Unterstützt Gründer mit Operator-Leverage: klares Positioning, Go-to-Market-Feedback und praktische Hilfe bei Hiring und Execution.",
+    },
     profileSoon: {
       "en-US": "Profile coming soon.",
       "en-GB": "Profile coming soon.",

@@ -41,72 +41,6 @@ export default async function AboutPage({
         </Container>
       </section>
 
-      <section className="border-t border-border/70">
-        <Container className="py-14 sm:py-20">
-          <SectionHeading
-            title={c(copy.about.focusTitle, locale)}
-            subtitle={c(copy.about.focusSubtitle, locale)}
-          />
-          <div className="mt-10 grid gap-4 lg:grid-cols-2">
-            <div className="card">
-              <h3 className="text-base font-semibold">
-                {c(copy.about.verticalTalentTitle, locale)}
-              </h3>
-              <p className="mt-2 text-sm text-muted">
-                {c(copy.about.verticalTalentBody, locale)}
-              </p>
-              <div className="mt-4 flex gap-4">
-                <Link className="link" href={withLocale(locale, "/for-companies")}>
-                  {c(copy.about.linkForCompanies, locale)}
-                </Link>
-                <Link className="link" href={withLocale(locale, "/for-talent")}>
-                  {c(copy.about.linkForTalent, locale)}
-                </Link>
-              </div>
-            </div>
-            <div className="card">
-              <h3 className="text-base font-semibold">
-                {c(copy.about.verticalSoftwareTitle, locale)}
-              </h3>
-              <p className="mt-2 text-sm text-muted">
-                {c(copy.about.verticalSoftwareBody, locale)}
-              </p>
-              <div className="mt-4">
-                <Link className="link" href={withLocale(locale, "/custom-saas")}>
-                  {c(copy.about.linkExplore, locale)}
-                </Link>
-              </div>
-            </div>
-            <div className="card">
-              <h3 className="text-base font-semibold">
-                {c(copy.about.verticalRealEstateTitle, locale)}
-              </h3>
-              <p className="mt-2 text-sm text-muted">
-                {c(copy.about.verticalRealEstateBody, locale)}
-              </p>
-              <div className="mt-4">
-                <Link className="link" href={withLocale(locale, "/real-estate")}>
-                  {c(copy.about.linkExplore, locale)}
-                </Link>
-              </div>
-            </div>
-            <div className="card">
-              <h3 className="text-base font-semibold">
-                {c(copy.about.verticalInvestTitle, locale)}
-              </h3>
-              <p className="mt-2 text-sm text-muted">
-                {c(copy.about.verticalInvestBody, locale)}
-              </p>
-              <div className="mt-4">
-                <Link className="link" href={withLocale(locale, "/investments")}>
-                  {c(copy.about.linkExplore, locale)}
-                </Link>
-              </div>
-            </div>
-          </div>
-        </Container>
-      </section>
-
       <section className="border-t border-border/70 bg-surface">
         <Container className="py-14 sm:py-20">
           <SectionHeading
@@ -115,10 +49,34 @@ export default async function AboutPage({
           />
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {[
-              { name: "Annie Truong", initials: "AT" },
-              { name: "Greg William", initials: "GW" },
-              { name: "Corey Somers", initials: "CS" },
-              { name: "Sam Patel", initials: "SP" },
+              {
+                name: "Annie Truong",
+                initials: "AT",
+                focus: c(copy.about.verticalTalentTitle, locale),
+                body: c(copy.about.memberAnnieBody, locale),
+                href: "/talent-hiring",
+              },
+              {
+                name: "Greg William",
+                initials: "GW",
+                focus: c(copy.about.verticalSoftwareTitle, locale),
+                body: c(copy.about.memberGregBody, locale),
+                href: "/custom-saas",
+              },
+              {
+                name: "Corey Somers",
+                initials: "CS",
+                focus: c(copy.about.verticalRealEstateTitle, locale),
+                body: c(copy.about.memberCoreyBody, locale),
+                href: "/real-estate",
+              },
+              {
+                name: "Sam Patel",
+                initials: "SP",
+                focus: c(copy.about.verticalInvestTitle, locale),
+                body: c(copy.about.memberSamBody, locale),
+                href: "/investments",
+              },
             ].map((person) => (
               <div key={person.name} className="card">
                 <div className="flex items-center gap-3">
@@ -127,12 +85,17 @@ export default async function AboutPage({
                   </div>
                   <div>
                     <p className="text-sm font-semibold">{person.name}</p>
-                    <p className="text-xs text-muted">NaviVision</p>
+                    <p className="text-xs font-medium text-muted">{person.focus}</p>
                   </div>
                 </div>
                 <p className="mt-4 text-sm text-muted">
-                  {c(copy.about.profileSoon, locale)}
+                  {person.body}
                 </p>
+                <div className="mt-4">
+                  <Link className="link" href={withLocale(locale, person.href)}>
+                    {c(copy.about.linkExplore, locale)}
+                  </Link>
+                </div>
               </div>
             ))}
           </div>
