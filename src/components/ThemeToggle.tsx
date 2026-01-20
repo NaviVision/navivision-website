@@ -40,7 +40,7 @@ export function ThemeToggle({ locale, className }: { locale: Locale; className?:
       type="button"
       onClick={() => setMode((prev) => (prev === "dark" ? "light" : "dark"))}
       className={[
-        "inline-flex items-center rounded-full border border-border/80 bg-background p-2 text-foreground shadow-sm transition-colors hover:bg-surface focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40",
+        "inline-flex h-10 w-10 items-center justify-center rounded-full border border-border/80 bg-background text-foreground shadow-sm transition-colors hover:bg-surface focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40",
         className,
       ]
         .filter(Boolean)

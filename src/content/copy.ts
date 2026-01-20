@@ -283,41 +283,48 @@ export const copy = {
       fr: "Portée par des opérateurs, conçue pour une croissance durable.",
       de: "Operator-led und auf langfristiges Wachstum ausgelegt.",
     },
+    memberAnnieRole: {
+      "en-US": "President",
+      "en-GB": "President",
+      es: "Presidenta",
+      fr: "Présidente",
+      de: "Präsidentin",
+    },
     memberAnnieBody: {
       "en-US":
-        "Focuses on hiring signal: role clarity, structured screening, and a candidate experience that keeps communication crisp and respectful.",
+        "Leads NaviVision as President with a hands-on focus on the Real Estate and Talent & Hiring verticals. She prioritizes disciplined operations, clear communication, and repeatable processes that scale with the portfolio.",
       "en-GB":
-        "Focuses on hiring signal: role clarity, structured screening, and a candidate experience that keeps communication crisp and respectful.",
-      es: "Se enfoca en señal de contratación: claridad del rol, evaluación estructurada y una experiencia de candidato con comunicación clara y respetuosa.",
-      fr: "Se concentre sur le signal en recrutement : clarté du rôle, screening structuré et une expérience candidat avec une communication nette et respectueuse.",
-      de: "Fokussiert auf Hiring-Signal: Rollenklarheit, strukturiertes Screening und eine Candidate Experience mit klarer, respektvoller Kommunikation.",
+        "Leads NaviVision as President with a hands-on focus on the Real Estate and Talent & Hiring verticals. She prioritises disciplined operations, clear communication, and repeatable processes that scale with the portfolio.",
+      es: "Lidera NaviVision como Presidenta con un enfoque práctico en los verticales de Bienes raíces y Talento y contratación. Prioriza operaciones disciplinadas, comunicación clara y procesos repetibles que escalan con el portafolio.",
+      fr: "Dirige NaviVision en tant que Présidente, avec un focus terrain sur l’Immobilier et le Talent et recrutement. Elle privilégie une exploitation disciplinée, une communication claire et des processus répétables qui se scalent avec le portefeuille.",
+      de: "Leitet NaviVision als Präsidentin mit einem praxisnahen Fokus auf die Bereiche Immobilien sowie Talent & Recruiting. Sie setzt auf disziplinierte Abläufe, klare Kommunikation und wiederholbare Prozesse, die mit dem Portfolio skalieren.",
     },
     memberGregBody: {
       "en-US":
-        "Builds durable software: shipping quickly, tightening feedback loops, and improving performance, reliability, and UX over time.",
+        "Leads our Talent & Hiring work, partnering with teams to define roles, build pipelines, and close hires efficiently. He focuses on high-signal screening, candidate experience, and tight feedback loops throughout the process.",
       "en-GB":
-        "Builds durable software: shipping quickly, tightening feedback loops, and improving performance, reliability, and UX over time.",
-      es: "Construye software duradero: entrega rápido, acelera ciclos de feedback y mejora rendimiento, confiabilidad y UX con el tiempo.",
-      fr: "Construit des logiciels durables : livrer vite, accélérer les boucles de feedback et améliorer performance, fiabilité et UX dans le temps.",
-      de: "Baut langlebige Software: schnell shippen, Feedback-Loops verkürzen und Performance, Zuverlässigkeit und UX kontinuierlich verbessern.",
+        "Leads our Talent & Hiring work, partnering with teams to define roles, build pipelines, and close hires efficiently. He focuses on high-signal screening, candidate experience, and tight feedback loops throughout the process.",
+      es: "Lidera nuestro trabajo de Talento y contratación, colaborando con equipos para definir roles, construir pipelines y cerrar contrataciones con eficiencia. Se enfoca en evaluación de alta señal, experiencia del candidato y ciclos de feedback rápidos durante todo el proceso.",
+      fr: "Pilote notre activité Talent et recrutement, en aidant les équipes à définir les postes, construire des pipelines et conclure les recrutements efficacement. Il se concentre sur un screening à fort signal, l’expérience candidat et des boucles de feedback rapides.",
+      de: "Leitet unsere Talent-&-Hiring-Arbeit, unterstützt Teams bei der Rollendefinition, baut Pipelines auf und hilft, Einstellungen effizient abzuschließen. Er fokussiert auf High-Signal-Screening, Candidate Experience und schnelle Feedback-Loops im gesamten Prozess.",
     },
     memberCoreyBody: {
       "en-US":
-        "Operates real estate with discipline: underwriting fundamentals, steady improvements, and responsive communication with owners and partners.",
+        "Leads our Custom SaaS work, building durable software products and internal tools with an operator mindset. He prioritizes shipping in small increments, improving reliability and performance, and creating maintainable systems that compound over time.",
       "en-GB":
-        "Operates real estate with discipline: underwriting fundamentals, steady improvements, and responsive communication with owners and partners.",
-      es: "Opera bienes raíces con disciplina: fundamentos de análisis, mejoras constantes y comunicación ágil con propietarios y socios.",
-      fr: "Gère l’immobilier avec discipline : fondamentaux d’underwriting, améliorations régulières et communication réactive avec propriétaires et partenaires.",
-      de: "Betreibt Immobilien diszipliniert: solide Underwriting-Grundlagen, kontinuierliche Verbesserungen und schnelle Kommunikation mit Eigentümern und Partnern.",
+        "Leads our Custom SaaS work, building durable software products and internal tools with an operator mindset. He prioritises shipping in small increments, improving reliability and performance, and creating maintainable systems that compound over time.",
+      es: "Lidera nuestro trabajo de SaaS a medida, construyendo productos de software y herramientas internas con mentalidad operativa. Prioriza entregas en incrementos pequeños, mejoras de confiabilidad y rendimiento, y sistemas mantenibles que se fortalecen con el tiempo.",
+      fr: "Pilote notre activité SaaS sur mesure, en construisant des produits logiciels et des outils internes avec une mentalité d’opérateur. Il privilégie des livraisons par petits incréments, l’amélioration de la fiabilité et de la performance, et des systèmes maintenables qui créent de la valeur dans la durée.",
+      de: "Leitet unsere Custom-SaaS-Arbeit und baut langlebige Softwareprodukte sowie interne Tools mit Operator-Mindset. Er setzt auf kleine Inkremente, bessere Zuverlässigkeit und Performance sowie wartbare Systeme, die über Zeit an Wert gewinnen.",
     },
     memberSamBody: {
       "en-US":
-        "Supports founders with operator leverage: sharp positioning, go-to-market feedback, and practical help on hiring and execution.",
+        "Leads Investments, partnering with founders at the earliest stages and supporting teams that ship. He focuses on product clarity, go-to-market iteration, and practical operating help, especially around hiring and execution.",
       "en-GB":
-        "Supports founders with operator leverage: sharp positioning, go-to-market feedback, and practical help on hiring and execution.",
-      es: "Apoya a fundadores con enfoque operativo: posicionamiento claro, feedback de go-to-market y ayuda práctica en contratación y ejecución.",
-      fr: "Accompagne les fondateurs avec un regard d’opérateur : positionnement précis, feedback go-to-market et aide concrète sur le recrutement et l’exécution.",
-      de: "Unterstützt Gründer mit Operator-Leverage: klares Positioning, Go-to-Market-Feedback und praktische Hilfe bei Hiring und Execution.",
+        "Leads Investments, partnering with founders at the earliest stages and supporting teams that ship. He focuses on product clarity, go-to-market iteration, and practical operating help, especially around hiring and execution.",
+      es: "Lidera Inversiones, colaborando con fundadores en etapas tempranas y apoyando equipos que ejecutan. Se enfoca en claridad de producto, iteración de go-to-market y apoyo operativo práctico, especialmente en contratación y ejecución.",
+      fr: "Pilote les Investissements, en s’associant à des fondateurs dès les premières étapes et en soutenant des équipes qui livrent. Il se concentre sur la clarté produit, l’itération go-to-market et une aide opérationnelle concrète, notamment sur le recrutement et l’exécution.",
+      de: "Leitet Investments, arbeitet mit Gründern in frühen Phasen zusammen und unterstützt Teams, die liefern. Er fokussiert auf Produktklarheit, Go-to-Market-Iteration und praktische operative Unterstützung, insbesondere bei Hiring und Execution.",
     },
     profileSoon: {
       "en-US": "Profile coming soon.",

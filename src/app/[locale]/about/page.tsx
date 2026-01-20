@@ -41,6 +41,14 @@ export default async function AboutPage({
 }) {
   const { locale: localeParam } = await params;
   const locale: Locale = normalizeLocale(localeParam);
+
+  const focusLabels = {
+    talent: c(copy.about.verticalTalentTitle, locale),
+    software: c(copy.about.verticalSoftwareTitle, locale),
+    realEstate: c(copy.about.verticalRealEstateTitle, locale),
+    investments: c(copy.about.verticalInvestTitle, locale),
+  } as const;
+
   return (
     <div>
       <section className="bg-surface">
@@ -66,30 +74,41 @@ export default async function AboutPage({
               {
                 name: "Annie Truong",
                 initials: "AT",
-                focus: c(copy.about.verticalTalentTitle, locale),
+                role: c(copy.about.memberAnnieRole, locale),
+                focusAreas: [focusLabels.realEstate, focusLabels.talent],
                 body: c(copy.about.memberAnnieBody, locale),
-                href: "/talent-hiring",
+                email: "annie.truong@navivision.net",
+                links: [
+                  { href: "/real-estate", label: focusLabels.realEstate },
+                  { href: "/talent-hiring", label: focusLabels.talent },
+                ],
               },
               {
                 name: "Greg William",
                 initials: "GW",
-                focus: c(copy.about.verticalSoftwareTitle, locale),
+                role: focusLabels.talent,
+                focusAreas: [focusLabels.talent],
                 body: c(copy.about.memberGregBody, locale),
-                href: "/custom-saas",
+                email: "greg.william@navivision.net",
+                links: [{ href: "/talent-hiring", label: focusLabels.talent }],
               },
               {
                 name: "Corey Somers",
                 initials: "CS",
-                focus: c(copy.about.verticalRealEstateTitle, locale),
+                role: focusLabels.software,
+                focusAreas: [focusLabels.software],
                 body: c(copy.about.memberCoreyBody, locale),
-                href: "/real-estate",
+                email: "corey.somers@navivision.net",
+                links: [{ href: "/custom-saas", label: focusLabels.software }],
               },
               {
                 name: "Sam Patel",
                 initials: "SP",
-                focus: c(copy.about.verticalInvestTitle, locale),
+                role: focusLabels.investments,
+                focusAreas: [focusLabels.investments],
                 body: c(copy.about.memberSamBody, locale),
-                href: "/investments",
+                email: "sam.patel@navivision.net",
+                links: [{ href: "/investments", label: focusLabels.investments }],
               },
             ].map((person) => (
               <div key={person.name} className="card">
@@ -99,16 +118,31 @@ export default async function AboutPage({
                   </div>
                   <div>
                     <p className="text-sm font-semibold">{person.name}</p>
-                    <p className="text-xs font-medium text-muted">{person.focus}</p>
+                    <p className="text-xs font-medium text-muted">{person.role}</p>
                   </div>
+                </div>
+                <div className="mt-4 flex flex-wrap gap-2">
+                  {person.focusAreas.map((label) => (
+                    <span
+                      key={label}
+                      className="inline-flex items-center rounded-full border border-border/70 bg-surface px-3 py-1 text-[11px] font-semibold text-foreground"
+                    >
+                      {label}
+                    </span>
+                  ))}
                 </div>
                 <p className="mt-4 text-sm text-muted">
                   {person.body}
                 </p>
-                <div className="mt-4">
-                  <Link className="link" href={withLocale(locale, person.href)}>
-                    {c(copy.about.linkExplore, locale)}
-                  </Link>
+                <div className="mt-4 flex flex-wrap items-center gap-x-6 gap-y-2">
+                  {person.links.map((item) => (
+                    <Link key={item.href} className="link" href={withLocale(locale, item.href)}>
+                      {c(copy.about.linkExplore, locale)} {item.label}
+                    </Link>
+                  ))}
+                  <a className="link" href={`mailto:${person.email}`} aria-label={person.email} title={person.email}>
+                    {person.email}
+                  </a>
                 </div>
               </div>
             ))}

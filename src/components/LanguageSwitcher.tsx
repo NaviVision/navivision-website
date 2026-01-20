@@ -188,19 +188,14 @@ export function LanguageSwitcher({
             queueMicrotask(() => firstItemRef.current?.focus());
           }
         }}
-        className="inline-flex items-center rounded-full border border-border/80 bg-background p-2 text-foreground shadow-sm transition-colors hover:bg-surface focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
+        className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border/80 bg-background text-foreground shadow-sm transition-colors hover:bg-surface focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
         aria-haspopup="menu"
         aria-expanded={open}
         aria-label={buttonLabel}
         title={buttonLabel}
         disabled={isPending}
       >
-        <span
-          className="flex h-7 w-7 items-center justify-center rounded-full bg-surface"
-          aria-hidden="true"
-        >
-          <FlagIcon locale={locale} />
-        </span>
+        <FlagIcon locale={locale} />
       </button>
 
       {open ? (
