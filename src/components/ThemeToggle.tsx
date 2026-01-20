@@ -23,7 +23,7 @@ function getInitialTheme(): ThemeMode {
   return isDark ? "dark" : "light";
 }
 
-export function ThemeToggle({ locale }: { locale: Locale }) {
+export function ThemeToggle({ locale, className }: { locale: Locale; className?: string }) {
   const [mode, setMode] = useState<ThemeMode>(() => getInitialTheme());
 
   useEffect(() => {
@@ -39,7 +39,12 @@ export function ThemeToggle({ locale }: { locale: Locale }) {
     <button
       type="button"
       onClick={() => setMode((prev) => (prev === "dark" ? "light" : "dark"))}
-      className="hidden sm:inline-flex items-center rounded-full border border-border/80 bg-background p-2 text-foreground shadow-sm transition-colors hover:bg-surface focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
+      className={[
+        "inline-flex items-center rounded-full border border-border/80 bg-background p-2 text-foreground shadow-sm transition-colors hover:bg-surface focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/40",
+        className,
+      ]
+        .filter(Boolean)
+        .join(" ")}
       aria-label={`${t(locale, "theme.toggle")}: ${label}`}
       title={`${t(locale, "theme.toggle")}: ${label}`}
       aria-pressed={mode === "dark"}

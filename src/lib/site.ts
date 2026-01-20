@@ -10,7 +10,6 @@ export const siteConfig = {
         { href: "/for-companies", labelKey: "nav.forCompanies" },
         { href: "/for-talent", labelKey: "nav.forTalent" },
         { href: "/talent-hiring/candidate-process", labelKey: "nav.candidateProcess" },
-        { href: "/jobs", labelKey: "nav.jobs" },
       ],
     },
     {

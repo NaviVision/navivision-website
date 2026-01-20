@@ -3,7 +3,7 @@ import { Container } from "@/components/Container";
 import { SectionHeading } from "@/components/SectionHeading";
 import { c, copy } from "@/content/copy";
 import { normalizeLocale, type Locale } from "@/lib/i18n";
-import { alternatesFor } from "@/lib/seo";
+import { alternatesFor, ogImageUrl } from "@/lib/seo";
 import { withLocale } from "@/lib/urls";
 
 export async function generateMetadata({
@@ -13,10 +13,24 @@ export async function generateMetadata({
 }) {
   const { locale: localeParam } = await params;
   const locale: Locale = normalizeLocale(localeParam);
+  const title = c(copy.candidateProcess.metaTitle, locale);
+  const description = c(copy.candidateProcess.metaDescription, locale);
+  const imageUrl = ogImageUrl({ title, subtitle: description });
   return {
-    title: c(copy.candidateProcess.metaTitle, locale),
-    description: c(copy.candidateProcess.metaDescription, locale),
+    title,
+    description,
     alternates: alternatesFor(locale, "/talent-hiring/candidate-process"),
+    openGraph: {
+      title,
+      description,
+      images: [{ url: imageUrl, width: 1200, height: 630, alt: title }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [imageUrl],
+    },
   };
 }
 
@@ -155,25 +169,25 @@ export default async function CandidateProcessPage({
           />
           <div className="mt-10 grid gap-4">
             <details className="card">
-              <summary className="cursor-pointer text-base font-semibold focus:outline-none">
+              <summary className="cursor-pointer text-base font-semibold outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background">
                 {c(copy.candidateProcess.faq1Q, locale)}
               </summary>
               <p className="mt-3 text-sm text-muted">{c(copy.candidateProcess.faq1A, locale)}</p>
             </details>
             <details className="card">
-              <summary className="cursor-pointer text-base font-semibold focus:outline-none">
+              <summary className="cursor-pointer text-base font-semibold outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background">
                 {c(copy.candidateProcess.faq2Q, locale)}
               </summary>
               <p className="mt-3 text-sm text-muted">{c(copy.candidateProcess.faq2A, locale)}</p>
             </details>
             <details className="card">
-              <summary className="cursor-pointer text-base font-semibold focus:outline-none">
+              <summary className="cursor-pointer text-base font-semibold outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background">
                 {c(copy.candidateProcess.faq3Q, locale)}
               </summary>
               <p className="mt-3 text-sm text-muted">{c(copy.candidateProcess.faq3A, locale)}</p>
             </details>
             <details className="card">
-              <summary className="cursor-pointer text-base font-semibold focus:outline-none">
+              <summary className="cursor-pointer text-base font-semibold outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background">
                 {c(copy.candidateProcess.faq4Q, locale)}
               </summary>
               <p className="mt-3 text-sm text-muted">{c(copy.candidateProcess.faq4A, locale)}</p>
@@ -206,4 +220,3 @@ export default async function CandidateProcessPage({
     </div>
   );
 }
-

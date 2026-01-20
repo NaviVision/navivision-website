@@ -3,6 +3,7 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { c, copy } from "@/content/copy";
 import { defaultLocale, locales, normalizeLocale, type Locale } from "@/lib/i18n";
+import { ogImageUrl } from "@/lib/seo";
 import { withLocale } from "@/lib/urls";
 
 export const dynamicParams = false;
@@ -19,6 +20,9 @@ export async function generateMetadata({
   const { locale: localeParam } = await params;
   const locale: Locale = normalizeLocale(localeParam);
   const canonical = withLocale(locale, "/");
+  const title = c(copy.meta.siteTitle, locale);
+  const description = c(copy.meta.siteDescription, locale);
+  const imageUrl = ogImageUrl({ title, subtitle: description });
 
   return {
     alternates: {
@@ -27,20 +31,29 @@ export async function generateMetadata({
     },
     title: {
       template: "%s | NaviVision",
-      default: c(copy.meta.siteTitle, locale),
+      default: title,
     },
-    description: c(copy.meta.siteDescription, locale),
+    description,
     openGraph: {
       type: "website",
-      title: c(copy.meta.siteTitle, locale),
-      description: c(copy.meta.siteDescription, locale),
+      title,
+      description,
       url: `https://navivision.net${canonical}`,
       siteName: "NaviVision",
+      images: [
+        {
+          url: imageUrl,
+          width: 1200,
+          height: 630,
+          alt: title,
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",
-      title: c(copy.meta.siteTitle, locale),
-      description: c(copy.meta.siteDescription, locale),
+      title,
+      description,
+      images: [imageUrl],
     },
   };
 }
@@ -65,4 +78,3 @@ export default async function LocaleLayout({
     </div>
   );
 }
-

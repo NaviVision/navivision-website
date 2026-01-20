@@ -4,7 +4,7 @@ import { Container } from "@/components/Container";
 import { SectionHeading } from "@/components/SectionHeading";
 import { c, copy } from "@/content/copy";
 import { normalizeLocale, type Locale } from "@/lib/i18n";
-import { alternatesFor } from "@/lib/seo";
+import { alternatesFor, ogImageUrl } from "@/lib/seo";
 import { withLocale } from "@/lib/urls";
 
 export async function generateMetadata({
@@ -14,10 +14,24 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale: localeParam } = await params;
   const locale: Locale = normalizeLocale(localeParam);
+  const title = c(copy.meta.siteTitle, locale);
+  const description = c(copy.meta.siteDescription, locale);
+  const imageUrl = ogImageUrl({ title, subtitle: description });
   return {
-    title: c(copy.meta.siteTitle, locale),
-    description: c(copy.meta.siteDescription, locale),
+    title,
+    description,
     alternates: alternatesFor(locale, "/"),
+    openGraph: {
+      title,
+      description,
+      images: [{ url: imageUrl, width: 1200, height: 630, alt: title }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [imageUrl],
+    },
   };
 }
 

@@ -129,7 +129,13 @@ function FlagIcon({ locale }: { locale: Locale }) {
   );
 }
 
-export function LanguageSwitcher({ locale: initialLocale }: { locale: Locale }) {
+export function LanguageSwitcher({
+  locale: initialLocale,
+  className,
+}: {
+  locale: Locale;
+  className?: string;
+}) {
   const router = useRouter();
   const pathname = usePathname();
   const [isPending, startTransition] = useTransition();
@@ -171,7 +177,7 @@ export function LanguageSwitcher({ locale: initialLocale }: { locale: Locale }) 
   }, [open]);
 
   return (
-    <div ref={containerRef} className="relative hidden sm:block">
+    <div ref={containerRef} className={["relative", className].filter(Boolean).join(" ")}>
       <button
         type="button"
         onClick={() => setOpen((prev) => !prev)}

@@ -8,3 +8,14 @@ export function alternatesFor(locale: Locale, path: string) {
   } as const;
 }
 
+export function ogImageUrl({
+  title,
+  subtitle,
+}: {
+  title: string;
+  subtitle?: string;
+}) {
+  const params = new URLSearchParams({ title });
+  if (subtitle) params.set("subtitle", subtitle);
+  return `/api/og?${params.toString()}`;
+}

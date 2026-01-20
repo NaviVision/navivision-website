@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { headers } from "next/headers";
-import { defaultLocale, normalizeLocale, type Locale } from "@/lib/i18n";
+import { defaultLocale, normalizeLocale, t, type Locale } from "@/lib/i18n";
+import { withLocale } from "@/lib/urls";
 import { GoogleAnalytics } from "@/components/GoogleAnalytics";
 
 export const metadata: Metadata = {
@@ -29,12 +30,23 @@ export const metadata: Metadata = {
       "NaviVision builds, operates, and invests across talent, software/SaaS, real estate, and startups.",
     url: "https://navivision.net",
     siteName: "NaviVision",
+    images: [
+      {
+        url: "/api/og?title=NaviVision&subtitle=Build%2C%20operate%2C%20and%20invest%20across%20talent%2C%20software%2C%20real%20estate%2C%20and%20startups.",
+        width: 1200,
+        height: 630,
+        alt: "NaviVision",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "NaviVision",
     description:
       "NaviVision builds, operates, and invests across talent, software/SaaS, real estate, and startups.",
+    images: [
+      "/api/og?title=NaviVision&subtitle=Build%2C%20operate%2C%20and%20invest%20across%20talent%2C%20software%2C%20real%20estate%2C%20and%20startups.",
+    ],
   },
   robots: {
     index: true,
@@ -58,6 +70,58 @@ export default async function RootLayout({
   const headerStore = await headers();
   const localeHeader = (headerStore.get("x-nv-locale") ?? defaultLocale) as string;
   const locale: Locale = normalizeLocale(localeHeader);
+  const pathHeader = headerStore.get("x-nv-path") ?? "/";
+
+  const segments = pathHeader.split("/").filter(Boolean);
+  const topLevelKeyBySegment: Record<string, string> = {
+    "talent-hiring": "nav.talent",
+    "custom-saas": "nav.customSaas",
+    "real-estate": "nav.realEstate",
+    investments: "nav.investments",
+    about: "nav.about",
+    "for-companies": "nav.forCompanies",
+    "for-talent": "nav.forTalent",
+    jobs: "nav.jobs",
+    contact: "nav.contact",
+    privacy: "nav.privacy",
+    terms: "nav.terms",
+  };
+
+  const secondLevelKeyBySegment: Record<string, Record<string, string>> = {
+    "talent-hiring": {
+      "candidate-process": "nav.candidateProcess",
+    },
+  };
+
+  const crumbs: Array<{ name: string; path: string }> = [{ name: t(locale, "nav.home"), path: "/" }];
+  let currentPath = "";
+
+  const first = segments[0];
+  if (first && topLevelKeyBySegment[first]) {
+    currentPath += `/${first}`;
+    crumbs.push({ name: t(locale, topLevelKeyBySegment[first]), path: currentPath });
+  }
+
+  const second = segments[1];
+  const secondKey = first ? secondLevelKeyBySegment[first]?.[second ?? ""] : undefined;
+  if (second && secondKey) {
+    currentPath += `/${second}`;
+    crumbs.push({ name: t(locale, secondKey), path: currentPath });
+  }
+
+  const breadcrumbJsonLd =
+    crumbs.length > 1
+      ? {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: crumbs.map((crumb, index) => ({
+            "@type": "ListItem",
+            position: index + 1,
+            name: crumb.name,
+            item: `https://navivision.net${withLocale(locale, crumb.path)}`,
+          })),
+        }
+      : null;
 
   return (
     <html lang={locale} className="h-full" suppressHydrationWarning>
@@ -96,6 +160,24 @@ export default async function RootLayout({
             }),
           }}
         />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              name: "NaviVision",
+              url: "https://navivision.net",
+              inLanguage: ["en-US", "en-GB", "es", "fr", "de"],
+            }),
+          }}
+        />
+        {breadcrumbJsonLd ? (
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+          />
+        ) : null}
       </head>
       <body className="min-h-full antialiased">
         <a

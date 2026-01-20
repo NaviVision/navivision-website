@@ -4,7 +4,7 @@ import { Container } from "@/components/Container";
 import { SectionHeading } from "@/components/SectionHeading";
 import { c, copy, jobRolesByLocale } from "@/content/copy";
 import { normalizeLocale, type Locale } from "@/lib/i18n";
-import { alternatesFor } from "@/lib/seo";
+import { alternatesFor, ogImageUrl } from "@/lib/seo";
 import { withLocale } from "@/lib/urls";
 
 export const dynamicParams = false;
@@ -23,10 +23,24 @@ export async function generateMetadata({
   const role = jobRolesByLocale[locale].find((item) => item.slug === slug);
   if (!role) return {};
 
+  const title = role.title;
+  const description = role.summary;
+  const imageUrl = ogImageUrl({ title, subtitle: description });
   return {
-    title: role.title,
-    description: role.summary,
+    title,
+    description,
     alternates: alternatesFor(locale, `/jobs/${role.slug}`),
+    openGraph: {
+      title,
+      description,
+      images: [{ url: imageUrl, width: 1200, height: 630, alt: title }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [imageUrl],
+    },
   };
 }
 
@@ -155,4 +169,3 @@ export default async function JobRolePage({
     </div>
   );
 }
-

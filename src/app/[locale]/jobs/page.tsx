@@ -3,7 +3,7 @@ import { Container } from "@/components/Container";
 import { SectionHeading } from "@/components/SectionHeading";
 import { c, copy, jobRolesByLocale } from "@/content/copy";
 import { normalizeLocale, type Locale } from "@/lib/i18n";
-import { alternatesFor } from "@/lib/seo";
+import { alternatesFor, ogImageUrl } from "@/lib/seo";
 import { withLocale } from "@/lib/urls";
 
 export async function generateMetadata({
@@ -13,10 +13,24 @@ export async function generateMetadata({
 }) {
   const { locale: localeParam } = await params;
   const locale: Locale = normalizeLocale(localeParam);
+  const title = c(copy.jobs.metaTitle, locale);
+  const description = c(copy.jobs.metaDescription, locale);
+  const imageUrl = ogImageUrl({ title, subtitle: description });
   return {
-    title: c(copy.jobs.metaTitle, locale),
-    description: c(copy.jobs.metaDescription, locale),
+    title,
+    description,
     alternates: alternatesFor(locale, "/jobs"),
+    openGraph: {
+      title,
+      description,
+      images: [{ url: imageUrl, width: 1200, height: 630, alt: title }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [imageUrl],
+    },
   };
 }
 

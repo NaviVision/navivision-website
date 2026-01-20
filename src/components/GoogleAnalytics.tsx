@@ -1,5 +1,6 @@
 import Script from "next/script";
 import { GoogleAnalyticsTracker } from "@/components/GoogleAnalyticsTracker";
+import { GoogleAnalyticsEvents } from "@/components/GoogleAnalyticsEvents";
 
 const DEFAULT_GA_ID = "G-5D4F5HY1TJ";
 
@@ -29,6 +30,7 @@ gtag('config', '${gaId}');
         }}
       />
       <GoogleAnalyticsTracker gaId={gaId} />
+      <GoogleAnalyticsEvents gaId={gaId} />
     </>
   );
 }

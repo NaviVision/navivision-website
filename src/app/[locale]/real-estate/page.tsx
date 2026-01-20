@@ -3,7 +3,7 @@ import { Container } from "@/components/Container";
 import { SectionHeading } from "@/components/SectionHeading";
 import { c, copy } from "@/content/copy";
 import { normalizeLocale, type Locale } from "@/lib/i18n";
-import { alternatesFor } from "@/lib/seo";
+import { alternatesFor, ogImageUrl } from "@/lib/seo";
 import { withLocale } from "@/lib/urls";
 
 function PropertiesMap({
@@ -47,14 +47,38 @@ function PropertiesMap({
         <rect x="0" y="0" width="640" height="360" rx="20" fill="url(#nv-map-bg)" />
 
         <path
-          d="M118 92C104 108 98 128 108 148c10 22 18 44 26 70 8 26 18 50 28 72 36 10 82 14 126 14 64 0 128 6 190 22 16-10 24-22 18-36-6-14-18-20-36-26-14-6-18-18-10-32 8-14 24-18 44-14 18 4 32 14 46 20 18-6 30-18 34-42 6-28-2-56-18-72-18-18-46-30-78-36-44-8-94-4-138 4-36 6-64 0-98-6-34-6-66-8-98-6-34 2-60 2-78-6Z"
-          fill="rgba(255,255,255,0.62)"
+          d="M150 102
+             L170 82
+             L248 70
+             L326 74
+             Q360 64 394 78
+             L472 74
+             L524 100
+             Q544 116 536 152
+             Q530 192 520 222
+             L520 250
+             Q538 266 548 292
+             Q540 322 512 320
+             Q488 318 478 300
+             Q456 284 430 292
+             Q404 316 372 310
+             L330 312
+             L300 304
+             L260 296
+             Q230 286 220 270
+             Q206 252 190 228
+             Q176 206 168 180
+             Q160 148 150 120
+             Z"
+          fill="rgba(255,255,255,0.66)"
           stroke="rgb(var(--border))"
           strokeWidth="2"
+          strokeLinejoin="round"
+          strokeLinecap="round"
         />
 
         <g filter="url(#nv-shadow)">
-          <a href="#seattle" aria-label={seattleAriaLabel}>
+          <a href="#seattle" aria-label={seattleAriaLabel} tabIndex={0}>
             <g transform="translate(162 126)">
               <circle cx="0" cy="0" r="16" fill="rgb(var(--brand-blue))" />
               <circle cx="0" cy="0" r="10" fill="url(#nv-pin)" />
@@ -69,7 +93,7 @@ function PropertiesMap({
             </g>
           </a>
 
-          <a href="#california" aria-label={californiaAriaLabel}>
+          <a href="#california" aria-label={californiaAriaLabel} tabIndex={0}>
             <g transform="translate(168 230)">
               <circle cx="0" cy="0" r="16" fill="rgb(var(--brand-green))" />
               <circle cx="0" cy="0" r="10" fill="url(#nv-pin)" />
@@ -84,7 +108,7 @@ function PropertiesMap({
             </g>
           </a>
 
-          <a href="#florida" aria-label={floridaAriaLabel}>
+          <a href="#florida" aria-label={floridaAriaLabel} tabIndex={0}>
             <g transform="translate(496 292)">
               <circle cx="0" cy="0" r="16" fill="rgb(var(--brand-blue))" />
               <circle cx="0" cy="0" r="10" fill="url(#nv-pin)" />
@@ -111,10 +135,24 @@ export async function generateMetadata({
 }) {
   const { locale: localeParam } = await params;
   const locale: Locale = normalizeLocale(localeParam);
+  const title = c(copy.realEstate.metaTitle, locale);
+  const description = c(copy.realEstate.metaDescription, locale);
+  const imageUrl = ogImageUrl({ title, subtitle: description });
   return {
-    title: c(copy.realEstate.metaTitle, locale),
-    description: c(copy.realEstate.metaDescription, locale),
+    title,
+    description,
     alternates: alternatesFor(locale, "/real-estate"),
+    openGraph: {
+      title,
+      description,
+      images: [{ url: imageUrl, width: 1200, height: 630, alt: title }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [imageUrl],
+    },
   };
 }
 
@@ -176,6 +214,60 @@ export default async function RealEstatePage({
         </Container>
       </section>
 
+      <section className="border-t border-border/70 bg-surface" id="criteria">
+        <Container className="py-14 sm:py-20">
+          <SectionHeading
+            title={c(copy.realEstate.criteriaTitle, locale)}
+            subtitle={c(copy.realEstate.criteriaSubtitle, locale)}
+          />
+          <div className="mt-10 grid gap-4 lg:grid-cols-3">
+            <div className="card">
+              <h3 className="text-base font-semibold">{c(copy.realEstate.criteriaCard1Title, locale)}</h3>
+              <p className="mt-2 text-sm text-muted">{c(copy.realEstate.criteriaCard1Body, locale)}</p>
+            </div>
+            <div className="card">
+              <h3 className="text-base font-semibold">{c(copy.realEstate.criteriaCard2Title, locale)}</h3>
+              <p className="mt-2 text-sm text-muted">{c(copy.realEstate.criteriaCard2Body, locale)}</p>
+            </div>
+            <div className="card">
+              <h3 className="text-base font-semibold">{c(copy.realEstate.criteriaCard3Title, locale)}</h3>
+              <p className="mt-2 text-sm text-muted">{c(copy.realEstate.criteriaCard3Body, locale)}</p>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      <section className="border-t border-border/70" id="partner-process">
+        <Container className="py-14 sm:py-20">
+          <SectionHeading
+            title={c(copy.realEstate.processTitle, locale)}
+            subtitle={c(copy.realEstate.processSubtitle, locale)}
+          />
+          <div className="mt-10 grid gap-4 lg:grid-cols-4">
+            <div className="card">
+              <p className="text-xs font-semibold tracking-wide text-muted">{c(copy.realEstate.processStep1Kicker, locale)}</p>
+              <h3 className="mt-2 text-base font-semibold">{c(copy.realEstate.processStep1Title, locale)}</h3>
+              <p className="mt-2 text-sm text-muted">{c(copy.realEstate.processStep1Body, locale)}</p>
+            </div>
+            <div className="card">
+              <p className="text-xs font-semibold tracking-wide text-muted">{c(copy.realEstate.processStep2Kicker, locale)}</p>
+              <h3 className="mt-2 text-base font-semibold">{c(copy.realEstate.processStep2Title, locale)}</h3>
+              <p className="mt-2 text-sm text-muted">{c(copy.realEstate.processStep2Body, locale)}</p>
+            </div>
+            <div className="card">
+              <p className="text-xs font-semibold tracking-wide text-muted">{c(copy.realEstate.processStep3Kicker, locale)}</p>
+              <h3 className="mt-2 text-base font-semibold">{c(copy.realEstate.processStep3Title, locale)}</h3>
+              <p className="mt-2 text-sm text-muted">{c(copy.realEstate.processStep3Body, locale)}</p>
+            </div>
+            <div className="card">
+              <p className="text-xs font-semibold tracking-wide text-muted">{c(copy.realEstate.processStep4Kicker, locale)}</p>
+              <h3 className="mt-2 text-base font-semibold">{c(copy.realEstate.processStep4Title, locale)}</h3>
+              <p className="mt-2 text-sm text-muted">{c(copy.realEstate.processStep4Body, locale)}</p>
+            </div>
+          </div>
+        </Container>
+      </section>
+
       <section className="border-t border-border/70 bg-surface" id="locations">
         <Container className="py-14 sm:py-20">
           <SectionHeading
@@ -218,6 +310,41 @@ export default async function RealEstatePage({
                 </div>
               </div>
             </div>
+          </div>
+        </Container>
+      </section>
+
+      <section className="border-t border-border/70" id="faqs">
+        <Container className="py-14 sm:py-20">
+          <SectionHeading
+            title={c(copy.realEstate.faqTitle, locale)}
+            subtitle={c(copy.realEstate.faqSubtitle, locale)}
+          />
+          <div className="mt-10 grid gap-4">
+            <details className="card">
+              <summary className="cursor-pointer text-base font-semibold outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background">
+                {c(copy.realEstate.faq1Q, locale)}
+              </summary>
+              <p className="mt-3 text-sm text-muted">{c(copy.realEstate.faq1A, locale)}</p>
+            </details>
+            <details className="card">
+              <summary className="cursor-pointer text-base font-semibold outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background">
+                {c(copy.realEstate.faq2Q, locale)}
+              </summary>
+              <p className="mt-3 text-sm text-muted">{c(copy.realEstate.faq2A, locale)}</p>
+            </details>
+            <details className="card">
+              <summary className="cursor-pointer text-base font-semibold outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background">
+                {c(copy.realEstate.faq3Q, locale)}
+              </summary>
+              <p className="mt-3 text-sm text-muted">{c(copy.realEstate.faq3A, locale)}</p>
+            </details>
+            <details className="card">
+              <summary className="cursor-pointer text-base font-semibold outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2 focus-visible:ring-offset-background">
+                {c(copy.realEstate.faq4Q, locale)}
+              </summary>
+              <p className="mt-3 text-sm text-muted">{c(copy.realEstate.faq4A, locale)}</p>
+            </details>
           </div>
         </Container>
       </section>
